@@ -604,7 +604,7 @@ main[data-view][hidden]{display:none}
    Calm, spacious layout: a dark top half that hands over to a light lower half,
    medium-weight type, pill buttons, flat rounded tiles. BDElite gold is the one accent. */
 :root,:root[data-theme="light"]{
-  --paper:#fbfbf9; --surface:#ffffff; --sunk:#f3f2ee; --line:#e5e3dc;
+  --paper:#fafafa; --surface:#ffffff; --sunk:#f1f1f2; --line:#e5e5e7;
   --fg:#1b1b20; --muted:#5d5d66; --faint:#6f6f79;
   --gold:#a98b30; --gold-hover:#8a7228; --gold-text:#7a6421; --gold-soft:#d7c38c; --gold-wash:rgba(169,139,48,.10);
   --ink:#262730; --ink-2:rgba(255,255,255,.05); --ink-line:rgba(255,255,255,.11); --on-ink:#ededf1; --on-ink-muted:#a9a9b5; --gold-on-ink:#d9bd6a;
@@ -1814,7 +1814,7 @@ html[data-hero="a"] .hero-side{display:grid;position:relative;align-self:center;
 }
 
 /* ---- B: light centred hero, product panel underneath ---- */
-.bgsw[data-hero="b"] main > section.hero:not(.ink):not(.proof){background:radial-gradient(60% 46% at 50% 0%,#f6ecd2 0%,rgba(246,236,210,0) 70%),var(--paper)}
+.bgsw[data-hero="b"] main > section.hero:not(.ink):not(.proof){background:var(--paper)}
 html[data-hero="b"] .hero-bg{display:none}
 html[data-hero="b"] .hero-stage{min-height:0;padding-bottom:0}
 html[data-hero="b"] .hero-copy{padding-block:clamp(64px,10vh,120px) 28px}
@@ -1823,7 +1823,7 @@ html[data-hero="b"] .app{box-shadow:0 60px 120px -50px rgba(60,45,0,.6)}
 
 /* ---- C: photograph kept, washed pale, dark text ---- */
 html[data-hero="c"] .hero-bg{filter:saturate(.9) brightness(1.150)}
-html[data-hero="c"] .hero-bg::after{background:linear-gradient(180deg,rgba(251,251,249,.88) 0%,rgba(251,251,249,.72) 36%,rgba(251,251,249,.84) 68%,var(--paper) 100%)}
+html[data-hero="c"] .hero-bg::after{background:linear-gradient(180deg,rgba(250,250,250,.88) 0%,rgba(250,250,250,.72) 36%,rgba(250,250,250,.84) 68%,var(--paper) 100%)}
 html[data-hero="c"] .hero-fine{background:rgba(255,255,255,.7);color:var(--fg)}
 html[data-hero="c"] .hero-copy .lede{color:#3d3d45}
 
@@ -1865,7 +1865,16 @@ main[data-view="about"] .ink.band-tight{padding-block:clamp(104px,13vw,200px)}
 .lp-screen .mock-body{padding:clamp(16px,2.400vw,28px)}
 .lp-screen .chart{max-height:clamp(150px,20vw,260px);width:auto;max-width:100%;justify-self:center}
 .tech-list.two{margin-top:clamp(24px,3vw,40px);border-top:0;display:grid;gap:0 clamp(24px,4vw,56px)}
-.tech-list.two a{border-top:1px solid var(--line)}@media (min-width:760px){.tech-list.two{grid-template-columns:1fr 1fr}}
+.tech-list.two a{border-top:1px solid var(--line)}
+
+/* ---- No hairlines between sections: neighbours of the same tone overlap by a pixel so nothing shows through the join ---- */
+.bgsw main > section:not(.sheet):not(:first-child){margin-top:-1px}
+.bgsw footer:not(.sheet){margin-top:-1px}
+
+/* ---- Portal showcase: the whole phone is visible, standing just in front of the laptop ---- */
+.tile.stage{padding-bottom:clamp(36px,5vw,72px)}
+.ph{bottom:-18px}
+@media (max-width:759px){.ph{bottom:auto}}@media (min-width:760px){.tech-list.two{grid-template-columns:1fr 1fr}}
 @media (max-width:759px){
   .devs{padding-right:0;display:grid;justify-items:center}
   .ph{position:relative;right:auto;bottom:auto;margin-top:-56px;width:min(250px,72%)}
@@ -1954,7 +1963,7 @@ main[data-view="about"] .ink.band-tight{padding-block:clamp(104px,13vw,200px)}
 <header class="site">
   <div class="wrap">
     <a class="brand" href="#home" data-go="home" aria-label="BDElite home">
-      <svg viewBox="0 20 1495 372" role="img" aria-label="BDElite"><use href="#logo"/></svg>
+      <svg viewBox="0 0 1495 372" role="img" aria-label="BDElite"><use href="#logo"/></svg>
       <span>Total Solutions Provider</span>
     </a>
     <nav class="main" aria-label="Main">
@@ -2098,7 +2107,7 @@ main[data-view="about"] .ink.band-tight{padding-block:clamp(104px,13vw,200px)}
           <span class="pipe-link"><b>EDI · no double keying</b></span>
           <div class="pipe-card pipe-hub">
             <p class="pipe-cap"><i>2</i>Quote and bind</p>
-            <svg viewBox="0 20 1495 372" aria-hidden="true"><use href="#logo"/></svg>
+            <svg viewBox="0 0 1495 372" aria-hidden="true"><use href="#logo"/></svg>
           </div>
           <span class="pipe-link"></span>
           <div class="pipe-card">
@@ -2616,7 +2625,7 @@ main[data-view="about"] .ink.band-tight{padding-block:clamp(104px,13vw,200px)}
   <div class="wrap">
     <div class="f-top">
       <div class="f-brand">
-        <svg viewBox="0 20 1495 372" role="img" aria-label="BDElite"><use href="#logo"/></svg>
+        <svg viewBox="0 0 1495 372" role="img" aria-label="BDElite"><use href="#logo"/></svg>
         <p>Legal expenses, breakdown, home emergency and total claims management for UK brokers, their customers and fleets.</p>
       </div>
       <div class="f-col"><h4>Brokers</h4><ul><li><a data-go="brokers" href="#brokers">Partner with us</a></li><li><a data-go="brokers" href="#brokers">Broker portal</a></li><li><a data-go="home" href="#home" data-scroll="#products">Products</a></li></ul></div>
@@ -2859,7 +2868,7 @@ function appMock(kind){
     ? [['i-chart','Claims overview'],['i-clock','Average days'],['i-pound','Losses recovered'],['i-car','Repairs and hire'],['i-user','Third party capture'],['i-doc','Complaints']]
     : [['i-chart','Dashboard'],['i-pound','Sales'],['i-doc','Quotes'],['i-plug','Conversion'],['i-briefcase','Commission'],['i-user','Claims']];
   const main = fleet ? fleetMock() : brokerMock() + fleetMock().replace('Fleet claims','Your clients\' claims');
-  return `<div class="app-side"><svg class="app-logo" viewBox="0 20 1495 372" aria-hidden="true"><use href="#logo"/></svg>${nav.map((n,i)=>`<span class="${i?'':'on'}"><svg aria-hidden="true"><use href="#${n[0]}"/></svg>${n[1]}</span>`).join('')}</div><div class="app-body"><div class="app-top"><span class="panel-search">portal.bdelite.co.uk/${fleet?'fleet':'broker'}</span><span class="example-tag">Example data</span></div><div class="app-main${fleet?' one':''}">${main}</div></div>`;
+  return `<div class="app-side"><svg class="app-logo" viewBox="0 0 1495 372" aria-hidden="true"><use href="#logo"/></svg>${nav.map((n,i)=>`<span class="${i?'':'on'}"><svg aria-hidden="true"><use href="#${n[0]}"/></svg>${n[1]}</span>`).join('')}</div><div class="app-body"><div class="app-top"><span class="panel-search">portal.bdelite.co.uk/${fleet?'fleet':'broker'}</span><span class="example-tag">Example data</span></div><div class="app-main${fleet?' one':''}">${main}</div></div>`;
 }
 document.querySelectorAll('[data-app]').forEach(el=>{ el.innerHTML = appMock(el.dataset.app); });
 
