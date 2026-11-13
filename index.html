@@ -1866,6 +1866,15 @@ main[data-view="about"] .ink.band-tight{padding-block:clamp(104px,13vw,200px)}
 .lp-screen .chart{max-height:clamp(150px,20vw,260px);width:auto;max-width:100%;justify-self:center}
 .tech-list.two{margin-top:clamp(24px,3vw,40px);border-top:0;display:grid;gap:0 clamp(24px,4vw,56px)}
 .tech-list.two a{border-top:1px solid var(--line)}
+
+/* ---- Top menu: no hard line underneath; it melts into the page as you scroll ---- */
+header.site{--hb:color-mix(in srgb,var(--paper) 94%,transparent);background:transparent !important;border-bottom:0 !important;backdrop-filter:none;-webkit-backdrop-filter:none}
+header.site.on-dark{--hb:color-mix(in srgb,var(--ink) 92%,transparent)}
+header.site::before{content:"";position:absolute;inset:0 0 -34px 0;z-index:-1;pointer-events:none;background:var(--hb);backdrop-filter:saturate(1.3) blur(14px);-webkit-backdrop-filter:saturate(1.3) blur(14px);
+  -webkit-mask-image:linear-gradient(180deg,#000 0%,#000 52%,rgba(0,0,0,.55) 74%,transparent 100%);mask-image:linear-gradient(180deg,#000 0%,#000 52%,rgba(0,0,0,.55) 74%,transparent 100%);
+  opacity:0;transition:opacity .35s ease,background .35s ease}
+header.site.scrolled::before{opacity:1}
+header.site:has(#mnav:not([hidden]))::before{opacity:1;-webkit-mask-image:none;mask-image:none;inset:0}
 @media (min-width:760px){.tech-list.two{grid-template-columns:1fr 1fr}}
 @media (max-width:759px){
   .devs{padding-right:0;display:grid;justify-items:center}
@@ -1951,14 +1960,6 @@ main[data-view="about"] .ink.band-tight{padding-block:clamp(104px,13vw,200px)}
   </defs>
 </svg>
 
-<div class="util">
-  <div class="wrap">
-    <span><span class="util-dot" aria-hidden="true"></span><strong>Need to claim?</strong> Motor claimsline <a class="tel" href="tel:01204567567">01204 567 567</a></span>
-    <span class="hide-s">Sales support <a class="tel" href="tel:01204567500">01204 567 500</a></span>
-    <span class="spacer"></span>
-    <span class="hide-s">Bolton, UK · FCA No. 797920</span>
-  </div>
-</div>
 
 <header class="site">
   <div class="wrap">
