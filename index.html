@@ -2919,8 +2919,8 @@ footer .f-legal{padding-block:16px 28px}
 :root[data-theme="dark"]{--paper:#262626;--surface:#303030;--sunk:#2c2c2c;--line:#3d3d3d;--ink:#1f1f1f}
 /* DARK: claimsline card matches the "Who we are" card beside it */
 :root[data-theme="dark"] main .routes .route-claim{background:#383838;border:1px solid #4a4a4a;--ink:#383838;--ink-line:#4a4a4a}
-/* DARK: top bar is solid #262626 */
-:root[data-theme="dark"] header.site,:root[data-theme="dark"] header.site:not(.on-dark),:root[data-theme="dark"] header.site.scrolled:not(.on-dark),:root[data-theme="dark"] header.site.on-dark,:root[data-theme="dark"] header.site.on-dark:not(.scrolled){background:#262626}
+/* DARK: top bar is #262626 at the same see-through level as light mode (90%, soft blur) */
+:root[data-theme="dark"] header.site,:root[data-theme="dark"] header.site:not(.on-dark),:root[data-theme="dark"] header.site.scrolled:not(.on-dark),:root[data-theme="dark"] header.site.on-dark,:root[data-theme="dark"] header.site.on-dark:not(.scrolled){background:rgba(38,38,38,.9);-webkit-backdrop-filter:saturate(1.3) blur(16px);backdrop-filter:saturate(1.3) blur(16px)}
 /* DARK: flat items stay flat (no box), exactly like light mode */
 :root[data-theme="dark"] main .chain .card.card,:root[data-theme="dark"] main .faq details.faq-x,:root[data-theme="dark"] main .faq.faq.faq details{background:transparent;border-left-color:transparent;border-right-color:transparent;box-shadow:none}
 :root[data-theme="dark"] main .chain .card.card{border-bottom-color:transparent;border-top-color:var(--line)}
