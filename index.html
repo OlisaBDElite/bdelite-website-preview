@@ -2969,6 +2969,24 @@ main .faq{max-width:none}
 :root[data-theme="dark"] :is(.x-side span,.x-chip,.x-seg i:not(.on),.x-lap .kpi small,.x-ph .kpi small,.x-ph-head small,.x-chips i:not(.on),#heroDevs .x-big + span,#heroDevs .kpi span,.fs-note small,.fsim-head small,.fsim-feed small,#heroDevs .x-big span){color:#c6c6cf}
 :root[data-theme="dark"] :is(.x-card-h small,.x-row small,.x-tabbar span,.x-search){color:#b3b3be}
 :root[data-theme="dark"] .x-lap .chart text{fill:#b3b3be}
+/* ===== CONSISTENCY ACROSS PAGES ===== */
+/* page titles: same size on every page */
+main .cust-intro .h-xl{font-size:clamp(36px,4.5vw,58px)}
+/* every page title starts at the same distance from the top */
+main > section.cust-hero{padding-top:clamp(72px,10vw,144px)}
+@media (max-width:520px){main > section.cust-hero{padding-top:clamp(72px,10vw,144px)}}
+main .about-hero{padding-top:clamp(72px,10vw,144px)}
+/* section headings: one size everywhere (was 46px on the review and closing blocks) */
+main .statement .h-l,main .closing .h-l,main #loved .h-l,main .rev-head .h-l{font-size:clamp(28px,3vw,42px);line-height:1.15}
+/* intro text under headings: one size everywhere */
+main .pair-text .lede,main .lede{font-size:18px}
+@media (max-width:640px){main .lede{font-size:17px}}
+/* gold buttons: dark text everywhere */
+main .btn-gold,main .btn-gold:hover,
+html:not([data-theme="dark"]) main .route-claim .btn-gold,
+:root[data-theme="dark"] :is(main > section.ink,footer) .btn-gold{color:#15130b}
+/* customers question answers: same body size as elsewhere */
+main .faq details p{font-size:15.5px}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -3444,7 +3462,7 @@ main .faq{max-width:none}
     <div class="wrap">
       <div class="cust-intro">
         <p class="eyebrow">For policyholders</p>
-        <h1 class="h-xl">Make a claim or check your cover.</h1>
+        <h1 class="h-xl">Make a claim<br><em class="gold" style="font-style:normal">or check your cover.</em></h1>
         <p class="lede">Start a claim, or find out who we are and what you're covered for.</p>
       </div>
       <div class="routes">
@@ -3764,7 +3782,7 @@ main .faq{max-width:none}
   <section class="page-hero lite">
     <div class="wrap about-hero" style="position:relative;max-width:var(--max)">
       <p class="eyebrow">Since 2011</p>
-      <h1 class="h-xl" style="margin-top:20px;max-width:16ch">About BDElite</h1>
+      <h1 class="h-xl" style="margin-top:20px;max-width:16ch">About<br><em class="gold" style="font-style:normal">BDElite.</em></h1>
       <p class="lede" style="margin-top:22px">We started in 2011 with motor legal expenses for insurance brokers. Today we provide add-on products, claims management and replacement vehicles.</p>
     </div>
   </section>
