@@ -2972,6 +2972,8 @@ main .faq{max-width:none}
 /* ===== CONSISTENCY ACROSS PAGES ===== */
 /* page titles: same size on every page */
 main .cust-intro .h-xl{font-size:clamp(36px,4.5vw,58px)}
+/* Customers title gold = same gold as the other page titles (it was using the pale "on dark" gold) */
+main .cust-intro .h-xl em.gold{color:var(--gold-text)}
 /* every page title starts at the same distance from the top */
 main > section.cust-hero{padding-top:clamp(72px,10vw,144px)}
 @media (max-width:520px){main > section.cust-hero{padding-top:clamp(72px,10vw,144px)}}
@@ -2987,6 +2989,23 @@ html:not([data-theme="dark"]) main .route-claim .btn-gold,
 :root[data-theme="dark"] :is(main > section.ink,footer) .btn-gold{color:#15130b}
 /* customers question answers: same body size as elsewhere */
 main .faq details p{font-size:15.5px}
+/* ===== LAPTOP SCREENS ===== */
+/* panels that stick out past the page width only use spare margin that actually exists (no more hitting the screen edge) */
+@media (min-width:960px){
+  html[data-stage="c"] #journey .panel.claim{margin-right:calc(-1 * min(clamp(0px,5vw,96px), max(0px, (100vw - 1056px) / 2 - 96px)))}
+  #edi .pair > .tile{margin-left:calc(-1 * min(clamp(0px,5vw,96px), max(0px, (100vw - 1056px) / 2 - 96px)))}
+}
+/* "How a claim works" switch: always one line */
+#journey .aud-switch{flex-wrap:nowrap;max-width:100%}
+#journey .aud-switch button{white-space:nowrap}
+@media (max-width:420px){#journey .aud-switch button{padding:10px 12px;font-size:14px}}
+@media (min-width:960px) and (max-width:1399px){
+  html[data-stage="c"] #journey .tabs-row{grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(32px,4vw,64px)}
+}
+/* shorter laptop screens: tighter gaps between sections so the screen isn't mostly empty */
+@media (min-width:961px) and (max-height:820px){
+  :root{--sy:clamp(72px,7vw,112px);--sh:clamp(32px,3vw,48px)}
+}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
