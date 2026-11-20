@@ -204,7 +204,7 @@
           <button type="button" role="tab" aria-selected="false" data-scene="2"><b>Car</b><span>Motoring defence</span><i aria-hidden="true"></i></button>
           <button type="button" role="tab" aria-selected="false" data-scene="3"><b>Taxi</b><span>Breakdown</span><i aria-hidden="true"></i></button>
         </div>
-        <div class="fsim-head"><span><small>Live claim</small><b>HGV-07</b></span><span class="fsim-pill" data-state="ok">On the road</span></div>
+        <div class="fsim-head"><span><small>Live claim</small><b>HGV breakdown</b></span><span class="fsim-pill" data-state="ok">On the road</span></div>
         </div>
         <div class="fsim-stage" role="img" aria-label="Example of a fleet breakdown handled by BDElite: a lorry breaks down and the driver calls at 09:41, our claims team takes it on two minutes later, a recovery truck tows the lorry away, a replacement is on the road the same afternoon, and every update appears in the fleet portal.">
           <div class="fsim-scene">
@@ -381,7 +381,7 @@
                   <circle class="fs-haz" cx="6" cy="34" r="3.500"/><circle class="fs-haz" cx="147" cy="40" r="3.500"/>
                 </g>
                 <g class="fs-call" data-fs="call"><circle cx="128" cy="22" r="10"/><circle cx="128" cy="22" r="10"/></g>
-                <g class="fs-tag" data-fs="hgvtag" transform="translate(80 -14)"><rect x="-36" y="-12" width="72" height="22" rx="11"/><text y="4" text-anchor="middle">HGV-07</text></g>
+                <g class="fs-tag" data-fs="hgvtag" transform="translate(80 -14)"><rect x="-36" y="-12" width="72" height="22" rx="11"/><text y="4" text-anchor="middle">HGV</text></g>
               </g>
               <line class="fs-bar" data-fs="bar" x1="0" y1="0" x2="0" y2="0"/>
               <!-- impact flash (legal expenses scene) -->
@@ -394,6 +394,7 @@
             <div class="fs-note fs-portal" data-fs="portal"><span class="fs-tick"><svg aria-hidden="true"><use href="#i-check"/></svg></span><span><b>Logged in your portal</b><small>Claim BDE-51190</small></span></div>
             <div class="fs-note fs-mid" data-fs="mid"><span class="a-av">£</span><span><b></b><small></small></span></div>
           </div>
+          <ol class="fsim-notes" aria-hidden="true"></ol>
           <div class="fsim-card">
             <ol class="fsim-feed">
               <li><time>09:41</time><span><b>Breakdown reported</b><small>Driver calls the 24/7 line</small></span></li>
@@ -406,10 +407,11 @@
         </div>
         </div>
         <div class="fleet-stats fsim-facts">
-          <div class="fs" data-fact="3"><b>44<sup>t</sup></b><small>Breakdown cover up to 44 tonnes</small></div>
-          <div class="fs" data-fact="1"><b>24/7</b><small>Recovery, 365 days a year</small></div>
-          <div class="fs" data-fact="2"><b>Any</b><small>Handler can deal with any query</small></div>
-          <div class="fs" data-fact="5"><b>1</b><small>Portal for live claims and MI</small></div>
+          <!-- In story order, left to right. data-fact is the timeline step that lights the card; data-kind limits it to one kind of story. -->
+          <div class="fs" data-fact="1"><span class="fs-ic" aria-hidden="true"><svg><use href="#i-phone"/></svg></span><b>24/7</b><small>Recovery, 365 days a year</small></div>
+          <div class="fs" data-fact="2"><span class="fs-ic" aria-hidden="true"><svg><use href="#i-user"/></svg></span><b>Any handler</b><small>Can pick up your claim, no waiting for one person</small></div>
+          <div class="fs" data-fact="3" data-kind="bd"><span class="fs-ic" aria-hidden="true"><svg><use href="#i-truck"/></svg></span><b>44<sup>t</sup></b><small>Breakdown cover up to 44 tonnes</small></div>
+          <div class="fs" data-fact="5"><span class="fs-ic" aria-hidden="true"><svg><use href="#i-chart"/></svg></span><b>1 portal</b><small>Live claims and MI in one place</small></div>
         </div>
       </div>
     </div>

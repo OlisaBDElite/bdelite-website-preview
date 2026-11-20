@@ -85,7 +85,7 @@ document.addEventListener('click', e=>{
   const vUse=q('vuse'), rUse=q('ruse'), vShadow=q('vshadow'), tp=q('tp'), spark=q('spark'), mail=q('mail');
   const repBeam=rep.querySelector('.fs-beam'), repShadow=rep.querySelector('.fs-shadow');
   const hazards=[...hgv.querySelectorAll('.fs-haz')], beacon=tow.querySelector('.fs-beacon'), rings=[...call.querySelectorAll('circle')];
-  const pill=root.querySelector('.fsim-pill'), feedEl=root.querySelector('.fsim-feed'), facts=[...root.querySelectorAll('[data-fact]')];
+  const pill=root.querySelector('.fsim-pill'), feedEl=root.querySelector('.fsim-feed'), notesEl=root.querySelector('.fsim-notes'), facts=[...root.querySelectorAll('[data-fact]')];
   const headB=root.querySelector('.fsim-head b'), stage=root.querySelector('.fsim-stage');
   const tabs=[...root.querySelectorAll('.fs-tabs [role="tab"]')];
   /* roadside lamp posts, drawn once and slid along */
@@ -104,13 +104,21 @@ document.addEventListener('click', e=>{
      about when its front is lifted.  front: where the lifting arm attaches.  haz: hazard lights.  beam: headlight beam.
      cam: the part of the road the camera shows for that vehicle's story (closer in for the smaller vehicles). */
   const VEH={
-    hgv :{href:'#r-hgv', w:180,h:67,  wh:[[55,9],[156,9]],    rim:'truck',pivot:[55,45],  front:[179,47],haz:[[3,37],[178,43]],  beam:'M179 38L285 20V62Z',tag:'HGV-07', cam:'61 32 660 236'},
-    van :{href:'#r-van', w:106,h:47,  wh:[[23,6.5],[89,6.5]], rim:'alloy',pivot:[23,47.5],front:[105,45],haz:[[4,34],[104,37]],  beam:'M105 33L208 18V60Z',tag:'VAN-03', cam:'72 62 560 200'},
-    car :{href:'#r-car', w:77, h:26.5,wh:[[14,6.3],[61,6.3]], rim:'alloy',pivot:[14,47.7],front:[76,46], haz:[[3,41],[75,44]],   beam:'M76 43L178 28V62Z', tag:'CAR-21', cam:'60 83 500 179'},
-    taxi:{href:'#r-taxi',w:87, h:34,  wh:[[17,6.3],[71,6.3]], rim:'alloy',pivot:[17,47.7],front:[86,46], haz:[[2,40],[85,43]],   beam:'M86 41L188 26V62Z', tag:'TAXI-12',cam:'77 72 530 190'}
+    hgv :{href:'#r-hgv', w:180,h:67,  wh:[[55,9],[156,9]],    rim:'truck',pivot:[55,45],  front:[179,47],haz:[[3,37],[178,43]],  beam:'M179 38L285 20V62Z',tag:'HGV',head:'HGV breakdown', cam:'53 32 660 236'},
+    van :{href:'#r-van', w:106,h:47,  wh:[[23,6.5],[89,6.5]], rim:'alloy',pivot:[23,47.5],front:[105,45],haz:[[4,34],[104,37]],  beam:'M105 33L208 18V60Z',tag:'Van',  head:'Van accident',    cam:'72 62 560 200'},
+    car :{href:'#r-car', w:77, h:26.5,wh:[[14,6.3],[61,6.3]], rim:'alloy',pivot:[14,47.7],front:[76,46], haz:[[3,41],[75,44]],   beam:'M76 43L178 28V62Z', tag:'Car',  head:'Motoring defence',cam:'60 83 500 179'},
+    taxi:{href:'#r-taxi',w:87, h:34,  wh:[[17,6.3],[71,6.3]], rim:'alloy',pivot:[17,47.7],front:[86,46], haz:[[2,40],[85,43]],   beam:'M86 41L188 26V62Z', tag:'Taxi', head:'Taxi breakdown',  cam:'62 72 530 190'}
   };
   const TOW={href:'#r-tow', w:126,h:45, wh:[[37,7.2],[107,7.2]], rim:'truck'};
   const fitUse=(u,v)=>{ u.setAttribute('href',v.href); u.setAttribute('width',v.w); u.setAttribute('height',v.h); u.setAttribute('y',GROUND-v.h); };
+  /* Every vehicle label is the same pill: same height, text size and rounded ends, sized to its words, the same gap above its vehicle. */
+  const TAG_GAP=17;
+  const tagFit=(g,txt,again)=>{ const tx=g.querySelector('text'), r=g.querySelector('rect'); if(!again&&tx.textContent===txt&&g.dataset.fit) return;
+    g.dataset.fit='1'; tx.textContent=txt; tx.setAttribute('y',3.6);
+    let len=0; try{ len=tx.getComputedTextLength(); }catch(e){} if(!len) len=txt.length*5.9;
+    const w=Math.round(len+22); r.setAttribute('x',-w/2); r.setAttribute('width',w); r.setAttribute('y',-10); r.setAttribute('height',20); r.setAttribute('rx',10); };
+  /* the label font can arrive after the first label is measured, so measure them all again once it has */
+  if(document.fonts&&document.fonts.ready) document.fonts.ready.then(()=>root.querySelectorAll('.fs-tag').forEach(g=>tagFit(g,g.querySelector('text').textContent,true)));
   const LIVE=['Live','In your fleet portal','Every update logged'];
   const SCENES=[
     {veh:'hgv', kind:'bd', loop:18, claim:'BDE-51190',
@@ -148,8 +156,9 @@ document.addEventListener('click', e=>{
   {
     /* the recovery truck and the other driver's car never change, so fit them once */
     const place=(g,v,tagText)=>{ fitUse(g.querySelector('use'),v); const sh=g.querySelector('.fs-shadow'); sh.setAttribute('cx',v.w/2); sh.setAttribute('rx',v.w/2-4); sh.setAttribute('cy',GROUND+1.5); sh.setAttribute('ry',3.2);
-      const tg=g.querySelector('.fs-tag'), tx=tg.querySelector('text'), r=tg.querySelector('rect'), tw=Math.round(tagText.length*7.4+24);
-      tg.setAttribute('transform',`translate(${v===VEH.car?18:v.w/2} ${GROUND-v.h-19})`); tx.textContent=tagText;   /* the other driver's label sits over the back of the car, clear of the van it hits */ r.setAttribute('x',-tw/2); r.setAttribute('width',tw); };
+      const tg=g.querySelector('.fs-tag');
+      /* the other driver's label sits over the back of the car, clear of the van it hits */
+      tg.setAttribute('transform',`translate(${v===VEH.car?18:v.w/2} ${GROUND-v.h-TAG_GAP})`); tagFit(tg,tagText); };
     place(tow,TOW,'Recovery truck'); place(tp,VEH.car,'Other driver'); tp.style.setProperty('--r-body','#a3423a');
     beacon.setAttribute('x',104); beacon.setAttribute('y',11); beacon.setAttribute('width',12); beacon.setAttribute('height',3.2); beacon.setAttribute('rx',1.5);
     let seed=11; const rnd=()=>(seed=(seed*16807)%2147483647)/2147483647;
@@ -165,26 +174,37 @@ document.addEventListener('click', e=>{
     const stars=[...Array(26)].map(()=>`<circle cx="${Math.round(rnd()*800)}" cy="${Math.round(36+rnd()*66)}" r="${n(.5+rnd()*.9)}"/>`).join('');
     let railPosts=''; for(let x=0;x<=840;x+=40) railPosts+=`<rect x="${x}" y="138" width="2.4" height="12"/>`;
     let studs=''; for(let x=0;x<=900;x+=100) studs+=`<g transform="translate(${x} 0)"><rect x="0" y="226" width="3" height="11" rx="1"/><circle cx="1.5" cy="229" r="1.1"/></g>`;
-    const g=document.createElementNS(NS,'g'); g.setAttribute('class','rs');
-    g.innerHTML=`<rect x="0" y="-24" width="800" height="176" fill="url(#rsSky)"/>
-      <g class="rs-stars">${stars}</g>
-      <circle class="rs-halo" cx="596" cy="84" r="50"/><circle class="rs-sun" cx="596" cy="84" r="21"/>
-      <g class="rs-clouds" data-rs="clouds">${tile(clouds,1000)}</g>
-      <g class="rs-far" data-rs="far">${tile(far,800)}</g>
-      <g class="rs-near" data-rs="near">${tile(near,800)}</g>
-      <g class="rs-trees" data-rs="trees">${tile(trees,800)}</g>
-      <rect class="rs-verge" x="0" y="144" width="800" height="8"/>
-      <g class="rs-railposts" data-rs="railposts">${railPosts}</g>
-      <rect class="rs-rail" x="0" y="138.6" width="800" height="4.2"/><rect class="rs-railhi" x="0" y="138.6" width="800" height="1.1"/><rect class="rs-rail" x="0" y="144.4" width="800" height="1.4"/>
-      <rect class="rs-road2" x="0" y="148" width="800" height="80"/><rect class="rs-road" x="0" y="151" width="800" height="74"/>
-      <line class="rs-edge" x1="0" y1="153" x2="800" y2="153"/><line class="rs-edge" x1="0" y1="223" x2="800" y2="223"/>
-      <line class="rs-dash" data-rs="dash" x1="-60" y1="185" x2="860" y2="185"/>
-      <rect class="rs-fore" x="0" y="228" width="800" height="40"/>
-      <g class="rs-studs" data-rs="studs">${studs}</g>`;
-    svgEl.insertBefore(g,hills);
-    const rs=k=>g.querySelector(`[data-rs="${k}"]`);
-    const el={clouds:rs('clouds'),far:rs('far'),near:rs('near'),trees:rs('trees'),railposts:rs('railposts'),dash:rs('dash'),studs:rs('studs')};
-    const slide=(e,x)=>e.setAttribute('transform',`translate(${(-x).toFixed(1)} 0)`);
+    let lamps=''; for(let x=0;x<=2000;x+=200) lamps+=`<circle class="glow" cx="${x+19}" cy="89.6" r="9"/><path d="M${x} 150V96q0-7 7-7h12"/><circle class="bulb" cx="${x+19}" cy="89.6" r="3"/>`;
+    /* Each part of the scenery is its own picture, stacked behind the vehicles. Sliding a whole picture sideways is work the
+       graphics card does by itself, so the browser does not redraw the scene on every frame. That is what keeps it smooth.
+       layer(name, drawing, how fast it slides compared with the road, how many units before it repeats, slow drift per second) */
+    const sceneEl=root.querySelector('.fsim-scene'), pics=[], moving=[];
+    const layer=(cls,html,speed,period,drift=0)=>{ const sv=document.createElementNS(NS,'svg'); sv.setAttribute('class','fsim-layer'+(period?' moves':'')); sv.setAttribute('preserveAspectRatio','xMidYMid slice'); sv.setAttribute('aria-hidden','true');
+      sv.innerHTML=`<g class="${cls}">${html}</g>`; sceneEl.insertBefore(sv,svgEl); pics.push(sv); if(period) moving.push({sv,speed,period,drift}); };
+    layer('rs',`<rect x="-400" y="-400" width="1600" height="552" fill="url(#rsSky)"/><g class="rs-stars">${stars}</g><circle class="rs-halo" cx="596" cy="84" r="50"/><circle class="rs-sun" cx="596" cy="84" r="21"/>`);
+    layer('rs-clouds',tile(clouds,1000),.03,1000,5);
+    layer('rs-far',tile(far,800),.08,800);
+    layer('rs-near',tile(near,800),.16,800);
+    layer('rs-trees',tile(trees,800),.42,800);
+    layer('rs',`<rect class="rs-verge" x="-400" y="144" width="1600" height="8"/>
+      <rect class="rs-rail" x="-400" y="138.6" width="1600" height="4.2"/><rect class="rs-railhi" x="-400" y="138.6" width="1600" height="1.1"/><rect class="rs-rail" x="-400" y="144.4" width="1600" height="1.4"/>
+      <rect class="rs-road2" x="-400" y="148" width="1600" height="80"/><rect class="rs-road" x="-400" y="151" width="1600" height="74"/>
+      <line class="rs-edge" x1="-400" y1="153" x2="1200" y2="153"/><line class="rs-edge" x1="-400" y1="223" x2="1200" y2="223"/>
+      <rect class="rs-fore" x="-400" y="228" width="1600" height="60"/>`);
+    /* barrier posts (every 40), lane dashes (every 48), marker posts (every 100) and street lamps (every 200) all move with the road, and all line up again after 1200 */
+    let railPosts2=''; for(let x=0;x<=2040;x+=40) railPosts2+=`<rect x="${x}" y="138" width="2.4" height="12"/>`;
+    let studs2=''; for(let x=0;x<=2000;x+=100) studs2+=`<rect x="${x}" y="226" width="3" height="11" rx="1"/><circle cx="${x+1.5}" cy="229" r="1.1"/>`;
+    layer('rs',`<g class="rs-railposts">${railPosts2}</g><line class="rs-dash" x1="-60" y1="185" x2="2100" y2="185"/><g class="rs-studs">${studs2}</g><g class="rs-lamps">${lamps}</g>`,1,1200);
+    /* how many screen pixels one drawing unit takes up; it changes with the panel's size and with each story's camera */
+    let px=1, camBox=[0,0,660,236];
+    const beside=matchMedia('(min-width:900px)');
+    /* fits the camera to the scene's shape: when the scene is taller than the camera view (the thread beside it sets its height),
+       the view grows upwards into the sky, so the full width of the road always shows */
+    const measure=()=>{ let [x,y,w,h]=camBox; const W=sceneEl.clientWidth, H=sceneEl.clientHeight;
+      if(beside.matches&&W&&H&&W/H<w/h){ const nh=w*H/W; y=y+h-nh; h=nh; }
+      const box=`${x} ${y.toFixed(1)} ${w} ${h.toFixed(1)}`; for(const sv of pics) sv.setAttribute('viewBox',box); svgEl.setAttribute('viewBox',box);
+      px=Math.max(W/w,H/h)||1; };
+    if('ResizeObserver' in window) new ResizeObserver(()=>{ measure(); if(rich) rich.draw(); }).observe(sceneEl);
     /* Wheels that roll. They are drawn on top of each vehicle's own wheels, and each one turns by how far it has
        travelled along the road (road distance plus where the vehicle is on screen), so parked vehicles stay still. */
     const wheelSet=(host,before)=>{ const wg=document.createElementNS(NS,'g'); wg.setAttribute('class','fs-wheels'); host.insertBefore(wg,before||null); return {g:wg,list:[]}; };
@@ -197,17 +217,24 @@ document.addEventListener('click', e=>{
     /* five spokes, and turning at 60% of true speed: at full speed the spokes move so far between frames that the eye reads them as flickering */
     const roll=(set,x)=>{ const kids=set.g.children; set.list.forEach((w,i)=>kids[i].setAttribute('transform',`rotate(${((((S+x)/w.r)*57.2958*.6)%360).toFixed(1)} ${w.x} ${w.y})`)); };
     const wMain=wheelSet(body,hazards[0]), wRep=wheelSet(rep,repTag), wTow=wheelSet(tow,beacon), wTp=wheelSet(tp,tp.querySelector('.fs-tag'));
+    /* The red warning triangle a driver stands on the road behind a stopped vehicle. It pops up shortly after a breakdown
+       or an accident and is taken away again when the vehicle moves off. */
+    const tri=document.createElementNS(NS,'g'); tri.setAttribute('class','fs-tri'); tri.style.opacity=0;
+    tri.innerHTML=`<ellipse cx="0" cy="${GROUND+1}" rx="11" ry="2.2" fill="#000" opacity=".22"/><path d="M-9.5 ${GROUND}H9.5" stroke="#2a2e35" stroke-width="1.6" stroke-linecap="round"/><path d="M0 ${GROUND-16}L9 ${GROUND-1.4}H-9Z" fill="#ffffff" stroke="#d92b21" stroke-width="3" stroke-linejoin="round"/>`;
+    svgEl.insertBefore(tri,tow);
     fit(wTow,TOW); fit(wTp,VEH.car);
-    rich={draw(){ slide(el.clouds,(S*.03+clock*5)%1000); slide(el.far,(S*.08)%800); slide(el.near,(S*.16)%800); slide(el.trees,(S*.42)%800);
-      slide(el.railposts,S%40); slide(el.studs,(S*1.2)%100); el.dash.style.strokeDashoffset=(S%48).toFixed(1); },
+    rich={draw(){ for(const m of moving) m.sv.style.transform=`translate3d(${(-(((S*m.speed+clock*m.drift)%m.period)*px)).toFixed(2)}px,0,0)`; },
+      cam(box){ camBox=box.split(' ').map(Number); measure(); },
       fit(v){ fit(wMain,v); fit(wRep,v); },
-      roll(hx,tx,rx,tpx){ roll(wMain,hx); roll(wTow,tx); roll(wRep,rx); roll(wTp,tpx); }};
+      roll(hx,tx,rx,tpx){ roll(wMain,hx); roll(wTow,tx); roll(wRep,rx); roll(wTp,tpx); },
+      /* x: where it stands; k: 0 hidden to 1 fully up (it grows from the ground as it is set down) */
+      triangle(x,k){ tri.style.opacity=k.toFixed(2); if(k>0) tri.setAttribute('transform',`translate(${x.toFixed(1)} ${NEAR}) translate(0 ${GROUND}) scale(${(.6+.4*k).toFixed(2)}) translate(0 ${-GROUND})`); }};
   }
 
   const note=(el,on,b,s,av)=>{ el.classList.toggle('on',on); if(!on) return;
     const bb=el.querySelector('b'), ss=el.querySelector('small'), aa=el.querySelector('.a-av');
     if(b!=null && bb.textContent!==b) bb.textContent=b; if(s!=null && ss.textContent!==s) ss.textContent=s; if(av && aa && aa.textContent!==av) aa.textContent=av; };
-  const fixTag=(g,txt)=>{ const tx=g.querySelector('text'), r=g.querySelector('rect'); if(tx.textContent!==txt){ tx.textContent=txt; const w=Math.round(txt.length*7.4+24); r.setAttribute('x',-w/2); r.setAttribute('width',w); } };
+  const fixTag=tagFit;
 
   function setScene(i){
     cur=i; sc=SCENES[i]; vh=VEH[sc.veh]; kd=KIND[sc.kind]; t=0; lastStep=-1; lastState='';
@@ -216,24 +243,21 @@ document.addEventListener('click', e=>{
     beam.setAttribute('d',vh.beam); repBeam.setAttribute('d',vh.beam);
     hazards.forEach((h,k)=>{ h.setAttribute('cx',vh.haz[k][0]); h.setAttribute('cy',vh.haz[k][1]); h.setAttribute('r',vh.h>50?2.8:2.1); });
     for(const e of [vShadow,repShadow]){ e.setAttribute('cx',vh.w/2); e.setAttribute('rx',vh.w/2-4); e.setAttribute('cy',GROUND+1.5); e.setAttribute('ry',3.2); }
-    for(const g of [hgvTag,repTag]) g.setAttribute('transform',`translate(${vh.w/2} ${top-19})`);
+    for(const g of [hgvTag,repTag]) g.setAttribute('transform',`translate(${vh.w/2} ${top-TAG_GAP})`);
     fixTag(hgvTag,vh.tag); fixTag(repTag,sc.veh==='taxi'?'Replacement taxi':'Replacement');
     if(rich) rich.fit(vh);
-    svgEl.setAttribute('viewBox',vh.cam);
+    rich.cam(vh.cam);
     rings.forEach(r=>{ r.setAttribute('cx',vh.w-Math.min(26,vh.w*.3)); r.setAttribute('cy',top+Math.min(22,vh.h*.45)); });
-    headB.textContent=vh.tag;
+    headB.textContent=vh.head;
     feedEl.innerHTML=sc.feed.map(f=>`<li><time>${f[0]}</time><span><b>${f[1]}</b><small>${f[2]}</small></span></li>`).join('');
+    notesEl.innerHTML=sc.feed.map(f=>`<li><i></i><b>${f[1]}</b></li>`).join('');
     stage.setAttribute('aria-label',sc.aria);
-    tabs.forEach((b,k)=>{ b.setAttribute('aria-selected',k===i); b.tabIndex=k===i?0:-1; b.style.setProperty('--p','0%'); });
+    tabs.forEach((b,k)=>{ b.setAttribute('aria-selected',k===i); b.tabIndex=k===i?0:-1; b.style.setProperty('--pn','0'); });
     [handler,portal,mid].forEach(n=>n.classList.remove('on'));
   }
 
   function render(t){
     const feed=[...feedEl.children];
-    /* scenery */
-    lane.style.strokeDashoffset=(S%40).toFixed(1);
-    posts.setAttribute('transform',`translate(${-(S%200)} 0)`);
-    hills.setAttribute('transform',`translate(${-((S*.22)%800)} 0)`);
     const moving=kd.speed(t)>1;
     const blinkOn=Math.floor(t*1.7)%2===0;
     let hx=HX, bob=moving?Math.sin(t*11)*.6:0, ang=0, vOpacity=1, beamOn=true, hazOn=false, callAt=-1;
@@ -313,18 +337,30 @@ document.addEventListener('click', e=>{
     const n=kd.step(t);
     if(n!==lastStep){ lastStep=n;
       feed.forEach((li,i)=>{ li.classList.toggle('on',i<n); li.classList.toggle('now',i===n-1); });
-      facts.forEach(f=>f.classList.toggle('on',+f.dataset.fact<=n)); }
+      /* notifications beside the scene: each update arrives as the newest; the two before it stay, smaller and fainter; older ones leave */
+      [...notesEl.children].forEach((li,i)=>{ const age=n-1-i; li.classList.toggle('on',age>=0&&age<3); li.classList.toggle('now',age===0); li.dataset.age=age<0?'':Math.min(age,3); });
+      /* the card whose moment in the story is happening now is highlighted, so the highlight walks left to right */
+      const live=facts.filter(f=>+f.dataset.fact<=n&&(!f.dataset.kind||f.dataset.kind===sc.kind)), nowCard=live[live.length-1];
+      facts.forEach(f=>{ f.classList.toggle('on',live.includes(f)); f.classList.toggle('now',f===nowCard); }); }
     const st=kd.states.filter(s=>t>=s[0]).pop();
     if(st[1]!==lastState){ lastState=st[1]; pill.textContent=st[1]; pill.dataset.state=st[2]; }
-    if(rich){ rich.roll(hx,towX,repX,tpX); rich.draw(); }
+    if(rich){ rich.roll(hx,towX,repX,tpX); rich.draw();
+      /* warning triangle: behind a broken-down vehicle, or behind the rear car after an accident */
+      if(sc.kind==='bd') rich.triangle(HX-18, seg(t,5.2,5.6)*(1-seg(t,11.9,12.3)));
+      else if(sc.kind==='lei') rich.triangle(tpX-18, seg(t,4.9,5.3)*(1-seg(t,11.1,11.5)));
+      else rich.triangle(0,0); }
   }
 
   /* Reduced motion: no switching on its own; each tab shows one still frame with its whole timeline */
+  /* moving to the next story: the scene and notifications fade out, switch, and fade back in, so there is no hard cut */
+  let swapping=false, swapTimer=0;
+  const swapTo=i=>{ if(swapping) return; swapping=true; root.classList.add('swapping');
+    swapTimer=setTimeout(()=>{ setScene(i); render(0); root.classList.remove('swapping'); swapping=false; },240); };
   const STILL={bd:10.9, lei:10.4, def:8.5};
   const still=()=>{ root.classList.add('still'); paused=true; render(STILL[sc.kind]); [...feedEl.children].forEach(li=>li.classList.add('on')); facts.forEach(f=>f.classList.add('on')); };
   const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
   tabs.forEach((b,i)=>{
-    b.addEventListener('click',()=>{ setScene(i); reduce?still():render(0); });
+    b.addEventListener('click',()=>{ clearTimeout(swapTimer); swapping=false; root.classList.remove('swapping'); setScene(i); reduce?still():render(0); });
     b.addEventListener('keydown',e=>{ const d=e.key==='ArrowRight'?1:e.key==='ArrowLeft'?-1:0; if(!d) return; e.preventDefault();
       const k=(i+d+tabs.length)%tabs.length; tabs[k].focus(); tabs[k].click(); });
   });
@@ -336,13 +372,15 @@ document.addEventListener('click', e=>{
   root.addEventListener('mouseenter',()=>held=true); root.addEventListener('mouseleave',()=>held=false);
   root.addEventListener('focusin',()=>held=true); root.addEventListener('focusout',()=>held=false);
   function frame(now){
-    const dt=last?Math.min(now-last,50)/1000:0; last=now;
-    if(!held){
+    /* real time between frames, so the story takes the same number of seconds on a slow device as on a fast one
+       (capped at a tenth of a second so it does not leap forward after the tab has been in the background) */
+    const dt=last?Math.min(now-last,100)/1000:0; last=now;
+    if(!held&&!swapping){
       S+=kd.speed(t)*dt*RATE; t+=dt*RATE; clock+=dt;
-      if(t>=sc.loop){ setScene((cur+1)%SCENES.length); }
+      if(t>=sc.loop){ t=sc.loop; swapTo((cur+1)%SCENES.length); }
     }
     paused=held; render(t);
-    tabs[cur].style.setProperty('--p',(100*t/sc.loop).toFixed(1)+'%');
+    tabs[cur].style.setProperty('--pn',(t/sc.loop).toFixed(3));
     raf=requestAnimationFrame(frame);
   }
   const play=()=>{ if(raf) return; last=0; root.classList.add('running'); raf=requestAnimationFrame(frame); };

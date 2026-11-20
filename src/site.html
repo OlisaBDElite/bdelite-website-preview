@@ -3060,7 +3060,117 @@ html:root .fsim.fsim-road :is(.fs-hills,.fs-edge,.fs-lane){display:none}
 html:root .fsim.fsim-road .fs-shadow{fill:rgba(0,0,0,.3)}
 html:root .fsim.fsim-road .fs-posts path{stroke:var(--rs-lamp);stroke-width:2.2}
 html:root .fsim.fsim-road .fs-posts circle{fill:#ffe7a6;opacity:1}
-html[data-theme="dark"]:root .fsim.fsim-road .fs-posts circle{filter:drop-shadow(0 0 5px #ffe08a)}
+/* scenery pictures stacked behind the vehicles; the ones that move are handed to the graphics card */
+html:root .fsim.fsim-road .fsim-layer{position:absolute;inset:0;width:100%;height:100%;display:block;overflow:visible;pointer-events:none}
+html:root .fsim.fsim-road .fsim-layer.moves{will-change:transform}
+html:root .fsim.fsim-road .fs-posts{display:none}
+html:root .fsim.fsim-road .rs-lamps path{fill:none;stroke:var(--rs-lamp);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+html:root .fsim.fsim-road .rs-lamps .bulb{fill:#ffe7a6}
+html:root .fsim.fsim-road .rs-lamps .glow{fill:#ffe08a;opacity:0}
+html[data-theme="dark"]:root .fsim.fsim-road .rs-lamps .glow{opacity:.2}
+/* the four fact cards under the scene: always readable; the one whose moment is playing gets a gold highlight */
+html:root .fsim.fsim-road .fsim-facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;max-width:none;margin:0;border:0}
+@media (min-width:860px){html:root .fsim.fsim-road .fsim-facts{grid-template-columns:repeat(4,minmax(0,1fr))}}
+html:root .fsim.fsim-road .fsim-facts .fs{position:relative;display:grid;grid-template-columns:40px minmax(0,1fr);column-gap:14px;row-gap:3px;align-content:center;align-items:center;padding:18px;background:var(--s-bg);border:1px solid var(--s-line);border-radius:12px;box-shadow:0 1px 2px rgba(60,45,0,.05);opacity:1;text-align:left;transition:border-color .25s ease-out,box-shadow .25s ease-out}
+html:root .fsim.fsim-road .fsim-facts .fs::before{content:none}
+html:root .fsim.fsim-road .fsim-facts .fs-ic{grid-row:1/3;align-self:center;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:var(--s-wash);color:var(--s-gold-text);transition:background .25s ease-out,color .25s ease-out}
+html:root .fsim.fsim-road .fsim-facts .fs-ic svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+html:root .fsim.fsim-road .fsim-facts .fs b{grid-column:2;font:600 21px/1.2 var(--f-body);letter-spacing:-.01em;color:var(--s-fg)}
+html:root .fsim.fsim-road .fsim-facts .fs b sup{font-size:.6em;color:var(--s-gold-text);vertical-align:.5em;margin-left:1px}
+html:root .fsim.fsim-road .fsim-facts .fs small{grid-column:2;font-size:13.5px;line-height:1.4;color:var(--s-muted)}
+html:root .fsim.fsim-road .fsim-facts .fs.now{border-color:var(--s-gold);box-shadow:0 0 0 3px var(--s-wash),0 4px 6px -1px rgba(60,45,0,.1)}
+html:root .fsim.fsim-road .fsim-facts .fs.now .fs-ic{background:var(--s-gold);color:#ffffff}
+html[data-theme="dark"]:root .fsim.fsim-road .fsim-facts .fs.now .fs-ic{color:#1b1b1b}
+html[data-theme="dark"]:root .fsim.fsim-road .fsim-facts .fs{box-shadow:none}
+@media (max-width:599px){
+  html:root .fsim.fsim-road .fsim-facts{gap:10px}
+  html:root .fsim.fsim-road .fsim-facts .fs{grid-template-columns:minmax(0,1fr);padding:14px}
+  html:root .fsim.fsim-road .fsim-facts .fs-ic{grid-row:auto;width:36px;height:36px;margin-bottom:6px}
+  html:root .fsim.fsim-road .fsim-facts .fs b,html:root .fsim.fsim-road .fsim-facts .fs small{grid-column:1}
+  html:root .fsim.fsim-road .fsim-facts .fs b{font-size:19px}
+  html:root .fsim.fsim-road .fsim-facts .fs small{font-size:13px}
+}
+/* notifications: a column to the right of the scene (under it on small screens). The newest update is at the bottom,
+   bright and full size; the two before it sit above, smaller and fainter. They replace the old pop-up notes on the scene.
+   Every pill is the same size and only ever slides and fades, which the graphics card does by itself, so the stack never jumps. */
+html:root .fsim.fsim-road .fs-note{display:none}
+html:root .fsim.fsim-road .fsim-stage{display:grid;grid-template-columns:minmax(0,1fr)}
+html:root .fsim.fsim-road .fsim-card{grid-column:1/-1}
+html:root .fsim.fsim-road .fsim-scene,html:root .fsim.fsim-road .fsim-notes{transition:opacity .22s ease-out}
+html:root .fsim.fsim-road.swapping .fsim-scene,html:root .fsim.fsim-road.swapping .fsim-notes{opacity:0}
+html:root .fsim.fsim-road .fsim-notes{position:relative;list-style:none;margin:0;padding:0;min-height:136px;background:var(--s-bg);border-top:1px solid var(--s-line);overflow:hidden}
+html:root .fsim.fsim-road .fsim-notes li{--y:92px;--k:.9;--o:0;position:absolute;left:16px;right:16px;top:50%;height:50px;margin-top:-25px;display:flex;align-items:center;gap:12px;box-sizing:border-box;padding:0 18px 0 14px;border:1px solid var(--s-line);border-radius:999px;background:var(--s-sunk);color:var(--s-muted);
+  opacity:var(--o);transform:translate3d(0,var(--y),0) scale(var(--k));will-change:transform,opacity;
+  transition:transform .45s cubic-bezier(.2,.7,.2,1),opacity .35s ease-out,background .3s ease-out,color .3s ease-out,border-color .3s ease-out}
+/* where each pill sits by its age: 0 is the newest (bottom), 3 has just left (top) */
+html:root .fsim.fsim-road .fsim-notes li[data-age="0"]{--y:29px;--k:1;--o:1;background:#ffffff;color:#1b1b1b;border-color:var(--s-gold)}
+html:root .fsim.fsim-road .fsim-notes li[data-age="1"]{--y:-29px;--k:.95;--o:.78}
+html:root .fsim.fsim-road .fsim-notes li[data-age="2"],html:root .fsim.fsim-road .fsim-notes li[data-age="3"]{--y:-84px;--k:.9;--o:0}
+html[data-theme="dark"]:root .fsim.fsim-road .fsim-notes li[data-age="0"]{background:#f6edd2;border-color:transparent}
+html:root .fsim.fsim-road .fsim-notes i{flex:none;width:10px;height:10px;border-radius:50%;background:var(--s-gold);box-shadow:0 0 0 5px var(--s-wash)}
+html[data-theme="dark"]:root .fsim.fsim-road .fsim-notes li[data-age="0"] i{background:#a98b30;box-shadow:0 0 0 5px rgba(169,139,48,.25)}
+html:root .fsim.fsim-road .fsim-notes b{flex:1;min-width:0;font-size:14.5px;font-weight:500;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:inherit}
+@media (min-width:900px){
+  html:root .fsim.fsim-road .fsim-stage{grid-template-columns:minmax(0,2.3fr) minmax(260px,1fr)}
+  /* beside the notifications the scene keeps the shape of the camera view, so the whole road shows and nothing is cut off at the sides */
+  html:root .fsim.fsim-road .fsim-scene{min-height:0;aspect-ratio:2.8}
+  html:root .fsim.fsim-road .fsim-notes{min-height:0;border-top:0}
+  html:root .fsim.fsim-road .fsim-notes li{left:6px;right:18px}
+  /* room for three: newest at the bottom, two older ones above */
+  html:root .fsim.fsim-road .fsim-notes li[data-age="0"]{--y:58px}
+  html:root .fsim.fsim-road .fsim-notes li[data-age="1"]{--y:0px}
+  html:root .fsim.fsim-road .fsim-notes li[data-age="2"]{--y:-58px;--o:.5}
+  html:root .fsim.fsim-road .fsim-notes li[data-age="3"]{--y:-112px;--o:0}
+  /* the scene fades into the notifications column instead of ending on a hard line */
+  html:root .fsim.fsim-road .fsim-scene::after{content:"";position:absolute;top:0;bottom:0;right:0;width:22%;pointer-events:none;background:linear-gradient(90deg,transparent 0%,color-mix(in srgb,var(--s-bg) 55%,transparent) 45%,var(--s-bg) 100%)}
+}
+@media (prefers-reduced-motion:reduce){html:root .fsim.fsim-road .fsim-notes li,html:root .fsim.fsim-road .fsim-scene,html:root .fsim.fsim-road .fsim-notes{transition:none}}
+/* the tab's progress line grows by stretching, which does not make the browser re-measure the page each frame */
+html:root .fsim.fsim-road .fs-tabs i::after{width:100%;transform-origin:0 50%;transform:scaleX(var(--pn,0))}
+/* the "Live claim" strip in the top bar is not shown (the script still keeps it up to date in case it is wanted back) */
+html:root .fsim.fsim-road .fsim-head{display:none}
+/* The timeline is a thread of events in the column to the right of the scene (it stays under the scene on small screens).
+   The notification pills that used to sit there are not shown. */
+html:root .fsim.fsim-road .fsim-notes{display:none}
+html:root .fsim.fsim-road .fsim-stage .fsim-card{transition:opacity .22s ease-out}
+html:root .fsim.fsim-road.swapping .fsim-card{opacity:0}
+@media (min-width:900px){
+  html:root .fsim.fsim-road .fsim-stage{grid-template-columns:minmax(0,2.2fr) minmax(280px,1fr)}
+  html:root .fsim.fsim-road .fsim-stage .fsim-card{grid-column:auto;border-top:0;align-self:center}
+  /* the scene is as tall as the thread beside it; the script shows more sky rather than cropping the road */
+  html:root .fsim.fsim-road .fsim-stage .fsim-scene{aspect-ratio:auto;min-height:250px;height:100%}
+  html:root .fsim.fsim-road .fsim-stage .fsim-feed{grid-template-columns:minmax(0,1fr);padding:20px 20px 4px 8px}
+  html:root .fsim.fsim-road .fsim-stage .fsim-feed li{padding:0 0 16px 28px}
+  html:root .fsim.fsim-road .fsim-stage .fsim-feed li::before,html:root .fsim.fsim-road .fsim-stage .fsim-feed li::after{left:5px;top:8px;width:2px;height:auto}
+  html:root .fsim.fsim-road .fsim-stage .fsim-feed li::before{right:auto;bottom:-8px}
+  html:root .fsim.fsim-road .fsim-stage .fsim-feed li::after{height:0}
+  html:root .fsim.fsim-road .fsim-stage .fsim-feed li.on:not(.now)::after{width:2px;height:100%}
+  html:root .fsim.fsim-road .fsim-stage .fsim-feed li time::before{top:3px}
+  html:root .fsim.fsim-road .fsim-stage .fsim-feed li span{margin-top:2px}
+}
+/* vehicle labels: one style for every vehicle (dark on the day scene, light on the night scene) */
+html:root .fsim.fsim-road :is(.fs-tag,.fs-tag.gold,.fs-tag.ghost) rect{fill:#1b1b1b;stroke:none}
+html:root .fsim.fsim-road :is(.fs-tag,.fs-tag.gold,.fs-tag.ghost) text{fill:#ffffff;font:500 10.5px/1 var(--f-body);letter-spacing:.01em}
+html[data-theme="dark"]:root .fsim.fsim-road :is(.fs-tag,.fs-tag.gold,.fs-tag.ghost) rect{fill:#f1f1f4}
+html[data-theme="dark"]:root .fsim.fsim-road :is(.fs-tag,.fs-tag.gold,.fs-tag.ghost) text{fill:#1b1b1b}
+/* pop-up notes: one height, padding and icon size for all three */
+html:root .fsim.fsim-road .fs-note{min-height:48px;padding:7px 16px 7px 8px;gap:10px;border-width:1px;border-style:solid}
+html:root .fsim.fsim-road .fs-note :is(.a-av,.fs-tick){flex:none;width:32px;height:32px}
+html:root .fsim.fsim-road .fs-note b{font-size:13.5px;font-weight:500;line-height:1.2}
+html:root .fsim.fsim-road .fs-note small{font-size:12px;line-height:1.2}
+@media (max-width:599px){
+  html:root .fsim.fsim-road .fs-note{min-height:42px;padding:6px 13px 6px 6px;gap:8px}
+  html:root .fsim.fsim-road .fs-note :is(.a-av,.fs-tick){width:28px;height:28px}
+  html:root .fsim.fsim-road .fs-note b{font-size:12.5px}
+  html:root .fsim.fsim-road .fs-note small{font-size:11.5px}
+  /* on phones the middle note sits on the grass strip at the bottom-left, clear of the vehicles and their labels */
+  html:root .fsim.fsim-road .fs-mid,html:root .fsim.fsim-road .fs-handler.on ~ .fs-mid.on{top:auto;bottom:3px;left:12px;transform:translateY(6px)}
+  html:root .fsim.fsim-road .fs-mid.on,html:root .fsim.fsim-road .fs-handler.on ~ .fs-mid.on{transform:none}
+  html:root .fsim.fsim-road .fs-mid small{white-space:nowrap}
+}
+/* no see-through blur on the pop-up notes here: blurring a moving scene behind them is slow */
+html:root .fsim.fsim-road .fs-note{backdrop-filter:none;-webkit-backdrop-filter:none}
+html[data-theme="dark"]:root .fsim.fsim-road .fs-note{background:#34373d;border-color:rgba(255,255,255,.14)}
 html:root .fsim.fsim-road .rs-sky0{stop-color:var(--rs-sky1)}
 html:root .fsim.fsim-road .rs-sky1{stop-color:var(--rs-sky2)}
 html:root .fsim.fsim-road .rs-sun{fill:var(--rs-sun)}
@@ -3083,7 +3193,6 @@ html:root .fsim.fsim-road .rs-edge{stroke:var(--rs-mark);stroke-width:1.8}
 html:root .fsim.fsim-road .rs-dash{stroke:var(--rs-mark);stroke-width:2.4;stroke-dasharray:26 22}
 html:root .fsim.fsim-road .rs-studs rect{fill:#f4f4f1}
 html:root .fsim.fsim-road .rs-studs circle{fill:#d43a2f}
-html:root .fsim.fsim-road .fs-tag.ghost rect{fill:var(--s-bg)}
 html:root .fsim.fsim-road .fs-mail rect{fill:#fffdf6;stroke:#2a2e35}
 html:root .fsim.fsim-road .fs-mail path{stroke:#2a2e35}
 html:root .fsim.fsim-road .fsim-card{display:block;padding:0;border-top:1px solid var(--s-line)}
@@ -3850,7 +3959,7 @@ a.card-link:hover{transform:translateY(-3px);border-color:var(--gold)}
           <button type="button" role="tab" aria-selected="false" data-scene="2"><b>Car</b><span>Motoring defence</span><i aria-hidden="true"></i></button>
           <button type="button" role="tab" aria-selected="false" data-scene="3"><b>Taxi</b><span>Breakdown</span><i aria-hidden="true"></i></button>
         </div>
-        <div class="fsim-head"><span><small>Live claim</small><b>HGV-07</b></span><span class="fsim-pill" data-state="ok">On the road</span></div>
+        <div class="fsim-head"><span><small>Live claim</small><b>HGV breakdown</b></span><span class="fsim-pill" data-state="ok">On the road</span></div>
         </div>
         <div class="fsim-stage" role="img" aria-label="Example of a fleet breakdown handled by BDElite: a lorry breaks down and the driver calls at 09:41, our claims team takes it on two minutes later, a recovery truck tows the lorry away, a replacement is on the road the same afternoon, and every update appears in the fleet portal.">
           <div class="fsim-scene">
@@ -4027,7 +4136,7 @@ a.card-link:hover{transform:translateY(-3px);border-color:var(--gold)}
                   <circle class="fs-haz" cx="6" cy="34" r="3.500"/><circle class="fs-haz" cx="147" cy="40" r="3.500"/>
                 </g>
                 <g class="fs-call" data-fs="call"><circle cx="128" cy="22" r="10"/><circle cx="128" cy="22" r="10"/></g>
-                <g class="fs-tag" data-fs="hgvtag" transform="translate(80 -14)"><rect x="-36" y="-12" width="72" height="22" rx="11"/><text y="4" text-anchor="middle">HGV-07</text></g>
+                <g class="fs-tag" data-fs="hgvtag" transform="translate(80 -14)"><rect x="-36" y="-12" width="72" height="22" rx="11"/><text y="4" text-anchor="middle">HGV</text></g>
               </g>
               <line class="fs-bar" data-fs="bar" x1="0" y1="0" x2="0" y2="0"/>
               <!-- impact flash (legal expenses scene) -->
@@ -4040,6 +4149,7 @@ a.card-link:hover{transform:translateY(-3px);border-color:var(--gold)}
             <div class="fs-note fs-portal" data-fs="portal"><span class="fs-tick"><svg aria-hidden="true"><use href="#i-check"/></svg></span><span><b>Logged in your portal</b><small>Claim BDE-51190</small></span></div>
             <div class="fs-note fs-mid" data-fs="mid"><span class="a-av">£</span><span><b></b><small></small></span></div>
           </div>
+          <ol class="fsim-notes" aria-hidden="true"></ol>
           <div class="fsim-card">
             <ol class="fsim-feed">
               <li><time>09:41</time><span><b>Breakdown reported</b><small>Driver calls the 24/7 line</small></span></li>
@@ -4052,10 +4162,11 @@ a.card-link:hover{transform:translateY(-3px);border-color:var(--gold)}
         </div>
         </div>
         <div class="fleet-stats fsim-facts">
-          <div class="fs" data-fact="3"><b>44<sup>t</sup></b><small>Breakdown cover up to 44 tonnes</small></div>
-          <div class="fs" data-fact="1"><b>24/7</b><small>Recovery, 365 days a year</small></div>
-          <div class="fs" data-fact="2"><b>Any</b><small>Handler can deal with any query</small></div>
-          <div class="fs" data-fact="5"><b>1</b><small>Portal for live claims and MI</small></div>
+          <!-- In story order, left to right. data-fact is the timeline step that lights the card; data-kind limits it to one kind of story. -->
+          <div class="fs" data-fact="1"><span class="fs-ic" aria-hidden="true"><svg><use href="#i-phone"/></svg></span><b>24/7</b><small>Recovery, 365 days a year</small></div>
+          <div class="fs" data-fact="2"><span class="fs-ic" aria-hidden="true"><svg><use href="#i-user"/></svg></span><b>Any handler</b><small>Can pick up your claim, no waiting for one person</small></div>
+          <div class="fs" data-fact="3" data-kind="bd"><span class="fs-ic" aria-hidden="true"><svg><use href="#i-truck"/></svg></span><b>44<sup>t</sup></b><small>Breakdown cover up to 44 tonnes</small></div>
+          <div class="fs" data-fact="5"><span class="fs-ic" aria-hidden="true"><svg><use href="#i-chart"/></svg></span><b>1 portal</b><small>Live claims and MI in one place</small></div>
         </div>
       </div>
     </div>
@@ -4874,7 +4985,7 @@ document.addEventListener('click', e=>{
   const vUse=q('vuse'), rUse=q('ruse'), vShadow=q('vshadow'), tp=q('tp'), spark=q('spark'), mail=q('mail');
   const repBeam=rep.querySelector('.fs-beam'), repShadow=rep.querySelector('.fs-shadow');
   const hazards=[...hgv.querySelectorAll('.fs-haz')], beacon=tow.querySelector('.fs-beacon'), rings=[...call.querySelectorAll('circle')];
-  const pill=root.querySelector('.fsim-pill'), feedEl=root.querySelector('.fsim-feed'), facts=[...root.querySelectorAll('[data-fact]')];
+  const pill=root.querySelector('.fsim-pill'), feedEl=root.querySelector('.fsim-feed'), notesEl=root.querySelector('.fsim-notes'), facts=[...root.querySelectorAll('[data-fact]')];
   const headB=root.querySelector('.fsim-head b'), stage=root.querySelector('.fsim-stage');
   const tabs=[...root.querySelectorAll('.fs-tabs [role="tab"]')];
   /* roadside lamp posts, drawn once and slid along */
@@ -4893,13 +5004,21 @@ document.addEventListener('click', e=>{
      about when its front is lifted.  front: where the lifting arm attaches.  haz: hazard lights.  beam: headlight beam.
      cam: the part of the road the camera shows for that vehicle's story (closer in for the smaller vehicles). */
   const VEH={
-    hgv :{href:'#r-hgv', w:180,h:67,  wh:[[55,9],[156,9]],    rim:'truck',pivot:[55,45],  front:[179,47],haz:[[3,37],[178,43]],  beam:'M179 38L285 20V62Z',tag:'HGV-07', cam:'61 32 660 236'},
-    van :{href:'#r-van', w:106,h:47,  wh:[[23,6.5],[89,6.5]], rim:'alloy',pivot:[23,47.5],front:[105,45],haz:[[4,34],[104,37]],  beam:'M105 33L208 18V60Z',tag:'VAN-03', cam:'72 62 560 200'},
-    car :{href:'#r-car', w:77, h:26.5,wh:[[14,6.3],[61,6.3]], rim:'alloy',pivot:[14,47.7],front:[76,46], haz:[[3,41],[75,44]],   beam:'M76 43L178 28V62Z', tag:'CAR-21', cam:'60 83 500 179'},
-    taxi:{href:'#r-taxi',w:87, h:34,  wh:[[17,6.3],[71,6.3]], rim:'alloy',pivot:[17,47.7],front:[86,46], haz:[[2,40],[85,43]],   beam:'M86 41L188 26V62Z', tag:'TAXI-12',cam:'77 72 530 190'}
+    hgv :{href:'#r-hgv', w:180,h:67,  wh:[[55,9],[156,9]],    rim:'truck',pivot:[55,45],  front:[179,47],haz:[[3,37],[178,43]],  beam:'M179 38L285 20V62Z',tag:'HGV',head:'HGV breakdown', cam:'53 32 660 236'},
+    van :{href:'#r-van', w:106,h:47,  wh:[[23,6.5],[89,6.5]], rim:'alloy',pivot:[23,47.5],front:[105,45],haz:[[4,34],[104,37]],  beam:'M105 33L208 18V60Z',tag:'Van',  head:'Van accident',    cam:'72 62 560 200'},
+    car :{href:'#r-car', w:77, h:26.5,wh:[[14,6.3],[61,6.3]], rim:'alloy',pivot:[14,47.7],front:[76,46], haz:[[3,41],[75,44]],   beam:'M76 43L178 28V62Z', tag:'Car',  head:'Motoring defence',cam:'60 83 500 179'},
+    taxi:{href:'#r-taxi',w:87, h:34,  wh:[[17,6.3],[71,6.3]], rim:'alloy',pivot:[17,47.7],front:[86,46], haz:[[2,40],[85,43]],   beam:'M86 41L188 26V62Z', tag:'Taxi', head:'Taxi breakdown',  cam:'62 72 530 190'}
   };
   const TOW={href:'#r-tow', w:126,h:45, wh:[[37,7.2],[107,7.2]], rim:'truck'};
   const fitUse=(u,v)=>{ u.setAttribute('href',v.href); u.setAttribute('width',v.w); u.setAttribute('height',v.h); u.setAttribute('y',GROUND-v.h); };
+  /* Every vehicle label is the same pill: same height, text size and rounded ends, sized to its words, the same gap above its vehicle. */
+  const TAG_GAP=17;
+  const tagFit=(g,txt,again)=>{ const tx=g.querySelector('text'), r=g.querySelector('rect'); if(!again&&tx.textContent===txt&&g.dataset.fit) return;
+    g.dataset.fit='1'; tx.textContent=txt; tx.setAttribute('y',3.6);
+    let len=0; try{ len=tx.getComputedTextLength(); }catch(e){} if(!len) len=txt.length*5.9;
+    const w=Math.round(len+22); r.setAttribute('x',-w/2); r.setAttribute('width',w); r.setAttribute('y',-10); r.setAttribute('height',20); r.setAttribute('rx',10); };
+  /* the label font can arrive after the first label is measured, so measure them all again once it has */
+  if(document.fonts&&document.fonts.ready) document.fonts.ready.then(()=>root.querySelectorAll('.fs-tag').forEach(g=>tagFit(g,g.querySelector('text').textContent,true)));
   const LIVE=['Live','In your fleet portal','Every update logged'];
   const SCENES=[
     {veh:'hgv', kind:'bd', loop:18, claim:'BDE-51190',
@@ -4937,8 +5056,9 @@ document.addEventListener('click', e=>{
   {
     /* the recovery truck and the other driver's car never change, so fit them once */
     const place=(g,v,tagText)=>{ fitUse(g.querySelector('use'),v); const sh=g.querySelector('.fs-shadow'); sh.setAttribute('cx',v.w/2); sh.setAttribute('rx',v.w/2-4); sh.setAttribute('cy',GROUND+1.5); sh.setAttribute('ry',3.2);
-      const tg=g.querySelector('.fs-tag'), tx=tg.querySelector('text'), r=tg.querySelector('rect'), tw=Math.round(tagText.length*7.4+24);
-      tg.setAttribute('transform',`translate(${v===VEH.car?18:v.w/2} ${GROUND-v.h-19})`); tx.textContent=tagText;   /* the other driver's label sits over the back of the car, clear of the van it hits */ r.setAttribute('x',-tw/2); r.setAttribute('width',tw); };
+      const tg=g.querySelector('.fs-tag');
+      /* the other driver's label sits over the back of the car, clear of the van it hits */
+      tg.setAttribute('transform',`translate(${v===VEH.car?18:v.w/2} ${GROUND-v.h-TAG_GAP})`); tagFit(tg,tagText); };
     place(tow,TOW,'Recovery truck'); place(tp,VEH.car,'Other driver'); tp.style.setProperty('--r-body','#a3423a');
     beacon.setAttribute('x',104); beacon.setAttribute('y',11); beacon.setAttribute('width',12); beacon.setAttribute('height',3.2); beacon.setAttribute('rx',1.5);
     let seed=11; const rnd=()=>(seed=(seed*16807)%2147483647)/2147483647;
@@ -4954,26 +5074,37 @@ document.addEventListener('click', e=>{
     const stars=[...Array(26)].map(()=>`<circle cx="${Math.round(rnd()*800)}" cy="${Math.round(36+rnd()*66)}" r="${n(.5+rnd()*.9)}"/>`).join('');
     let railPosts=''; for(let x=0;x<=840;x+=40) railPosts+=`<rect x="${x}" y="138" width="2.4" height="12"/>`;
     let studs=''; for(let x=0;x<=900;x+=100) studs+=`<g transform="translate(${x} 0)"><rect x="0" y="226" width="3" height="11" rx="1"/><circle cx="1.5" cy="229" r="1.1"/></g>`;
-    const g=document.createElementNS(NS,'g'); g.setAttribute('class','rs');
-    g.innerHTML=`<rect x="0" y="-24" width="800" height="176" fill="url(#rsSky)"/>
-      <g class="rs-stars">${stars}</g>
-      <circle class="rs-halo" cx="596" cy="84" r="50"/><circle class="rs-sun" cx="596" cy="84" r="21"/>
-      <g class="rs-clouds" data-rs="clouds">${tile(clouds,1000)}</g>
-      <g class="rs-far" data-rs="far">${tile(far,800)}</g>
-      <g class="rs-near" data-rs="near">${tile(near,800)}</g>
-      <g class="rs-trees" data-rs="trees">${tile(trees,800)}</g>
-      <rect class="rs-verge" x="0" y="144" width="800" height="8"/>
-      <g class="rs-railposts" data-rs="railposts">${railPosts}</g>
-      <rect class="rs-rail" x="0" y="138.6" width="800" height="4.2"/><rect class="rs-railhi" x="0" y="138.6" width="800" height="1.1"/><rect class="rs-rail" x="0" y="144.4" width="800" height="1.4"/>
-      <rect class="rs-road2" x="0" y="148" width="800" height="80"/><rect class="rs-road" x="0" y="151" width="800" height="74"/>
-      <line class="rs-edge" x1="0" y1="153" x2="800" y2="153"/><line class="rs-edge" x1="0" y1="223" x2="800" y2="223"/>
-      <line class="rs-dash" data-rs="dash" x1="-60" y1="185" x2="860" y2="185"/>
-      <rect class="rs-fore" x="0" y="228" width="800" height="40"/>
-      <g class="rs-studs" data-rs="studs">${studs}</g>`;
-    svgEl.insertBefore(g,hills);
-    const rs=k=>g.querySelector(`[data-rs="${k}"]`);
-    const el={clouds:rs('clouds'),far:rs('far'),near:rs('near'),trees:rs('trees'),railposts:rs('railposts'),dash:rs('dash'),studs:rs('studs')};
-    const slide=(e,x)=>e.setAttribute('transform',`translate(${(-x).toFixed(1)} 0)`);
+    let lamps=''; for(let x=0;x<=2000;x+=200) lamps+=`<circle class="glow" cx="${x+19}" cy="89.6" r="9"/><path d="M${x} 150V96q0-7 7-7h12"/><circle class="bulb" cx="${x+19}" cy="89.6" r="3"/>`;
+    /* Each part of the scenery is its own picture, stacked behind the vehicles. Sliding a whole picture sideways is work the
+       graphics card does by itself, so the browser does not redraw the scene on every frame. That is what keeps it smooth.
+       layer(name, drawing, how fast it slides compared with the road, how many units before it repeats, slow drift per second) */
+    const sceneEl=root.querySelector('.fsim-scene'), pics=[], moving=[];
+    const layer=(cls,html,speed,period,drift=0)=>{ const sv=document.createElementNS(NS,'svg'); sv.setAttribute('class','fsim-layer'+(period?' moves':'')); sv.setAttribute('preserveAspectRatio','xMidYMid slice'); sv.setAttribute('aria-hidden','true');
+      sv.innerHTML=`<g class="${cls}">${html}</g>`; sceneEl.insertBefore(sv,svgEl); pics.push(sv); if(period) moving.push({sv,speed,period,drift}); };
+    layer('rs',`<rect x="-400" y="-400" width="1600" height="552" fill="url(#rsSky)"/><g class="rs-stars">${stars}</g><circle class="rs-halo" cx="596" cy="84" r="50"/><circle class="rs-sun" cx="596" cy="84" r="21"/>`);
+    layer('rs-clouds',tile(clouds,1000),.03,1000,5);
+    layer('rs-far',tile(far,800),.08,800);
+    layer('rs-near',tile(near,800),.16,800);
+    layer('rs-trees',tile(trees,800),.42,800);
+    layer('rs',`<rect class="rs-verge" x="-400" y="144" width="1600" height="8"/>
+      <rect class="rs-rail" x="-400" y="138.6" width="1600" height="4.2"/><rect class="rs-railhi" x="-400" y="138.6" width="1600" height="1.1"/><rect class="rs-rail" x="-400" y="144.4" width="1600" height="1.4"/>
+      <rect class="rs-road2" x="-400" y="148" width="1600" height="80"/><rect class="rs-road" x="-400" y="151" width="1600" height="74"/>
+      <line class="rs-edge" x1="-400" y1="153" x2="1200" y2="153"/><line class="rs-edge" x1="-400" y1="223" x2="1200" y2="223"/>
+      <rect class="rs-fore" x="-400" y="228" width="1600" height="60"/>`);
+    /* barrier posts (every 40), lane dashes (every 48), marker posts (every 100) and street lamps (every 200) all move with the road, and all line up again after 1200 */
+    let railPosts2=''; for(let x=0;x<=2040;x+=40) railPosts2+=`<rect x="${x}" y="138" width="2.4" height="12"/>`;
+    let studs2=''; for(let x=0;x<=2000;x+=100) studs2+=`<rect x="${x}" y="226" width="3" height="11" rx="1"/><circle cx="${x+1.5}" cy="229" r="1.1"/>`;
+    layer('rs',`<g class="rs-railposts">${railPosts2}</g><line class="rs-dash" x1="-60" y1="185" x2="2100" y2="185"/><g class="rs-studs">${studs2}</g><g class="rs-lamps">${lamps}</g>`,1,1200);
+    /* how many screen pixels one drawing unit takes up; it changes with the panel's size and with each story's camera */
+    let px=1, camBox=[0,0,660,236];
+    const beside=matchMedia('(min-width:900px)');
+    /* fits the camera to the scene's shape: when the scene is taller than the camera view (the thread beside it sets its height),
+       the view grows upwards into the sky, so the full width of the road always shows */
+    const measure=()=>{ let [x,y,w,h]=camBox; const W=sceneEl.clientWidth, H=sceneEl.clientHeight;
+      if(beside.matches&&W&&H&&W/H<w/h){ const nh=w*H/W; y=y+h-nh; h=nh; }
+      const box=`${x} ${y.toFixed(1)} ${w} ${h.toFixed(1)}`; for(const sv of pics) sv.setAttribute('viewBox',box); svgEl.setAttribute('viewBox',box);
+      px=Math.max(W/w,H/h)||1; };
+    if('ResizeObserver' in window) new ResizeObserver(()=>{ measure(); if(rich) rich.draw(); }).observe(sceneEl);
     /* Wheels that roll. They are drawn on top of each vehicle's own wheels, and each one turns by how far it has
        travelled along the road (road distance plus where the vehicle is on screen), so parked vehicles stay still. */
     const wheelSet=(host,before)=>{ const wg=document.createElementNS(NS,'g'); wg.setAttribute('class','fs-wheels'); host.insertBefore(wg,before||null); return {g:wg,list:[]}; };
@@ -4986,17 +5117,24 @@ document.addEventListener('click', e=>{
     /* five spokes, and turning at 60% of true speed: at full speed the spokes move so far between frames that the eye reads them as flickering */
     const roll=(set,x)=>{ const kids=set.g.children; set.list.forEach((w,i)=>kids[i].setAttribute('transform',`rotate(${((((S+x)/w.r)*57.2958*.6)%360).toFixed(1)} ${w.x} ${w.y})`)); };
     const wMain=wheelSet(body,hazards[0]), wRep=wheelSet(rep,repTag), wTow=wheelSet(tow,beacon), wTp=wheelSet(tp,tp.querySelector('.fs-tag'));
+    /* The red warning triangle a driver stands on the road behind a stopped vehicle. It pops up shortly after a breakdown
+       or an accident and is taken away again when the vehicle moves off. */
+    const tri=document.createElementNS(NS,'g'); tri.setAttribute('class','fs-tri'); tri.style.opacity=0;
+    tri.innerHTML=`<ellipse cx="0" cy="${GROUND+1}" rx="11" ry="2.2" fill="#000" opacity=".22"/><path d="M-9.5 ${GROUND}H9.5" stroke="#2a2e35" stroke-width="1.6" stroke-linecap="round"/><path d="M0 ${GROUND-16}L9 ${GROUND-1.4}H-9Z" fill="#ffffff" stroke="#d92b21" stroke-width="3" stroke-linejoin="round"/>`;
+    svgEl.insertBefore(tri,tow);
     fit(wTow,TOW); fit(wTp,VEH.car);
-    rich={draw(){ slide(el.clouds,(S*.03+clock*5)%1000); slide(el.far,(S*.08)%800); slide(el.near,(S*.16)%800); slide(el.trees,(S*.42)%800);
-      slide(el.railposts,S%40); slide(el.studs,(S*1.2)%100); el.dash.style.strokeDashoffset=(S%48).toFixed(1); },
+    rich={draw(){ for(const m of moving) m.sv.style.transform=`translate3d(${(-(((S*m.speed+clock*m.drift)%m.period)*px)).toFixed(2)}px,0,0)`; },
+      cam(box){ camBox=box.split(' ').map(Number); measure(); },
       fit(v){ fit(wMain,v); fit(wRep,v); },
-      roll(hx,tx,rx,tpx){ roll(wMain,hx); roll(wTow,tx); roll(wRep,rx); roll(wTp,tpx); }};
+      roll(hx,tx,rx,tpx){ roll(wMain,hx); roll(wTow,tx); roll(wRep,rx); roll(wTp,tpx); },
+      /* x: where it stands; k: 0 hidden to 1 fully up (it grows from the ground as it is set down) */
+      triangle(x,k){ tri.style.opacity=k.toFixed(2); if(k>0) tri.setAttribute('transform',`translate(${x.toFixed(1)} ${NEAR}) translate(0 ${GROUND}) scale(${(.6+.4*k).toFixed(2)}) translate(0 ${-GROUND})`); }};
   }
 
   const note=(el,on,b,s,av)=>{ el.classList.toggle('on',on); if(!on) return;
     const bb=el.querySelector('b'), ss=el.querySelector('small'), aa=el.querySelector('.a-av');
     if(b!=null && bb.textContent!==b) bb.textContent=b; if(s!=null && ss.textContent!==s) ss.textContent=s; if(av && aa && aa.textContent!==av) aa.textContent=av; };
-  const fixTag=(g,txt)=>{ const tx=g.querySelector('text'), r=g.querySelector('rect'); if(tx.textContent!==txt){ tx.textContent=txt; const w=Math.round(txt.length*7.4+24); r.setAttribute('x',-w/2); r.setAttribute('width',w); } };
+  const fixTag=tagFit;
 
   function setScene(i){
     cur=i; sc=SCENES[i]; vh=VEH[sc.veh]; kd=KIND[sc.kind]; t=0; lastStep=-1; lastState='';
@@ -5005,24 +5143,21 @@ document.addEventListener('click', e=>{
     beam.setAttribute('d',vh.beam); repBeam.setAttribute('d',vh.beam);
     hazards.forEach((h,k)=>{ h.setAttribute('cx',vh.haz[k][0]); h.setAttribute('cy',vh.haz[k][1]); h.setAttribute('r',vh.h>50?2.8:2.1); });
     for(const e of [vShadow,repShadow]){ e.setAttribute('cx',vh.w/2); e.setAttribute('rx',vh.w/2-4); e.setAttribute('cy',GROUND+1.5); e.setAttribute('ry',3.2); }
-    for(const g of [hgvTag,repTag]) g.setAttribute('transform',`translate(${vh.w/2} ${top-19})`);
+    for(const g of [hgvTag,repTag]) g.setAttribute('transform',`translate(${vh.w/2} ${top-TAG_GAP})`);
     fixTag(hgvTag,vh.tag); fixTag(repTag,sc.veh==='taxi'?'Replacement taxi':'Replacement');
     if(rich) rich.fit(vh);
-    svgEl.setAttribute('viewBox',vh.cam);
+    rich.cam(vh.cam);
     rings.forEach(r=>{ r.setAttribute('cx',vh.w-Math.min(26,vh.w*.3)); r.setAttribute('cy',top+Math.min(22,vh.h*.45)); });
-    headB.textContent=vh.tag;
+    headB.textContent=vh.head;
     feedEl.innerHTML=sc.feed.map(f=>`<li><time>${f[0]}</time><span><b>${f[1]}</b><small>${f[2]}</small></span></li>`).join('');
+    notesEl.innerHTML=sc.feed.map(f=>`<li><i></i><b>${f[1]}</b></li>`).join('');
     stage.setAttribute('aria-label',sc.aria);
-    tabs.forEach((b,k)=>{ b.setAttribute('aria-selected',k===i); b.tabIndex=k===i?0:-1; b.style.setProperty('--p','0%'); });
+    tabs.forEach((b,k)=>{ b.setAttribute('aria-selected',k===i); b.tabIndex=k===i?0:-1; b.style.setProperty('--pn','0'); });
     [handler,portal,mid].forEach(n=>n.classList.remove('on'));
   }
 
   function render(t){
     const feed=[...feedEl.children];
-    /* scenery */
-    lane.style.strokeDashoffset=(S%40).toFixed(1);
-    posts.setAttribute('transform',`translate(${-(S%200)} 0)`);
-    hills.setAttribute('transform',`translate(${-((S*.22)%800)} 0)`);
     const moving=kd.speed(t)>1;
     const blinkOn=Math.floor(t*1.7)%2===0;
     let hx=HX, bob=moving?Math.sin(t*11)*.6:0, ang=0, vOpacity=1, beamOn=true, hazOn=false, callAt=-1;
@@ -5102,18 +5237,30 @@ document.addEventListener('click', e=>{
     const n=kd.step(t);
     if(n!==lastStep){ lastStep=n;
       feed.forEach((li,i)=>{ li.classList.toggle('on',i<n); li.classList.toggle('now',i===n-1); });
-      facts.forEach(f=>f.classList.toggle('on',+f.dataset.fact<=n)); }
+      /* notifications beside the scene: each update arrives as the newest; the two before it stay, smaller and fainter; older ones leave */
+      [...notesEl.children].forEach((li,i)=>{ const age=n-1-i; li.classList.toggle('on',age>=0&&age<3); li.classList.toggle('now',age===0); li.dataset.age=age<0?'':Math.min(age,3); });
+      /* the card whose moment in the story is happening now is highlighted, so the highlight walks left to right */
+      const live=facts.filter(f=>+f.dataset.fact<=n&&(!f.dataset.kind||f.dataset.kind===sc.kind)), nowCard=live[live.length-1];
+      facts.forEach(f=>{ f.classList.toggle('on',live.includes(f)); f.classList.toggle('now',f===nowCard); }); }
     const st=kd.states.filter(s=>t>=s[0]).pop();
     if(st[1]!==lastState){ lastState=st[1]; pill.textContent=st[1]; pill.dataset.state=st[2]; }
-    if(rich){ rich.roll(hx,towX,repX,tpX); rich.draw(); }
+    if(rich){ rich.roll(hx,towX,repX,tpX); rich.draw();
+      /* warning triangle: behind a broken-down vehicle, or behind the rear car after an accident */
+      if(sc.kind==='bd') rich.triangle(HX-18, seg(t,5.2,5.6)*(1-seg(t,11.9,12.3)));
+      else if(sc.kind==='lei') rich.triangle(tpX-18, seg(t,4.9,5.3)*(1-seg(t,11.1,11.5)));
+      else rich.triangle(0,0); }
   }
 
   /* Reduced motion: no switching on its own; each tab shows one still frame with its whole timeline */
+  /* moving to the next story: the scene and notifications fade out, switch, and fade back in, so there is no hard cut */
+  let swapping=false, swapTimer=0;
+  const swapTo=i=>{ if(swapping) return; swapping=true; root.classList.add('swapping');
+    swapTimer=setTimeout(()=>{ setScene(i); render(0); root.classList.remove('swapping'); swapping=false; },240); };
   const STILL={bd:10.9, lei:10.4, def:8.5};
   const still=()=>{ root.classList.add('still'); paused=true; render(STILL[sc.kind]); [...feedEl.children].forEach(li=>li.classList.add('on')); facts.forEach(f=>f.classList.add('on')); };
   const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
   tabs.forEach((b,i)=>{
-    b.addEventListener('click',()=>{ setScene(i); reduce?still():render(0); });
+    b.addEventListener('click',()=>{ clearTimeout(swapTimer); swapping=false; root.classList.remove('swapping'); setScene(i); reduce?still():render(0); });
     b.addEventListener('keydown',e=>{ const d=e.key==='ArrowRight'?1:e.key==='ArrowLeft'?-1:0; if(!d) return; e.preventDefault();
       const k=(i+d+tabs.length)%tabs.length; tabs[k].focus(); tabs[k].click(); });
   });
@@ -5125,13 +5272,15 @@ document.addEventListener('click', e=>{
   root.addEventListener('mouseenter',()=>held=true); root.addEventListener('mouseleave',()=>held=false);
   root.addEventListener('focusin',()=>held=true); root.addEventListener('focusout',()=>held=false);
   function frame(now){
-    const dt=last?Math.min(now-last,50)/1000:0; last=now;
-    if(!held){
+    /* real time between frames, so the story takes the same number of seconds on a slow device as on a fast one
+       (capped at a tenth of a second so it does not leap forward after the tab has been in the background) */
+    const dt=last?Math.min(now-last,100)/1000:0; last=now;
+    if(!held&&!swapping){
       S+=kd.speed(t)*dt*RATE; t+=dt*RATE; clock+=dt;
-      if(t>=sc.loop){ setScene((cur+1)%SCENES.length); }
+      if(t>=sc.loop){ t=sc.loop; swapTo((cur+1)%SCENES.length); }
     }
     paused=held; render(t);
-    tabs[cur].style.setProperty('--p',(100*t/sc.loop).toFixed(1)+'%');
+    tabs[cur].style.setProperty('--pn',(t/sc.loop).toFixed(3));
     raf=requestAnimationFrame(frame);
   }
   const play=()=>{ if(raf) return; last=0; root.classList.add('running'); raf=requestAnimationFrame(frame); };

@@ -3052,7 +3052,117 @@ html:root .fsim.fsim-road :is(.fs-hills,.fs-edge,.fs-lane){display:none}
 html:root .fsim.fsim-road .fs-shadow{fill:rgba(0,0,0,.3)}
 html:root .fsim.fsim-road .fs-posts path{stroke:var(--rs-lamp);stroke-width:2.2}
 html:root .fsim.fsim-road .fs-posts circle{fill:#ffe7a6;opacity:1}
-html[data-theme="dark"]:root .fsim.fsim-road .fs-posts circle{filter:drop-shadow(0 0 5px #ffe08a)}
+/* scenery pictures stacked behind the vehicles; the ones that move are handed to the graphics card */
+html:root .fsim.fsim-road .fsim-layer{position:absolute;inset:0;width:100%;height:100%;display:block;overflow:visible;pointer-events:none}
+html:root .fsim.fsim-road .fsim-layer.moves{will-change:transform}
+html:root .fsim.fsim-road .fs-posts{display:none}
+html:root .fsim.fsim-road .rs-lamps path{fill:none;stroke:var(--rs-lamp);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+html:root .fsim.fsim-road .rs-lamps .bulb{fill:#ffe7a6}
+html:root .fsim.fsim-road .rs-lamps .glow{fill:#ffe08a;opacity:0}
+html[data-theme="dark"]:root .fsim.fsim-road .rs-lamps .glow{opacity:.2}
+/* the four fact cards under the scene: always readable; the one whose moment is playing gets a gold highlight */
+html:root .fsim.fsim-road .fsim-facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;max-width:none;margin:0;border:0}
+@media (min-width:860px){html:root .fsim.fsim-road .fsim-facts{grid-template-columns:repeat(4,minmax(0,1fr))}}
+html:root .fsim.fsim-road .fsim-facts .fs{position:relative;display:grid;grid-template-columns:40px minmax(0,1fr);column-gap:14px;row-gap:3px;align-content:center;align-items:center;padding:18px;background:var(--s-bg);border:1px solid var(--s-line);border-radius:12px;box-shadow:0 1px 2px rgba(60,45,0,.05);opacity:1;text-align:left;transition:border-color .25s ease-out,box-shadow .25s ease-out}
+html:root .fsim.fsim-road .fsim-facts .fs::before{content:none}
+html:root .fsim.fsim-road .fsim-facts .fs-ic{grid-row:1/3;align-self:center;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:var(--s-wash);color:var(--s-gold-text);transition:background .25s ease-out,color .25s ease-out}
+html:root .fsim.fsim-road .fsim-facts .fs-ic svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+html:root .fsim.fsim-road .fsim-facts .fs b{grid-column:2;font:600 21px/1.2 var(--f-body);letter-spacing:-.01em;color:var(--s-fg)}
+html:root .fsim.fsim-road .fsim-facts .fs b sup{font-size:.6em;color:var(--s-gold-text);vertical-align:.5em;margin-left:1px}
+html:root .fsim.fsim-road .fsim-facts .fs small{grid-column:2;font-size:13.5px;line-height:1.4;color:var(--s-muted)}
+html:root .fsim.fsim-road .fsim-facts .fs.now{border-color:var(--s-gold);box-shadow:0 0 0 3px var(--s-wash),0 4px 6px -1px rgba(60,45,0,.1)}
+html:root .fsim.fsim-road .fsim-facts .fs.now .fs-ic{background:var(--s-gold);color:#ffffff}
+html[data-theme="dark"]:root .fsim.fsim-road .fsim-facts .fs.now .fs-ic{color:#1b1b1b}
+html[data-theme="dark"]:root .fsim.fsim-road .fsim-facts .fs{box-shadow:none}
+@media (max-width:599px){
+  html:root .fsim.fsim-road .fsim-facts{gap:10px}
+  html:root .fsim.fsim-road .fsim-facts .fs{grid-template-columns:minmax(0,1fr);padding:14px}
+  html:root .fsim.fsim-road .fsim-facts .fs-ic{grid-row:auto;width:36px;height:36px;margin-bottom:6px}
+  html:root .fsim.fsim-road .fsim-facts .fs b,html:root .fsim.fsim-road .fsim-facts .fs small{grid-column:1}
+  html:root .fsim.fsim-road .fsim-facts .fs b{font-size:19px}
+  html:root .fsim.fsim-road .fsim-facts .fs small{font-size:13px}
+}
+/* notifications: a column to the right of the scene (under it on small screens). The newest update is at the bottom,
+   bright and full size; the two before it sit above, smaller and fainter. They replace the old pop-up notes on the scene.
+   Every pill is the same size and only ever slides and fades, which the graphics card does by itself, so the stack never jumps. */
+html:root .fsim.fsim-road .fs-note{display:none}
+html:root .fsim.fsim-road .fsim-stage{display:grid;grid-template-columns:minmax(0,1fr)}
+html:root .fsim.fsim-road .fsim-card{grid-column:1/-1}
+html:root .fsim.fsim-road .fsim-scene,html:root .fsim.fsim-road .fsim-notes{transition:opacity .22s ease-out}
+html:root .fsim.fsim-road.swapping .fsim-scene,html:root .fsim.fsim-road.swapping .fsim-notes{opacity:0}
+html:root .fsim.fsim-road .fsim-notes{position:relative;list-style:none;margin:0;padding:0;min-height:136px;background:var(--s-bg);border-top:1px solid var(--s-line);overflow:hidden}
+html:root .fsim.fsim-road .fsim-notes li{--y:92px;--k:.9;--o:0;position:absolute;left:16px;right:16px;top:50%;height:50px;margin-top:-25px;display:flex;align-items:center;gap:12px;box-sizing:border-box;padding:0 18px 0 14px;border:1px solid var(--s-line);border-radius:999px;background:var(--s-sunk);color:var(--s-muted);
+  opacity:var(--o);transform:translate3d(0,var(--y),0) scale(var(--k));will-change:transform,opacity;
+  transition:transform .45s cubic-bezier(.2,.7,.2,1),opacity .35s ease-out,background .3s ease-out,color .3s ease-out,border-color .3s ease-out}
+/* where each pill sits by its age: 0 is the newest (bottom), 3 has just left (top) */
+html:root .fsim.fsim-road .fsim-notes li[data-age="0"]{--y:29px;--k:1;--o:1;background:#ffffff;color:#1b1b1b;border-color:var(--s-gold)}
+html:root .fsim.fsim-road .fsim-notes li[data-age="1"]{--y:-29px;--k:.95;--o:.78}
+html:root .fsim.fsim-road .fsim-notes li[data-age="2"],html:root .fsim.fsim-road .fsim-notes li[data-age="3"]{--y:-84px;--k:.9;--o:0}
+html[data-theme="dark"]:root .fsim.fsim-road .fsim-notes li[data-age="0"]{background:#f6edd2;border-color:transparent}
+html:root .fsim.fsim-road .fsim-notes i{flex:none;width:10px;height:10px;border-radius:50%;background:var(--s-gold);box-shadow:0 0 0 5px var(--s-wash)}
+html[data-theme="dark"]:root .fsim.fsim-road .fsim-notes li[data-age="0"] i{background:#a98b30;box-shadow:0 0 0 5px rgba(169,139,48,.25)}
+html:root .fsim.fsim-road .fsim-notes b{flex:1;min-width:0;font-size:14.5px;font-weight:500;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:inherit}
+@media (min-width:900px){
+  html:root .fsim.fsim-road .fsim-stage{grid-template-columns:minmax(0,2.3fr) minmax(260px,1fr)}
+  /* beside the notifications the scene keeps the shape of the camera view, so the whole road shows and nothing is cut off at the sides */
+  html:root .fsim.fsim-road .fsim-scene{min-height:0;aspect-ratio:2.8}
+  html:root .fsim.fsim-road .fsim-notes{min-height:0;border-top:0}
+  html:root .fsim.fsim-road .fsim-notes li{left:6px;right:18px}
+  /* room for three: newest at the bottom, two older ones above */
+  html:root .fsim.fsim-road .fsim-notes li[data-age="0"]{--y:58px}
+  html:root .fsim.fsim-road .fsim-notes li[data-age="1"]{--y:0px}
+  html:root .fsim.fsim-road .fsim-notes li[data-age="2"]{--y:-58px;--o:.5}
+  html:root .fsim.fsim-road .fsim-notes li[data-age="3"]{--y:-112px;--o:0}
+  /* the scene fades into the notifications column instead of ending on a hard line */
+  html:root .fsim.fsim-road .fsim-scene::after{content:"";position:absolute;top:0;bottom:0;right:0;width:22%;pointer-events:none;background:linear-gradient(90deg,transparent 0%,color-mix(in srgb,var(--s-bg) 55%,transparent) 45%,var(--s-bg) 100%)}
+}
+@media (prefers-reduced-motion:reduce){html:root .fsim.fsim-road .fsim-notes li,html:root .fsim.fsim-road .fsim-scene,html:root .fsim.fsim-road .fsim-notes{transition:none}}
+/* the tab's progress line grows by stretching, which does not make the browser re-measure the page each frame */
+html:root .fsim.fsim-road .fs-tabs i::after{width:100%;transform-origin:0 50%;transform:scaleX(var(--pn,0))}
+/* the "Live claim" strip in the top bar is not shown (the script still keeps it up to date in case it is wanted back) */
+html:root .fsim.fsim-road .fsim-head{display:none}
+/* The timeline is a thread of events in the column to the right of the scene (it stays under the scene on small screens).
+   The notification pills that used to sit there are not shown. */
+html:root .fsim.fsim-road .fsim-notes{display:none}
+html:root .fsim.fsim-road .fsim-stage .fsim-card{transition:opacity .22s ease-out}
+html:root .fsim.fsim-road.swapping .fsim-card{opacity:0}
+@media (min-width:900px){
+  html:root .fsim.fsim-road .fsim-stage{grid-template-columns:minmax(0,2.2fr) minmax(280px,1fr)}
+  html:root .fsim.fsim-road .fsim-stage .fsim-card{grid-column:auto;border-top:0;align-self:center}
+  /* the scene is as tall as the thread beside it; the script shows more sky rather than cropping the road */
+  html:root .fsim.fsim-road .fsim-stage .fsim-scene{aspect-ratio:auto;min-height:250px;height:100%}
+  html:root .fsim.fsim-road .fsim-stage .fsim-feed{grid-template-columns:minmax(0,1fr);padding:20px 20px 4px 8px}
+  html:root .fsim.fsim-road .fsim-stage .fsim-feed li{padding:0 0 16px 28px}
+  html:root .fsim.fsim-road .fsim-stage .fsim-feed li::before,html:root .fsim.fsim-road .fsim-stage .fsim-feed li::after{left:5px;top:8px;width:2px;height:auto}
+  html:root .fsim.fsim-road .fsim-stage .fsim-feed li::before{right:auto;bottom:-8px}
+  html:root .fsim.fsim-road .fsim-stage .fsim-feed li::after{height:0}
+  html:root .fsim.fsim-road .fsim-stage .fsim-feed li.on:not(.now)::after{width:2px;height:100%}
+  html:root .fsim.fsim-road .fsim-stage .fsim-feed li time::before{top:3px}
+  html:root .fsim.fsim-road .fsim-stage .fsim-feed li span{margin-top:2px}
+}
+/* vehicle labels: one style for every vehicle (dark on the day scene, light on the night scene) */
+html:root .fsim.fsim-road :is(.fs-tag,.fs-tag.gold,.fs-tag.ghost) rect{fill:#1b1b1b;stroke:none}
+html:root .fsim.fsim-road :is(.fs-tag,.fs-tag.gold,.fs-tag.ghost) text{fill:#ffffff;font:500 10.5px/1 var(--f-body);letter-spacing:.01em}
+html[data-theme="dark"]:root .fsim.fsim-road :is(.fs-tag,.fs-tag.gold,.fs-tag.ghost) rect{fill:#f1f1f4}
+html[data-theme="dark"]:root .fsim.fsim-road :is(.fs-tag,.fs-tag.gold,.fs-tag.ghost) text{fill:#1b1b1b}
+/* pop-up notes: one height, padding and icon size for all three */
+html:root .fsim.fsim-road .fs-note{min-height:48px;padding:7px 16px 7px 8px;gap:10px;border-width:1px;border-style:solid}
+html:root .fsim.fsim-road .fs-note :is(.a-av,.fs-tick){flex:none;width:32px;height:32px}
+html:root .fsim.fsim-road .fs-note b{font-size:13.5px;font-weight:500;line-height:1.2}
+html:root .fsim.fsim-road .fs-note small{font-size:12px;line-height:1.2}
+@media (max-width:599px){
+  html:root .fsim.fsim-road .fs-note{min-height:42px;padding:6px 13px 6px 6px;gap:8px}
+  html:root .fsim.fsim-road .fs-note :is(.a-av,.fs-tick){width:28px;height:28px}
+  html:root .fsim.fsim-road .fs-note b{font-size:12.5px}
+  html:root .fsim.fsim-road .fs-note small{font-size:11.5px}
+  /* on phones the middle note sits on the grass strip at the bottom-left, clear of the vehicles and their labels */
+  html:root .fsim.fsim-road .fs-mid,html:root .fsim.fsim-road .fs-handler.on ~ .fs-mid.on{top:auto;bottom:3px;left:12px;transform:translateY(6px)}
+  html:root .fsim.fsim-road .fs-mid.on,html:root .fsim.fsim-road .fs-handler.on ~ .fs-mid.on{transform:none}
+  html:root .fsim.fsim-road .fs-mid small{white-space:nowrap}
+}
+/* no see-through blur on the pop-up notes here: blurring a moving scene behind them is slow */
+html:root .fsim.fsim-road .fs-note{backdrop-filter:none;-webkit-backdrop-filter:none}
+html[data-theme="dark"]:root .fsim.fsim-road .fs-note{background:#34373d;border-color:rgba(255,255,255,.14)}
 html:root .fsim.fsim-road .rs-sky0{stop-color:var(--rs-sky1)}
 html:root .fsim.fsim-road .rs-sky1{stop-color:var(--rs-sky2)}
 html:root .fsim.fsim-road .rs-sun{fill:var(--rs-sun)}
@@ -3075,7 +3185,6 @@ html:root .fsim.fsim-road .rs-edge{stroke:var(--rs-mark);stroke-width:1.8}
 html:root .fsim.fsim-road .rs-dash{stroke:var(--rs-mark);stroke-width:2.4;stroke-dasharray:26 22}
 html:root .fsim.fsim-road .rs-studs rect{fill:#f4f4f1}
 html:root .fsim.fsim-road .rs-studs circle{fill:#d43a2f}
-html:root .fsim.fsim-road .fs-tag.ghost rect{fill:var(--s-bg)}
 html:root .fsim.fsim-road .fs-mail rect{fill:#fffdf6;stroke:#2a2e35}
 html:root .fsim.fsim-road .fs-mail path{stroke:#2a2e35}
 html:root .fsim.fsim-road .fsim-card{display:block;padding:0;border-top:1px solid var(--s-line)}
