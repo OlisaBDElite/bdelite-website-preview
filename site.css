@@ -3238,11 +3238,11 @@ html:not([data-theme="dark"]) .fs-tp{--v-car:#cfcfcf}
    Every other animated card, and every two-column section that holds one, now uses exactly the same width,
    and the two-column ones share one gap between their columns. Phones are unchanged. */
 @media (min-width:720px){
-  html:root main :is(.wrap:has(> .frame),.wrap.hero-grid:has(> .fsim),#calc > .wrap,.wrap:has(> .routes),.wrap:has(> .rv),#journey > .wrap.tabs-row,#edi > .wrap.pair,#bportal > .wrap.pair,#fportal > .wrap.split){max-width:1600px;padding-inline:clamp(32px,5vw,96px)}
+  html:root main :is(.wrap:has(> .frame),.wrap.hero-grid:has(> .fsim),#calc > .wrap,.wrap:has(> .routes),.wrap:has(> .rv),#journey > .wrap.tabs-row,#edi > .wrap.pair,#bportal > .wrap.pair,#fportal > .wrap.split,#partner > .wrap.split,#claimform > .wrap.split){max-width:1600px;padding-inline:clamp(32px,5vw,96px)}
   html:root main .wrap.hero-grid > .fsim{max-width:none}
 }
 @media (min-width:960px){
-  html:root main :is(#journey > .wrap.tabs-row,#edi > .wrap.pair,#bportal > .wrap.pair,#fportal > .wrap.split){column-gap:clamp(40px,5vw,80px)}
+  html:root main :is(#journey > .wrap.tabs-row,#edi > .wrap.pair,#bportal > .wrap.pair,#fportal > .wrap.split,#partner > .wrap.split,#claimform > .wrap.split){column-gap:clamp(40px,5vw,80px)}
 }
 /* ===== HERO: three direct routes (replaces the "Tell us who you are" dropdown) ===== */
 .chooser-main.hero-routes{gap:4px}
