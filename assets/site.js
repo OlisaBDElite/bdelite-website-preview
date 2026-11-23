@@ -498,7 +498,8 @@ addEventListener('DOMContentLoaded',function slideUp(){
   /* reveal anything whose top has passed 85% of the screen height (or that we've scrolled past), and everything once at the bottom */
   let pend=[], raf=0;
   const check=()=>{ raf=0; const lim=innerHeight*0.85, atEnd=innerHeight+scrollY>=document.documentElement.scrollHeight-4;
-    pend=pend.filter(el=>{ if(el.offsetParent===null) return true; if(atEnd||el.getBoundingClientRect().top<lim){ el.classList.add('su-in'); return false; } return true; }); };
+    pend=pend.filter(el=>{ if(el.offsetParent===null) return true; if(atEnd||el.getBoundingClientRect().top<lim){ el.classList.add('su-in'); return false; } return true; });
+    if(!pend.length) removeEventListener('scroll',queue); /* everything has appeared: stop checking on scroll */ };
   const io={observe:el=>pend.push(el)};
   const queue=()=>{ if(!raf) raf=requestAnimationFrame(check); };
   addEventListener('scroll',queue,{passive:true}); addEventListener('resize',queue); addEventListener('hashchange',()=>setTimeout(queue,60)); document.addEventListener('click',()=>setTimeout(queue,80));
@@ -652,7 +653,7 @@ document.querySelectorAll('[data-reviews]').forEach(el=>{
   el.innerHTML = `<div class="rv-stage">${REVIEWS.map((r,i)=>`<figure class="rv-card${i?'':' on'}" style="--img:url('${RV_IMG[i%3]}');--pos:${RV_POS[i%3]}"><span class="rv-chip">Google review</span><blockquote>“${r.q}”</blockquote><figcaption><b>${r.n}</b><span class="stars" aria-label="5 out of 5 stars">★★★★★</span></figcaption></figure>`).join('')}</div><div class="rv-bars">${REVIEWS.map((r,i)=>`<button type="button" class="${i?'':'on'}" aria-label="Show review ${i+1} of ${REVIEWS.length}"><i></i></button>`).join('')}</div>`;
   const cards=[...el.querySelectorAll('.rv-card')], bars=[...el.querySelectorAll('.rv-bars button')]; let k=0, t;
   const go=n=>{ k=(n+cards.length)%cards.length; cards.forEach((c,i)=>c.classList.toggle('on',i===k)); bars.forEach((b,i)=>b.classList.toggle('on',i===k)); };
-  const play=()=>{ clearInterval(t); if(!matchMedia('(prefers-reduced-motion: reduce)').matches) t=setInterval(()=>{ if(el.offsetParent) go(k+1); },6000); };
+  const play=()=>{ clearInterval(t); if(!matchMedia('(prefers-reduced-motion: reduce)').matches) t=setInterval(()=>{ if(el.offsetParent && !el.closest('.perf-off')) go(k+1); },6000); };
   bars.forEach((b,i)=>b.addEventListener('click',()=>{ go(i); play(); }));
   play();
 });
@@ -877,8 +878,11 @@ function revealCheck(){
     if(r.top < innerHeight*0.9 && r.bottom>0 && el.offsetParent!==null){ el.classList.remove('pre'); }
   });
 }
-addEventListener('scroll',revealCheck,{passive:true});
-setTimeout(()=>{ document.querySelectorAll('.reveal.pre').forEach(el=>{ el.classList.remove('pre'); }); }, 2500);
+/* only listen while something is still waiting to appear */
+if(document.querySelector('.reveal.pre')){
+  addEventListener('scroll',revealCheck,{passive:true});
+  setTimeout(()=>{ document.querySelectorAll('.reveal.pre').forEach(el=>{ el.classList.remove('pre'); }); removeEventListener('scroll',revealCheck); }, 2500);
+}
 
 /* ---------- Forms ---------- */
 function validate(scope){
@@ -984,18 +988,9 @@ function paintHead(){
     if(secs.length){
       pageFoot.classList.toggle('sheet', !secs[secs.length-1].matches(DARK));
       secs.push(pageFoot);
-      const hb=siteHead.getBoundingClientRect().bottom, vh=innerHeight; let cur=secs[0], entering=null;
-      for(const sc of secs){
-        const top=sc.getBoundingClientRect().top;
-        if(top<=hb) cur=sc;
-        if(sc.classList.contains('sheet')){
-          const p=calmMotion ? 1 : Math.min(1,Math.max(0,(vh-top)/(vh*0.5)));
-          sc.style.setProperty('--p',p.toFixed(3));
-          if(p>0 && p<1) entering=sc;
-        }
-      }
-      /* whatever shows around a sheet that is still widening must be the colour it is leaving */
-      if(entering) document.body.style.backgroundColor = entering.matches(DARK) ? 'var(--paper)' : 'var(--ink)';
+      /* only reads positions now: sections no longer widen, so nothing is restyled on each scroll step */
+      const hb=siteHead.getBoundingClientRect().bottom; let cur=secs[0];
+      for(const sc of secs){ if(sc.getBoundingClientRect().top<=hb) cur=sc; else break; }
       siteHead.classList.toggle('on-dark', cur.matches(DARK));
     }
     siteHead.classList.toggle('scrolled', scrollY>8);
@@ -1098,6 +1093,12 @@ document.querySelectorAll('.pipe').forEach(p=>{
   }),{threshold:.35}).observe(p);
 });
 
+
+/* ---------- Speed: animations rest while their section is off screen ---------- */
+if('IntersectionObserver' in window){
+  const offIO=new IntersectionObserver(es=>es.forEach(e=>e.target.classList.toggle('perf-off',!e.isIntersecting)),{rootMargin:'150px 0px'});
+  document.querySelectorAll('main > section, footer').forEach(s=>offIO.observe(s));
+}
 
 /* ---------- Key tag registration form ---------- */
 const keyForm=document.getElementById('keyForm');

@@ -3241,6 +3241,8 @@ html:not([data-theme="dark"]) .fs-tp{--v-car:#cfcfcf}
 .fs-spark path{fill:none;stroke:#f2a531;stroke-width:2.6;stroke-linecap:round}
 .fs-mail rect{fill:var(--v-cab);stroke:var(--v-line);stroke-width:2}
 .fs-mail path{fill:none;stroke:var(--v-line);stroke-width:2;stroke-linejoin:round}
+/* no line under the top bar when the page is scrolled (light and dark) */
+html:root header.site,html:root header.site.scrolled,html:root header.on-dark.scrolled{border-bottom-color:transparent;box-shadow:none}
 /* ===== ONE WIDTH FOR EVERY ANIMATED CARD =====
    The widest card is the laptop-and-phone demo at the top of the home page (up to 1600px wide, minus 5% of the screen each side).
    Every other animated card, and every two-column section that holds one, now uses exactly the same width,
@@ -3314,6 +3316,32 @@ a.card-link:hover{transform:translateY(-3px);border-color:var(--gold)}
 .f-lines a.f-mail{min-height:32px;font-size:14px;word-break:break-all}
 @media (min-width:960px){.f-cols{grid-template-columns:1fr 1fr 1.6fr}}
 @media (min-width:960px){footer .f-legal{grid-template-columns:1fr;gap:8px}}
+
+/* ===== SPEED PASS (23 Nov): same look, far less redrawing while scrolling ===== */
+/* top bar: solid instead of blurring whatever scrolls underneath it */
+header.site.scrolled:not(.on-dark){background:var(--paper);-webkit-backdrop-filter:none;backdrop-filter:none}
+header.site.on-dark{background:var(--ink);-webkit-backdrop-filter:none;backdrop-filter:none}
+:root[data-theme="dark"] header.site,:root[data-theme="dark"] header.site:not(.on-dark),:root[data-theme="dark"] header.site.scrolled:not(.on-dark),:root[data-theme="dark"] header.site.on-dark,:root[data-theme="dark"] header.site.on-dark:not(.scrolled){background:#262626;-webkit-backdrop-filter:none;backdrop-filter:none}
+/* bottom-of-screen fade: keep the fade, drop the tiny blur behind it */
+.vfade::before{-webkit-backdrop-filter:none;backdrop-filter:none}
+/* dark/light sections: keep the rounded shoulders, no longer widen while scrolling */
+.bgsw .sheet{clip-path:inset(0 round var(--R) var(--R) 0 0);will-change:auto}
+.bgsw .sheet > .wrap{transform:none;opacity:1;will-change:auto}
+@media (max-width:640px){.bgsw .sheet{clip-path:inset(0 round var(--R) var(--R) 0 0)}}
+/* animations rest while their section is off screen (the class is set by the script) */
+.perf-off,.perf-off *,.perf-off *::before,.perf-off *::after{animation-play-state:paused!important}
+/* "What you can expect" tiles: a ready-made soft glow instead of a live blur, same look */
+.art .glow{filter:none;width:104%;margin:-21%;background:radial-gradient(closest-side,rgba(236,212,140,.27) 0%,rgba(236,212,140,.245) 15%,rgba(236,212,140,.19) 30%,rgba(236,212,140,.115) 46%,rgba(236,212,140,.058) 62%,rgba(236,212,140,.022) 77%,rgba(236,212,140,.007) 92%,rgba(236,212,140,0) 100%)}
+.a-toast,.a-chip{-webkit-backdrop-filter:none;backdrop-filter:none}
+/* the largest shadows, slightly tighter */
+html .hs-photo{box-shadow:0 24px 48px -24px rgba(60,45,0,.55)}
+html #heroDevs .lp-lid{box-shadow:0 0 0 1px #262626,0 0 0 2px #a2a3ab,0 0 0 3px #5e5e5e,0 40px 72px -28px rgba(30,30,30,.55)}
+html[data-theme="dark"] #heroDevs .lp-lid{box-shadow:0 0 0 1px #262626,0 0 0 2px #6a6a6a,0 0 0 3px #3e3e3e,0 40px 72px -28px rgba(0,0,0,.8)}
+html #heroDevs .ph{box-shadow:inset 0 0 0 1px rgba(255,255,255,.18),0 0 0 1px #0b0b0b,0 40px 66px -24px rgba(30,30,30,.6)}
+html .a-card{box-shadow:0 20px 40px -18px rgba(0,0,0,.75),inset 0 1px 0 rgba(255,255,255,.25)}
+html .a-toast.t1{box-shadow:0 18px 36px -14px rgba(0,0,0,.7),0 0 40px rgba(236,212,140,.35)}
+html .a-orb{box-shadow:0 0 0 10px rgba(236,212,140,.14),0 0 44px rgba(236,212,140,.6)}
+html .frame .app,html[data-hero] .frame .app{box-shadow:0 -1px 0 rgba(255,255,255,.35),0 20px 50px -16px rgba(50,35,0,.6)}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -5409,7 +5437,8 @@ addEventListener('DOMContentLoaded',function slideUp(){
   /* reveal anything whose top has passed 85% of the screen height (or that we've scrolled past), and everything once at the bottom */
   let pend=[], raf=0;
   const check=()=>{ raf=0; const lim=innerHeight*0.85, atEnd=innerHeight+scrollY>=document.documentElement.scrollHeight-4;
-    pend=pend.filter(el=>{ if(el.offsetParent===null) return true; if(atEnd||el.getBoundingClientRect().top<lim){ el.classList.add('su-in'); return false; } return true; }); };
+    pend=pend.filter(el=>{ if(el.offsetParent===null) return true; if(atEnd||el.getBoundingClientRect().top<lim){ el.classList.add('su-in'); return false; } return true; });
+    if(!pend.length) removeEventListener('scroll',queue); /* everything has appeared: stop checking on scroll */ };
   const io={observe:el=>pend.push(el)};
   const queue=()=>{ if(!raf) raf=requestAnimationFrame(check); };
   addEventListener('scroll',queue,{passive:true}); addEventListener('resize',queue); addEventListener('hashchange',()=>setTimeout(queue,60)); document.addEventListener('click',()=>setTimeout(queue,80));
@@ -5563,7 +5592,7 @@ document.querySelectorAll('[data-reviews]').forEach(el=>{
   el.innerHTML = `<div class="rv-stage">${REVIEWS.map((r,i)=>`<figure class="rv-card${i?'':' on'}" style="--img:url('${RV_IMG[i%3]}');--pos:${RV_POS[i%3]}"><span class="rv-chip">Google review</span><blockquote>“${r.q}”</blockquote><figcaption><b>${r.n}</b><span class="stars" aria-label="5 out of 5 stars">★★★★★</span></figcaption></figure>`).join('')}</div><div class="rv-bars">${REVIEWS.map((r,i)=>`<button type="button" class="${i?'':'on'}" aria-label="Show review ${i+1} of ${REVIEWS.length}"><i></i></button>`).join('')}</div>`;
   const cards=[...el.querySelectorAll('.rv-card')], bars=[...el.querySelectorAll('.rv-bars button')]; let k=0, t;
   const go=n=>{ k=(n+cards.length)%cards.length; cards.forEach((c,i)=>c.classList.toggle('on',i===k)); bars.forEach((b,i)=>b.classList.toggle('on',i===k)); };
-  const play=()=>{ clearInterval(t); if(!matchMedia('(prefers-reduced-motion: reduce)').matches) t=setInterval(()=>{ if(el.offsetParent) go(k+1); },6000); };
+  const play=()=>{ clearInterval(t); if(!matchMedia('(prefers-reduced-motion: reduce)').matches) t=setInterval(()=>{ if(el.offsetParent && !el.closest('.perf-off')) go(k+1); },6000); };
   bars.forEach((b,i)=>b.addEventListener('click',()=>{ go(i); play(); }));
   play();
 });
@@ -5788,8 +5817,11 @@ function revealCheck(){
     if(r.top < innerHeight*0.9 && r.bottom>0 && el.offsetParent!==null){ el.classList.remove('pre'); }
   });
 }
-addEventListener('scroll',revealCheck,{passive:true});
-setTimeout(()=>{ document.querySelectorAll('.reveal.pre').forEach(el=>{ el.classList.remove('pre'); }); }, 2500);
+/* only listen while something is still waiting to appear */
+if(document.querySelector('.reveal.pre')){
+  addEventListener('scroll',revealCheck,{passive:true});
+  setTimeout(()=>{ document.querySelectorAll('.reveal.pre').forEach(el=>{ el.classList.remove('pre'); }); removeEventListener('scroll',revealCheck); }, 2500);
+}
 
 /* ---------- Forms ---------- */
 function validate(scope){
@@ -5895,18 +5927,9 @@ function paintHead(){
     if(secs.length){
       pageFoot.classList.toggle('sheet', !secs[secs.length-1].matches(DARK));
       secs.push(pageFoot);
-      const hb=siteHead.getBoundingClientRect().bottom, vh=innerHeight; let cur=secs[0], entering=null;
-      for(const sc of secs){
-        const top=sc.getBoundingClientRect().top;
-        if(top<=hb) cur=sc;
-        if(sc.classList.contains('sheet')){
-          const p=calmMotion ? 1 : Math.min(1,Math.max(0,(vh-top)/(vh*0.5)));
-          sc.style.setProperty('--p',p.toFixed(3));
-          if(p>0 && p<1) entering=sc;
-        }
-      }
-      /* whatever shows around a sheet that is still widening must be the colour it is leaving */
-      if(entering) document.body.style.backgroundColor = entering.matches(DARK) ? 'var(--paper)' : 'var(--ink)';
+      /* only reads positions now: sections no longer widen, so nothing is restyled on each scroll step */
+      const hb=siteHead.getBoundingClientRect().bottom; let cur=secs[0];
+      for(const sc of secs){ if(sc.getBoundingClientRect().top<=hb) cur=sc; else break; }
       siteHead.classList.toggle('on-dark', cur.matches(DARK));
     }
     siteHead.classList.toggle('scrolled', scrollY>8);
@@ -6009,6 +6032,12 @@ document.querySelectorAll('.pipe').forEach(p=>{
   }),{threshold:.35}).observe(p);
 });
 
+
+/* ---------- Speed: animations rest while their section is off screen ---------- */
+if('IntersectionObserver' in window){
+  const offIO=new IntersectionObserver(es=>es.forEach(e=>e.target.classList.toggle('perf-off',!e.isIntersecting)),{rootMargin:'150px 0px'});
+  document.querySelectorAll('main > section, footer').forEach(s=>offIO.observe(s));
+}
 
 /* ---------- Key tag registration form ---------- */
 const keyForm=document.getElementById('keyForm');
