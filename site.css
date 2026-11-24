@@ -3493,8 +3493,9 @@ html.intro-on #intro{display:grid;place-items:center;position:fixed;inset:0;z-in
 /* the cover stays solid while the logo glides, and only fades once the logo has landed */
 html.intro-on #intro.fade{background-color:transparent;transition:background-color .45s ease-out}
 #intro .intro-logo{width:clamp(200px,30vw,340px);height:auto;display:block;transform-origin:0 0;transition:transform .75s cubic-bezier(.65,0,.35,1)}
-#intro .intro-shine{animation:introShine 1.2s cubic-bezier(.45,0,.25,1) infinite}
-@keyframes introShine{from{transform:translateX(-450px) skewX(-18deg)}to{transform:translateX(1750px) skewX(-18deg)}}
+/* one sweep takes 2.4s, starting 0.2s after the logo appears; the logo always waits for a sweep to finish before it moves */
+#intro .intro-shine{animation:introShine 2.4s cubic-bezier(.45,.05,.35,1) .2s infinite;transform:translateX(-560px) skewX(-18deg)}
+@keyframes introShine{from{transform:translateX(-560px) skewX(-18deg)}to{transform:translateX(1700px) skewX(-18deg)}}
 #intro.out .intro-shine{animation:none;opacity:0}
 /* the top-bar logo stays hidden until the moving logo lands exactly on it */
 html.intro-on:not(.intro-reveal) header.site .brand svg{visibility:hidden}

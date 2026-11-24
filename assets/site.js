@@ -455,8 +455,9 @@ addEventListener("DOMContentLoaded",function heroDevs(){
   /* the Auto-play pointer glides to a control, presses it, and only then does the screen change */
   const pointer=document.createElement('div'); pointer.className='fake-cursor'; pointer.setAttribute('aria-hidden','true'); pointer.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 2.500v16.500l4.400-4 3 6.800 2.700-1.200-3-6.700h6z" fill="#fff" stroke="#15130b" stroke-width="1.400" stroke-linejoin="round"/></svg><i></i>';
   root.append(pointer);
-  const pointAt=el=>{ const a=root.getBoundingClientRect(), r=el.getBoundingClientRect();
-    pointer.style.transform=`translate(${(r.right-a.left-Math.min(7,r.width*.15)).toFixed(1)}px,${(r.top-a.top+r.height*.62).toFixed(1)}px)`; };
+  /* screen measurements divided by the card's scale (big-screen page scaling, fit-to-window shrinking) so the pointer lands exactly */
+  const pointAt=el=>{ const a=root.getBoundingClientRect(), r=el.getBoundingClientRect(), k=(a.width/(root.offsetWidth||a.width))||1;
+    pointer.style.transform=`translate(${((r.right-a.left-Math.min(7*k,r.width*.15))/k).toFixed(1)}px,${((r.top-a.top+r.height*.62)/k).toFixed(1)}px)`; };
   const wait=ms=>new Promise(res=>{ timer=setTimeout(res,ms); });
   async function press(el){ pointAt(el); await wait(800); if(!running) return false;
     pointer.classList.add('click'); await wait(220); pointer.classList.remove('click'); return running; }
@@ -720,8 +721,9 @@ jRow.append(cur);
 function cursorTo(k,instant){
   const t=jg.querySelectorAll('.tab')[k]; if(!t) return;
   const a=jRow.getBoundingClientRect(), b=t.querySelector('.tab-t').getBoundingClientRect(), r=t.getBoundingClientRect();
+  const sk=(a.width/(jRow.offsetWidth||a.width))||1;   /* screen pixels per unit inside the row (big-screen scaling) */
   if(instant){ cur.style.transition='none'; }
-  cur.style.transform='translate('+(r.right-a.left-28)+'px,'+(b.top-a.top+b.height*0.6)+'px)';
+  cur.style.transform='translate('+((r.right-a.left)/sk-28)+'px,'+((b.top-a.top+b.height*0.6)/sk)+'px)';
   if(instant){ void cur.offsetWidth; cur.style.transition=''; }
 }
 let jBusy=false;
@@ -861,7 +863,7 @@ function paintScene(x){
   if(!carG) return;
   carG.style.transform = `translate(${x}px,191px)`;
   bcs.forEach((b,k)=>{ const on = x+60 >= SX[k]; if(on && !b.classList.contains('on')){ b.classList.add('on','pop'); setTimeout(()=>b.classList.remove('pop'),700); } else if(!on) b.classList.remove('on'); });
-  const svg = scene.firstElementChild, cw = scene.clientWidth, sw = svg.getBoundingClientRect().width;
+  const svg = scene.firstElementChild, cw = scene.clientWidth, k = (scene.getBoundingClientRect().width/(scene.offsetWidth||1))||1, sw = svg.getBoundingClientRect().width/k;
   if(sw > cw + 2){ const sc = sw/1200; const tx = Math.max(cw - sw, Math.min(0, cw/2 - (x+42)*sc)); svg.style.transform = `translateX(${tx}px)`; } else svg.style.transform = '';
 }
 
