@@ -47,12 +47,12 @@ button,input,select,textarea{font:inherit;color:inherit}
 @media (min-width:720px){.wrap{padding-left:max(32px,env(safe-area-inset-left,0px));padding-right:max(32px,env(safe-area-inset-right,0px))}}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .mono{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
-.eyebrow{font:700 12.5px/1.2 var(--f-display);letter-spacing:.14em;text-transform:uppercase;color:var(--gold-text);display:flex;align-items:center;gap:10px}
+.eyebrow{font:600 12.5px/1.2 var(--f-display);letter-spacing:.14em;text-transform:uppercase;color:var(--gold-text);display:flex;align-items:center;gap:10px}
 .ink .eyebrow{color:var(--gold-on-ink)}
-.h-xl{font-size:clamp(38px,5.6vw,68px);line-height:1.02;font-weight:800;letter-spacing:-.035em}
-.h-l{font-size:clamp(30px,3.6vw,44px);line-height:1.08;font-weight:800;letter-spacing:-.03em}
-.h-m{font-size:22px;line-height:1.2;font-weight:700}
-.h-s{font-size:17px;line-height:1.3;font-weight:700;letter-spacing:-.01em}
+.h-xl{font-size:clamp(38px,5.6vw,68px);line-height:1.02;font-weight:600;letter-spacing:-.035em}
+.h-l{font-size:clamp(30px,3.6vw,44px);line-height:1.08;font-weight:600;letter-spacing:-.03em}
+.h-m{font-size:22px;line-height:1.2;font-weight:600}
+.h-s{font-size:17px;line-height:1.3;font-weight:600;letter-spacing:-.01em}
 .lede{font-size:clamp(18px,1.6vw,20px);line-height:1.55;color:var(--muted);max-width:58ch}
 .ink .lede{color:var(--on-ink-muted)}
 .gold{color:var(--gold-text)}
@@ -65,7 +65,7 @@ button,input,select,textarea{font:inherit;color:inherit}
 .ink .c-fleet{color:var(--on-ink)}
 
 /* Buttons */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:0 22px;border-radius:999px;font:700 15px/1 var(--f-display);letter-spacing:-.005em;text-decoration:none;border:1.5px solid transparent;cursor:pointer;transition:background .18s,border-color .18s,transform .18s,color .18s;white-space:nowrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:0 22px;border-radius:999px;font:600 15px/1 var(--f-display);letter-spacing:-.005em;text-decoration:none;border:1.5px solid transparent;cursor:pointer;transition:background .18s,border-color .18s,transform .18s,color .18s;white-space:nowrap}
 .btn:active{transform:translateY(1px)}
 .btn-gold{background:var(--gold);color:#111}
 .btn-gold:hover{background:var(--gold-soft)}
@@ -106,7 +106,7 @@ nav.main a[aria-current="page"]{color:var(--fg);background:var(--sunk)}
 .portal-pop{position:absolute;right:0;top:calc(100% + 10px);width:290px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);padding:8px;z-index:5}
 .portal-pop a{display:grid;grid-template-columns:auto 1fr;gap:2px 12px;padding:12px;border-radius:var(--r-sm);text-decoration:none}
 .portal-pop a:hover{background:var(--sunk)}
-.portal-pop b{font:700 15px/1.2 var(--f-display)}
+.portal-pop b{font:600 15px/1.2 var(--f-display)}
 .portal-pop small{grid-column:2;color:var(--muted);font-size:14px;line-height:1.35}
 .portal-pop .chev{grid-row:span 2;margin-top:2px}
 .menu-btn{display:inline-flex;width:48px;height:48px;border-radius:50%;border:1.5px solid var(--line);background:transparent;align-items:center;justify-content:center;cursor:pointer}
@@ -121,7 +121,7 @@ nav.main a[aria-current="page"]{color:var(--fg);background:var(--sunk)}
   .util .wrap{font-size:13px;gap:10px}
 }
 .mobile-nav{border-top:1px solid var(--line);padding-block:12px 20px;display:grid;gap:4px}
-.mobile-nav a{font:700 18px/1 var(--f-display);text-decoration:none;padding:14px 4px;display:flex;gap:12px;align-items:center;border-bottom:1px solid var(--line)}
+.mobile-nav a{font:600 18px/1 var(--f-display);text-decoration:none;padding:14px 4px;display:flex;gap:12px;align-items:center;border-bottom:1px solid var(--line)}
 @media (min-width:1020px){.mobile-nav{display:none!important}}
 
 /* Sections */
@@ -144,7 +144,7 @@ section{position:relative}
 .door{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:18px;padding:18px 20px;border-radius:var(--r);background:var(--ink-2);border:1px solid var(--ink-line);text-decoration:none;color:var(--on-ink);transition:border-color .2s,background .2s,transform .2s}
 .door:hover{border-color:var(--gold);transform:translateX(4px)}
 .door .chev{width:20px;height:24px}
-.door b{display:block;font:700 18px/1.2 var(--f-display);letter-spacing:-.01em}
+.door b{display:block;font:600 18px/1.2 var(--f-display);letter-spacing:-.01em}
 .door small{display:block;color:var(--on-ink-muted);font-size:15px;line-height:1.35;margin-top:3px}
 .door .go{color:var(--gold-on-ink)}
 .door.urgent{background:var(--gold);border-color:var(--gold);color:#111}
@@ -156,13 +156,13 @@ section{position:relative}
 .tracker{background:var(--ink-2);border:1px solid var(--ink-line);border-radius:20px;padding:24px;box-shadow:0 30px 80px -30px rgba(0,0,0,.8);position:relative;max-width:520px;width:100%;justify-self:center}
 .tk-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap}
 .tk-ref{font:600 13px/1 var(--f-mono);color:var(--on-ink-muted)}
-.tk-title{font:700 19px/1.25 var(--f-display);margin-top:8px}
-.pill{display:inline-flex;align-items:center;gap:7px;font:700 11.5px/1 var(--f-display);letter-spacing:.08em;text-transform:uppercase;padding:7px 10px;border-radius:999px;white-space:nowrap}
+.tk-title{font:600 19px/1.25 var(--f-display);margin-top:8px}
+.pill{display:inline-flex;align-items:center;gap:7px;font:600 11.5px/1 var(--f-display);letter-spacing:.08em;text-transform:uppercase;padding:7px 10px;border-radius:999px;white-space:nowrap}
 .pill::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
 .pill-live{color:#4ade80;background:rgba(74,222,128,.12)}
 .pill-done{color:var(--gold-on-ink);background:rgba(212,180,92,.14)}
 .tk-handler{display:flex;align-items:center;gap:12px;margin-top:18px;padding:12px;border-radius:12px;background:rgba(255,255,255,.04)}
-.avatar{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--gold-soft),var(--gold));color:#111;display:grid;place-items:center;font:800 14px/1 var(--f-display);flex:none}
+.avatar{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--gold-soft),var(--gold));color:#111;display:grid;place-items:center;font:600 14px/1 var(--f-display);flex:none}
 .tk-handler small{display:block;color:var(--on-ink-muted);font-size:13.5px;line-height:1.3}
 .tk-handler b{font-weight:600;font-size:15px}
 .tk-steps{list-style:none;margin:20px 0 0;padding:0;display:grid;gap:0}
@@ -192,12 +192,12 @@ section{position:relative}
 .proof div.item{padding:26px 20px 26px 0;display:grid;gap:4px}
 .proof div.item + div.item{padding-left:20px;border-left:1px solid var(--line)}
 @media (max-width:899px){.proof div.item:nth-child(3){border-left:0;padding-left:0}.proof div.item:nth-child(n+3){border-top:1px solid var(--line)}}
-.proof .num{font:800 clamp(26px,3vw,34px)/1 var(--f-display);letter-spacing:-.03em}
+.proof .num{font:600 clamp(26px,3vw,34px)/1 var(--f-display);letter-spacing:-.03em}
 .proof .lbl{color:var(--muted);font-size:15px;line-height:1.35}
 
 /* Journey */
 .aud-switch{display:inline-flex;padding:5px;border-radius:999px;background:var(--sunk);border:1px solid var(--line);gap:4px;flex-wrap:wrap}
-.aud-switch button{border:0;background:transparent;padding:10px 16px;border-radius:999px;font:700 14.5px/1 var(--f-display);cursor:pointer;color:var(--muted);display:inline-flex;align-items:center;gap:8px;min-height:44px}
+.aud-switch button{border:0;background:transparent;padding:10px 16px;border-radius:999px;font:600 14.5px/1 var(--f-display);cursor:pointer;color:var(--muted);display:inline-flex;align-items:center;gap:8px;min-height:44px}
 .aud-switch button[aria-pressed="true"]{background:var(--surface);color:var(--fg);box-shadow:0 1px 3px rgba(0,0,0,.12)}
 .journey{display:grid;gap:0;margin-top:36px;counter-reset:j}
 @media (min-width:900px){.journey{grid-template-columns:repeat(3,1fr);row-gap:44px}}
@@ -209,7 +209,7 @@ section{position:relative}
 .j-bar i{display:block;height:100%;width:0;background:var(--gold);transition:width .7s cubic-bezier(.2,.7,.2,1)}
 .journey.on .j-bar i{width:100%}
 .j-step:nth-child(2) .j-bar i{transition-delay:.12s}.j-step:nth-child(3) .j-bar i{transition-delay:.24s}.j-step:nth-child(4) .j-bar i{transition-delay:.36s}.j-step:nth-child(5) .j-bar i{transition-delay:.48s}.j-step:nth-child(6) .j-bar i{transition-delay:.6s}
-.j-step h3{font-size:17px;line-height:1.25;font-weight:700}
+.j-step h3{font-size:17px;line-height:1.25;font-weight:600}
 .j-step p{color:var(--muted);font-size:15.5px;line-height:1.5}
 .j-step p[data-fade]{animation:fade .35s ease}
 @keyframes fade{from{opacity:0;transform:translateY(4px)}}
@@ -225,7 +225,7 @@ section{position:relative}
 .prod:hover{border-color:var(--gold);transform:translateY(-2px)}
 .prod-top{display:flex;justify-content:space-between;align-items:center;gap:8px}
 .prod-cat{font:600 12px/1 var(--f-mono);letter-spacing:.04em;color:var(--faint);text-transform:uppercase}
-.prod h3{font-size:21px;font-weight:800}
+.prod h3{font-size:21px;font-weight:600}
 .prod p{color:var(--muted);font-size:15.5px;line-height:1.5}
 .tags{display:flex;flex-wrap:wrap;gap:6px}
 .tag{font:600 12.5px/1 var(--f-body);padding:6px 9px;border-radius:6px;background:var(--gold-wash);color:var(--gold-text)}
@@ -247,7 +247,7 @@ section{position:relative}
 .sys div{position:relative;z-index:1}
 .flow-row{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:14px}
 .sys{display:grid;gap:8px}
-.sys div{background:var(--ink-2);border:1px solid var(--ink-line);border-radius:12px;padding:14px 16px;font:700 16px/1 var(--f-display);display:flex;justify-content:space-between;align-items:center;gap:8px}
+.sys div{background:var(--ink-2);border:1px solid var(--ink-line);border-radius:12px;padding:14px 16px;font:600 16px/1 var(--f-display);display:flex;justify-content:space-between;align-items:center;gap:8px}
 .sys div small{font:500 12px/1 var(--f-mono);color:var(--on-ink-muted)}
 .hub{width:116px;height:116px;border-radius:50%;border:1.5px solid var(--gold);display:grid;place-items:center;text-align:center;position:relative;background:radial-gradient(circle,rgba(212,180,92,.16),transparent 70%)}
 .hub svg{width:70px}
@@ -274,11 +274,11 @@ section{position:relative}
 .mock-bar span{margin-left:8px;font:500 12.5px/1 var(--f-mono);color:var(--faint);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .mock-body{padding:20px;display:grid;gap:16px}
 .mock-head{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap}
-.mock-head b{font:700 17px/1.2 var(--f-display)}
+.mock-head b{font:600 17px/1.2 var(--f-display)}
 .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
 .kpi{border:1px solid var(--line);border-radius:12px;padding:12px;display:grid;gap:4px;min-width:0}
 .kpi small{font-size:12.5px;color:var(--muted);line-height:1.25}
-.kpi b{font:800 21px/1 var(--f-display);letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.kpi b{font:600 21px/1 var(--f-display);letter-spacing:-.02em;font-variant-numeric:tabular-nums}
 .kpi em{font:600 12px/1 var(--f-mono);font-style:normal}
 .up{color:var(--ok)}
 .chart{width:100%;height:auto;display:block}
@@ -288,7 +288,7 @@ section{position:relative}
 .row + .row{border-top:1px solid var(--line)}
 .row .mono{font-size:12.5px;color:var(--faint)}
 .row span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.st{font:700 11px/1 var(--f-display);letter-spacing:.05em;text-transform:uppercase;padding:6px 8px;border-radius:6px;white-space:nowrap}
+.st{font:600 11px/1 var(--f-display);letter-spacing:.05em;text-transform:uppercase;padding:6px 8px;border-radius:6px;white-space:nowrap}
 .st-ok{color:var(--ok);background:var(--ok-wash)}
 .st-info{color:var(--info);background:var(--info-wash)}
 .st-warn{color:var(--warn);background:var(--warn-wash)}
@@ -297,11 +297,11 @@ section{position:relative}
 
 /* Quote */
 .quote{display:grid;gap:28px;max-width:900px}
-.quote blockquote{margin:0;font:700 clamp(26px,3.4vw,40px)/1.2 var(--f-display);letter-spacing:-.025em;text-wrap:balance}
+.quote blockquote{margin:0;font:600 clamp(26px,3.4vw,40px)/1.2 var(--f-display);letter-spacing:-.025em;text-wrap:balance}
 .stars{color:var(--gold);letter-spacing:4px;font-size:20px}
 .gstar{color:var(--gold);font-size:.7em;margin-left:4px;vertical-align:.25em}
 .grating{display:inline-flex;align-items:center;gap:10px;flex-wrap:wrap;padding:10px 14px;border:1px solid var(--line);border-radius:999px;background:var(--surface);font-size:15px;color:var(--muted);width:fit-content}
-.grating b{font:800 17px/1 var(--f-display);color:var(--fg)}
+.grating b{font:600 17px/1 var(--f-display);color:var(--fg)}
 .grating .stars{font-size:15px;letter-spacing:2px}
 .lines{display:grid;gap:0;margin-top:4px}
 .lines div{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 0;border-top:1px solid var(--line);flex-wrap:wrap}
@@ -318,7 +318,7 @@ section{position:relative}
 .promise-list div{display:grid;grid-template-columns:40px 1fr;gap:14px;padding:16px 0;border-top:1px solid var(--line)}
 .promise-list div:first-of-type{border-top:0}
 .promise-list svg{width:40px;height:40px;padding:9px;border-radius:12px;background:var(--gold-wash);color:var(--gold-text)}
-.promise-list b{display:block;font:700 16px/1.3 var(--f-display);margin-bottom:3px}
+.promise-list b{display:block;font:600 16px/1.3 var(--f-display);margin-bottom:3px}
 .promise-list span{color:var(--muted);font-size:15.5px;line-height:1.45}
 /* ===== Visual layer: journey scene, devices, photography ===== */
 .scene{position:relative;margin-top:clamp(40px,5vw,64px);overflow:hidden;border-top:1px solid rgba(212,180,92,.18);padding-top:12px}
@@ -378,10 +378,10 @@ section{position:relative}
 .pcard::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(10,10,12,.05) 20%,rgba(10,10,12,.55) 55%,rgba(10,10,12,.92))}
 .pcard:hover .pc-img{transform:scale(1.08);filter:saturate(.95) contrast(1.05) brightness(.9)}
 .pc-body{display:grid;gap:10px;padding:26px}
-.pc-tag{display:flex;align-items:center;gap:8px;font:700 12px/1 var(--f-display);letter-spacing:.12em;text-transform:uppercase;color:#d4b45c}
+.pc-tag{display:flex;align-items:center;gap:8px;font:600 12px/1 var(--f-display);letter-spacing:.12em;text-transform:uppercase;color:#d4b45c}
 .pcard .c-fleet{color:#f5f5f4}
-.pc-body b{font:800 clamp(21px,2vw,25px)/1.15 var(--f-display);letter-spacing:-.02em;text-wrap:balance}
-.pc-go{display:inline-flex;align-items:center;gap:8px;font:700 14.5px/1 var(--f-display);color:#d4b45c;margin-top:4px}
+.pc-body b{font:600 clamp(21px,2vw,25px)/1.15 var(--f-display);letter-spacing:-.02em;text-wrap:balance}
+.pc-go{display:inline-flex;align-items:center;gap:8px;font:600 14.5px/1 var(--f-display);color:#d4b45c;margin-top:4px}
 
 .hero-photo{position:absolute;inset:0 0 0 30%;background:var(--img) var(--pos,center)/cover no-repeat;filter:saturate(.75) brightness(.7) contrast(1.05);-webkit-mask-image:linear-gradient(90deg,transparent,#000 45%);mask-image:linear-gradient(90deg,transparent,#000 45%)}
 .hero-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(18,18,20,.8),transparent 40%)}
@@ -426,7 +426,7 @@ section{position:relative}
 .inhouse-list{list-style:none;margin:0;padding:0;display:grid;gap:12px}
 @media (min-width:640px){.inhouse-list{grid-template-columns:repeat(3,1fr)}}
 .inhouse-list li{display:grid;gap:6px;align-content:start;padding:22px;border:1px solid var(--ink-line);border-radius:16px;background:var(--ink-2)}
-.inhouse-list b{font:700 16px/1.25 var(--f-display);margin-top:8px}
+.inhouse-list b{font:600 16px/1.25 var(--f-display);margin-top:8px}
 .inhouse-list li > span:last-child{color:var(--on-ink-muted);font-size:15px;line-height:1.4}
 .ih-icon{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;background:rgba(212,180,92,.12);color:var(--gold-on-ink)}
 .ih-icon svg{width:22px;height:22px}
@@ -447,7 +447,7 @@ section{position:relative}
 .steps{list-style:none;padding:0;margin:0;display:grid;gap:14px;counter-reset:s}
 @media (min-width:860px){.steps.h{grid-template-columns:repeat(4,1fr)}}
 .steps li{counter-increment:s;display:grid;gap:8px;padding:22px;border-radius:var(--r);background:var(--surface);border:1px solid var(--line);align-content:start}
-.steps li::before{content:counter(s);width:34px;height:34px;border-radius:50%;background:var(--fg);color:var(--paper);display:grid;place-items:center;font:800 15px/1 var(--f-display)}
+.steps li::before{content:counter(s);width:34px;height:34px;border-radius:50%;background:var(--fg);color:var(--paper);display:grid;place-items:center;font:600 15px/1 var(--f-display)}
 .steps li p{color:var(--muted);font-size:15.5px}
 
 /* Brokers hero */
@@ -458,7 +458,7 @@ section{position:relative}
 .hero-ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px}
 .platforms{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px;align-items:center}
 .platforms small{color:var(--on-ink-muted);font-size:14px;margin-right:4px}
-.platforms span{font:700 14px/1 var(--f-display);padding:10px 14px;border:1px solid var(--ink-line);border-radius:10px;color:var(--on-ink)}
+.platforms span{font:600 14px/1 var(--f-display);padding:10px 14px;border:1px solid var(--ink-line);border-radius:10px;color:var(--on-ink)}
 
 /* Customers hero */
 .claim-hero{background:var(--surface);border-bottom:1px solid var(--line)}
@@ -466,7 +466,7 @@ section{position:relative}
 .callcard{background:var(--ink);color:var(--on-ink);border-radius:22px;padding:clamp(24px,3vw,36px);position:relative;overflow:hidden;display:grid;gap:18px}
 .callcard .waves{opacity:.3}
 .callcard > *{position:relative}
-.callcard .label{font:700 12.5px/1 var(--f-display);letter-spacing:.14em;text-transform:uppercase;color:var(--gold-on-ink)}
+.callcard .label{font:600 12.5px/1 var(--f-display);letter-spacing:.14em;text-transform:uppercase;color:var(--gold-on-ink)}
 .bignum{font:600 clamp(32px,4.4vw,48px)/1 var(--f-mono);letter-spacing:-.02em;color:var(--on-ink);text-decoration:none;display:block;user-select:all}
 .callcard .row2{display:flex;gap:10px;flex-wrap:wrap}
 .copy{background:transparent;border:1.5px solid var(--ink-line);color:var(--on-ink);border-radius:999px;min-height:44px;padding:0 16px;font:600 14px/1 var(--f-display);cursor:pointer;display:inline-flex;gap:8px;align-items:center}
@@ -526,14 +526,14 @@ section{position:relative}
 input[type=range]{width:100%;accent-color:var(--gold);min-height:28px}
 .calc-out{background:var(--ink);color:var(--on-ink);border-radius:20px;padding:clamp(24px,3vw,36px);display:grid;gap:18px;align-content:space-between;position:relative;overflow:hidden}
 .calc-out > *{position:relative}
-.calc-out .big{font:800 clamp(40px,6vw,64px)/1 var(--f-display);letter-spacing:-.04em;font-variant-numeric:tabular-nums}
+.calc-out .big{font:600 clamp(40px,6vw,64px)/1 var(--f-display);letter-spacing:-.04em;font-variant-numeric:tabular-nums}
 .calc-out .sub{color:var(--on-ink-muted)}
 .calc-out .per{display:grid;grid-template-columns:1fr 1fr;gap:12px;border-top:1px solid var(--ink-line);padding-top:18px}
-.calc-out .per b{font:700 24px/1.1 var(--f-display);display:block;font-variant-numeric:tabular-nums;color:var(--gold-on-ink)}
+.calc-out .per b{font:600 24px/1.1 var(--f-display);display:block;font-variant-numeric:tabular-nums;color:var(--gold-on-ink)}
 .calc-out .per small{color:var(--on-ink-muted);font-size:14px}
 .fleet-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;max-width:520px;width:100%;justify-self:center}
 .fs{background:var(--ink-2);border:1px solid var(--ink-line);border-radius:16px;padding:22px;display:grid;gap:6px}
-.fs b{font:800 clamp(34px,4vw,46px)/1 var(--f-display);letter-spacing:-.04em;color:var(--on-ink)}
+.fs b{font:600 clamp(34px,4vw,46px)/1 var(--f-display);letter-spacing:-.04em;color:var(--on-ink)}
 .fs b sup{font-size:.45em;color:var(--gold-on-ink);vertical-align:top;margin-left:2px;letter-spacing:0}
 .fs small{color:var(--on-ink-muted);font-size:15px;line-height:1.35}
 .fs.wide{grid-column:span 2;display:flex;align-items:center;justify-content:space-between;gap:16px}
@@ -563,7 +563,7 @@ footer{border-top:1px solid var(--ink-line)}
 @media (min-width:960px){.f-top{grid-template-columns:1.3fr repeat(4,1fr)}}
 .f-brand svg{width:170px;--logo-k:#f4f4f5}
 .f-brand p{margin-top:16px;max-width:34ch;line-height:1.55}
-.f-col h4{font:700 13px/1 var(--f-display);letter-spacing:.12em;text-transform:uppercase;color:var(--on-ink);margin-bottom:16px}
+.f-col h4{font:600 13px/1 var(--f-display);letter-spacing:.12em;text-transform:uppercase;color:var(--on-ink);margin-bottom:16px}
 .f-col ul{list-style:none;padding:0;margin:0;display:grid;gap:10px}
 .f-col a{text-decoration:none;cursor:pointer}
 .f-col a:hover{color:var(--gold-on-ink)}
@@ -580,7 +580,7 @@ dialog.claim::backdrop{background:rgba(8,8,10,.6);backdrop-filter:blur(4px)}
 .opts{display:grid;gap:8px}
 .opt{display:grid;grid-template-columns:44px 1fr auto;gap:14px;align-items:center;padding:14px 16px;border:1.5px solid var(--line);border-radius:14px;background:var(--surface);cursor:pointer;text-align:left}
 .opt:hover,.opt[aria-expanded="true"]{border-color:var(--gold)}
-.opt b{font:700 16px/1.2 var(--f-display);display:block}
+.opt b{font:600 16px/1.2 var(--f-display);display:block}
 .opt small{color:var(--muted);font-size:14.5px;line-height:1.3;display:block;margin-top:2px}
 .opt-detail{padding:16px 18px;border-radius:14px;background:var(--sunk);display:grid;gap:12px}
 .opt-detail .mono{font-size:26px;font-weight:600}
@@ -603,9 +603,9 @@ main[data-view][hidden]{display:none}
   --ink:#262626; --ink-2:rgba(255,255,255,.05); --ink-line:rgba(255,255,255,.11); --on-ink:#ededf1; --on-ink-muted:#a9a9b5; --gold-on-ink:#d9bd6a;
   --ok:#0f7a55; --ok-wash:rgba(16,185,129,.12); --info:#1d55c9; --info-wash:rgba(59,130,246,.12); --warn:#a34a06; --warn-wash:rgba(245,158,11,.12);
   --logo-k:#1b1b1b;
-  --f-display:"Hanken Grotesk","Segoe UI",-apple-system,BlinkMacSystemFont,Roboto,Arial,sans-serif;
-  --f-body:"Hanken Grotesk","Segoe UI",-apple-system,BlinkMacSystemFont,Roboto,Arial,sans-serif;
-  --f-mono:"Hanken Grotesk","Segoe UI",-apple-system,BlinkMacSystemFont,Roboto,Arial,sans-serif;
+  --f-display:"Poppins","Segoe UI",-apple-system,BlinkMacSystemFont,Roboto,Arial,sans-serif;
+  --f-body:"Poppins","Segoe UI",-apple-system,BlinkMacSystemFont,Roboto,Arial,sans-serif;
+  --f-mono:"Poppins","Segoe UI",-apple-system,BlinkMacSystemFont,Roboto,Arial,sans-serif;
   --r:12px; --r-sm:8px;
   --shadow:0 1px 2px rgba(20,20,20,.04),0 16px 40px -20px rgba(20,20,20,.18);
   --max:1180px;
@@ -3269,6 +3269,11 @@ main > section.page-hero.lite.text-hero{padding-bottom:clamp(40px,5vw,72px)}
 .prose strong{font-weight:600}
 .prose .form{margin-bottom:8px}
 .contact-card{margin:8px 0 24px;padding:24px 28px;border:1px solid transparent;border-radius:16px;background:var(--sunk);line-height:1.75}
+/* "call or email us" panels that stand in for the forms until they're connected; same box as a form */
+.reach{align-content:start}
+.reach .reach-num{font-size:clamp(24px,3vw,32px);font-weight:600;letter-spacing:-.01em;margin-top:6px}
+.reach .btn{justify-self:start}
+.reach p a{color:inherit;text-decoration:underline;text-underline-offset:3px}
 .draft-note{margin:0 0 48px;max-width:820px}
 .draft-note p{font-size:15.5px;line-height:1.55}
 .prose ol li::marker{color:var(--gold-text);font-weight:600}
@@ -3334,3 +3339,225 @@ html .a-card{box-shadow:0 20px 40px -18px rgba(0,0,0,.75),inset 0 1px 0 rgba(255
 html .a-toast.t1{box-shadow:0 18px 36px -14px rgba(0,0,0,.7),0 0 40px rgba(236,212,140,.35)}
 html .a-orb{box-shadow:0 0 0 10px rgba(236,212,140,.14),0 0 44px rgba(236,212,140,.6)}
 html .frame .app,html[data-hero] .frame .app{box-shadow:0 -1px 0 rgba(255,255,255,.35),0 20px 50px -16px rgba(50,35,0,.6)}
+
+/* ===== SCREEN-SIZE PASS (23 Nov): tablets, small phones, big monitors, 44px tap targets ===== */
+/* big monitors: the top bar lines up with the page's content column instead of running edge to edge */
+header.site .wrap{max-width:var(--max)}
+/* home on tablets: "Who we look after" three across instead of one huge card per row */
+@media (min-width:600px){.spot{grid-template-columns:repeat(3,minmax(0,1fr))}}
+/* home on tablets: "What you can expect" tiles sit picture-left, words-right instead of one huge tile per row */
+@media (min-width:600px) and (max-width:859px){
+  .tiles3 .ptile{grid-template-columns:minmax(0,3fr) minmax(0,2fr);grid-template-rows:1fr 1fr;column-gap:24px;row-gap:4px}
+  .tiles3 .ptile .art{grid-row:1 / span 2;margin-bottom:0}
+  .tiles3 .ptile > b{align-self:end}
+  .tiles3 .ptile > span{align-self:start}
+}
+/* any row of exactly three cards (e.g. Fleet "Where we save fleets money"): three across on tablets, no lone card */
+@media (min-width:600px){.cards3:has(> :nth-child(3):last-child){grid-template-columns:repeat(3,minmax(0,1fr))}}
+/* phones: the picture tiles above each card are shorter, so pages are less of a scroll */
+@media (max-width:599px){.cards3 .card > .icon{aspect-ratio:16/9}}
+/* phones: the claim tracker loses a layer of padding, and each step's time sits under its text */
+@media (max-width:520px){
+  /* !important: the panel's look is set by several very specific earlier layers; this phone-only trim must win over all of them */
+  #journey .panel.claim .panel-bar{padding-inline:12px!important}
+  #journey .panel.claim .cl-box,#journey .panel.claim .tk-handler{margin-inline:12px!important}
+  #journey .panel.claim .cl-box{padding-inline:12px!important}
+  #journey .panel.claim .tk-handler{padding-inline:16px!important}
+  .cl-feed li{grid-template-columns:22px minmax(0,1fr);column-gap:10px}
+  .cl-feed time{grid-column:2;padding-top:0;margin-top:-4px}
+  .cl-feed li.next time{display:none}
+}
+/* fleet road scene on phones and small tablets: the four tabs sit two by two instead of running off the edge */
+@media (max-width:699px){
+  html:root .fsim.fsim-road .fs-tabs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));width:100%;overflow:visible}
+  html:root .fsim.fsim-road .fs-tabs button{min-height:48px;padding:0 12px;justify-content:center}
+}
+/* Poppins is wider: on phones each tab shows the vehicle on top and the cover underneath, so "Car / Motoring defence" fits */
+@media (max-width:480px){
+  html:root .fsim.fsim-road .fs-tabs button{flex-direction:column;gap:1px;padding:6px 6px;line-height:1.2;min-height:56px;text-align:center}
+  html:root .fsim.fsim-road .fs-tabs button > *{white-space:normal}
+}
+/* tap targets: at least 44px tall */
+.head-actions .btn-gold{min-height:44px}
+@media (max-width:520px){.head-actions .btn-gold{min-height:44px}}
+.aud-switch button{min-height:44px}
+.chip{min-height:44px}
+a.brand{padding-block:9px;margin-block:-9px}
+.f-logo{padding-block:6px;margin-block:-6px}
+.f-lines li{padding-block:0}
+.f-lines a.tel,.f-lines a.f-mail{min-height:44px;display:flex;align-items:center}
+.f-contact a{display:inline-flex;align-items:center;min-height:44px}
+footer .f-contact{row-gap:0}
+.bignum{padding-block:5px;margin-block:-5px}
+.routes a.mono{display:inline-flex;align-items:center;min-height:44px;margin-block:-8px}
+input[type=range]{min-height:44px;margin-block:-8px}
+main a.mono{padding-block:5px;margin-block:-5px}
+.legal-aside .card a.tel{padding-block:7px;margin-block:-7px}
+.rv-bars button{height:44px;margin-block:-8px}
+.f-cols a{min-width:44px}
+/* footer link row: bigger tap area without moving the words */
+.f-nav a{padding-inline:6px;margin-inline:-6px}
+
+/* ===== PHONE PASS 2 (23 Nov): phones and small tablets match the desktop pictures ===== */
+/* home: laptop and phone side by side on small screens too, in desktop proportions (corners scale with the phone) */
+@media (max-width:759px){
+  .hero-devs #heroDevs{padding-right:24%;display:block}
+  #heroDevs .lp{width:100%}
+  #heroDevs .ph{position:absolute;right:0;bottom:0;width:28%;margin-top:0}
+  #heroDevs .fake-cursor svg{scale:.6}
+}
+/* home phone picture, every size: everything is a share of the phone's own width, so it looks the same large or small.
+   Silver edge 0.8% wide, black band 2.4%; outer corners 15%, black band 15 - 0.8 = 14.2%, screen 14.2 - 2.4 = 11.8%,
+   so the curves stay parallel. (7.18% is the same 15% corner measured against the phone's height.) */
+#heroDevs .ph{container-type:inline-size;padding:0;border-radius:15% / 7.18%}
+#heroDevs .ph-glass{margin:.8cqw;padding:2.4cqw;border-radius:14.2cqw}
+#heroDevs .ph-view{margin:0;border-radius:11.8cqw}
+/* brokers and fleet: whenever there isn't room for the full desktop dashboard (any screen size), it keeps the desktop
+   layout and is shrunk to fit. The script adds .fz-on and sets --fz only when the space is narrower than the design. */
+.frame > .app.fz-on{width:1136px;max-width:none;grid-template-columns:210px minmax(0,1fr);zoom:var(--fz,1)}
+.frame > .app.fz-on .app-side{display:grid}
+.frame > .app.fz-on .app-main{padding:20px}
+.frame > .app.fz-on .app-main:not(.one){grid-template-columns:1.25fr 1fr}
+.tile-gold > .tile-mock.fz-on{width:524px;max-width:none;zoom:var(--fz,1)}
+:is(.frame > .app,.tile-gold > .tile-mock).fz-on .kpis{grid-template-columns:repeat(3,1fr)}
+:is(.frame > .app,.tile-gold > .tile-mock).fz-on .kpis .kpi:last-child{grid-column:auto}
+/* phone-number rows: a long label wraps, the number stays on the right */
+.route-lines > div,.pb-lines > div{flex-wrap:nowrap;column-gap:16px}
+.route-lines > div > :first-child,.pb-lines > div > :first-child{flex:1 1 auto;min-width:0}
+.route-lines > div > :last-child,.pb-lines > div > :last-child{flex:none;white-space:nowrap}
+/* the dark breakdown box uses big numbers: on phones each number sits under its label, the same in every row */
+@media (max-width:480px){.pb-lines > div{flex-direction:column;align-items:flex-start;row-gap:2px}}
+/* phones: text blocks beside pictures line up with every other section's left edge */
+@media (max-width:640px){.tabs-text,.pair-text,.pair-text.spread{padding-left:0}}
+/* brokers top: "Transact by EDI in" on its own line so the three logos share one row */
+@media (max-width:520px){.platforms > small{flex-basis:100%}}
+
+/* ===== ONE WIDTH FOR EVERY SECTION (24 Nov) =====
+   Every section lines up with the laptop-and-phone card at the top of the home page: up to 1600px wide, with
+   clamp(32px,5vw,96px) of space at each side. The dark bands and the photo band become rounded cards with exactly
+   those edges, nothing runs off the side of the screen, and the footer is the only thing that runs full width.
+   (!important: several earlier layers and some inline styles set narrower widths; this rule must beat all of them.)
+   Phones are unchanged. */
+@media (min-width:720px){
+  :root{--edge:clamp(32px,5vw,96px)}
+  html:root main > section > .wrap,html:root header.site .wrap{max-width:1600px!important;padding-inline:var(--edge)!important}
+  /* dark bands and the photo band: a card whose edges match the hero card; its words get their own inner space */
+  html:root main > section.ink{margin-inline:max(var(--edge),calc((100% - 1600px) / 2 + var(--edge)))!important;border-radius:var(--card-r);clip-path:none!important;overflow:hidden}
+  html:root main > section.ink:not(.photo-band) > .wrap{padding-inline:clamp(28px,4vw,72px)!important}
+  /* the same white space above and below a dark card as between any two sections */
+  html:root main > section.ink{margin-top:0!important;margin-bottom:var(--sec-gap)!important}
+  /* the two panels that used to run off the screen edge stay inside it */
+  html:root main #journey .panel.claim{margin-right:0!important}
+  html:root main #edi .pair > .tile{margin-left:0!important}
+}
+
+/* ===== FOOTER: curved top that widens and slides into place (24 Nov) =====
+   As the footer comes up the screen it starts slightly inset with rounder shoulders and widens to full width, and
+   its contents rise into place. --p (0 to 1) is set by the "Header" script. */
+html.bgsw footer.sheet{clip-path:inset(0 calc((1 - var(--p,1)) * 5vw) 0 calc((1 - var(--p,1)) * 5vw) round calc(var(--R) + (1 - var(--p,1)) * 12px) calc(var(--R) + (1 - var(--p,1)) * 12px) 0 0)}
+html.bgsw footer.sheet > .wrap{transform:translateY(calc((1 - var(--p,1)) * 56px));opacity:calc(.25 + var(--p,1) * .75)}
+@media (max-width:640px){html.bgsw footer.sheet{clip-path:inset(0 calc((1 - var(--p,1)) * 3vw) 0 calc((1 - var(--p,1)) * 3vw) round var(--R) var(--R) 0 0)}}
+
+/* ===== NUMBER STRIPS CENTRED (24 Nov) =====
+   Home "2011 / 400+ / 4.4 / 797920" and brokers "0 / 9 / Any / 400+": each number and its label centred in its column,
+   with even space either side so the centring is true. */
+html:root .t-item,html:root .t-item:first-child{text-align:center;justify-items:center;padding-inline:clamp(12px,2vw,28px)}
+@media (max-width:859px){html:root .t-item:nth-child(3){padding-inline:clamp(12px,2vw,28px)}}
+html:root .page-hero .fleet-stats:not(.fsim-facts) .fs{text-align:center;justify-items:center;padding-inline:10px}
+
+/* ===== EVERYTHING SLIDES UP (24 Nov) =====
+   Things that used to come in from the side now rise into place instead. (A later @keyframes with the same name
+   replaces the earlier one, so the demo rows below keep their timing and colours and only change direction.)
+   Left as they were on purpose: the slow pan on background photos, the phone menu's sideways sub-menus, and the
+   vehicles driving along the fleet road scene. */
+/* home laptop-and-phone card: the phone rises with the laptop instead of swinging in from the right */
+.js #heroDevs .ph{translate:0 48px;rotate:0deg}
+/* EDI demo: the "no double keying" style labels rise in */
+.pipe.run .pipe-link b{transform:translateY(calc(-50% + 10px)) scale(.9)}
+/* rows and times appearing in the claim, fleet and dashboard demos */
+@keyframes rowIn{from{transform:translateY(10px);background:rgba(217,189,106,.16)}to{transform:none;background:rgba(255,255,255,.06)}}
+@keyframes rowInLight{from{transform:translateY(10px);background:rgba(201,166,70,.32)}to{transform:none;background:rgba(201,166,70,.13)}}
+@keyframes rowInSpot{from{transform:translateY(10px);background:rgba(230,205,131,.34)}to{transform:none;background:rgba(230,205,131,.15)}}
+@keyframes timeIn{from{opacity:0;transform:translateY(8px)}}
+@keyframes sideIn{from{opacity:0;transform:translateY(12px)}}
+@keyframes rowSlide{from{opacity:0;transform:translateY(18px)}}
+
+/* ===== LOGO INTRO (24 Nov) =====
+   While the page loads, the logo sits in the middle of a cover in the page colour with a gold-white shimmer running
+   across it. Once the page has loaded (at least about a second, at most 3), the logo glides and shrinks into its place
+   in the top bar while the cover stays up; only once it has landed does the cover fade and the page (hero first)
+   appear, with its own slide-up animations. The head script switches it on
+   (html.intro-on) on the first page of a visit or a refresh. */
+#intro{display:none}
+html.intro-on #intro{display:grid;place-items:center;position:fixed;inset:0;z-index:9999;background-color:var(--paper)}
+/* the cover stays solid while the logo glides, and only fades once the logo has landed */
+html.intro-on #intro.fade{background-color:transparent;transition:background-color .45s ease-out}
+#intro .intro-logo{width:clamp(200px,30vw,340px);height:auto;display:block;transform-origin:0 0;transition:transform .75s cubic-bezier(.65,0,.35,1)}
+#intro .intro-shine{animation:introShine 1.2s cubic-bezier(.45,0,.25,1) infinite}
+@keyframes introShine{from{transform:translateX(-450px) skewX(-18deg)}to{transform:translateX(1750px) skewX(-18deg)}}
+#intro.out .intro-shine{animation:none;opacity:0}
+/* the top-bar logo stays hidden until the moving logo lands exactly on it */
+html.intro-on:not(.intro-reveal) header.site .brand svg{visibility:hidden}
+/* the page's own entrance animations wait until the logo has landed */
+html.intro-on:not(.intro-reveal) .su.su-in{opacity:0;translate:0 48px}
+html.intro-on:not(.intro-reveal) #heroDevs.in .lp{opacity:0;transform:translateY(48px) scale(.97)}
+html.intro-on:not(.intro-reveal) #heroDevs.in .ph{opacity:0;translate:0 48px}
+
+/* ===== ONE CORNER ROUNDING FOR EVERY CARD (24 Nov) =====
+   Every card on the site uses the same 16px corners as the laptop-and-phone card at the top of the home page,
+   including the small cards inside the example dashboards. Round buttons, pills, icons in circles and the
+   laptop and phone outlines keep their own shapes. (!important: older layers set 8, 10, 12, 18 and 55px.) */
+:root{--card-r:16px}
+html:root :is(.card,.prod,.tile,.frame,.panel,.rv-card,.photo-band,.form,.contact-card,.notice,.cl-box,.tk-handler,.spot-card,.spot-img,.x-card,.mock,.kpi,.rows,.fs,.route,.calc-out,.fsim-shell,.pipe-card,.promise-list,.review){border-radius:var(--card-r)!important}
+/* not cards: the numbered steps, the FAQ questions and the "Run From Bolton" list are plain divider lines, so they stay square-ended */
+/* customers "Who We Are" (Your broker, BDElite, You): an older layer had hidden its dividing lines and greyed out the
+   arrows, so it looked broken. It now matches the numbered steps above it: a straight line over each item, and a gold
+   arrow between them, level with the headings. */
+html:root main .chain > .card{background:none!important;border:0!important;border-top:1px solid var(--fg)!important;border-radius:0!important;padding:18px 0 0!important}
+:root[data-theme="dark"] main .chain > .card{border-top-color:var(--line)!important}
+html:root main .chain .joiner{color:var(--gold)}
+@media (min-width:860px){html:root main .chain .joiner{place-items:start center;padding-top:18px}}
+
+/* ===== WHITE SPACE BETWEEN SECTIONS (24 Nov) =====
+   Plenty of space between sections on every screen; it grows with the window's height. */
+:root{--sec-gap:clamp(128px,26svh,340px)}
+
+/* ===== EVERY SECTION FITS THE SCREEN HEIGHT (24 Nov) =====
+   The space between sections, and inside the dark cards, grows and shrinks with the window's height as well as
+   its width: roomy on a big monitor, tighter on a short laptop screen, so no section runs past the bottom of the
+   window. The script "Every section fits the screen height" does the rest. FAQ and policy pages are left as they are. */
+html:root main:not(:is([data-view="faq"],[data-view="key-recovery"],[data-view="accessibility"],[data-view="careers"],[data-view="complaints-procedure"],[data-view="privacy-statement"],[data-view="cookies"],[data-view="fca-authorisation"])) > section:not(.ink){padding-bottom:var(--sec-gap)!important}
+@media (min-width:720px){
+  html:root main > section.ink:not(.photo-band){padding-top:clamp(48px,11svh,120px)!important;padding-bottom:clamp(48px,11svh,120px)!important}
+  /* broker portal and fleet portal pictures: never taller than about two thirds of the window */
+  html:root .tile.tall{min-height:min(clamp(380px,44vw,620px),62svh)}
+  /* customers page reviews: the dark card holds a heading and a photo, so it keeps a little less inner space */
+  html:root main > section#cust-reviews{padding-block:clamp(40px,8svh,120px)!important}
+  /* "What you can expect" pictures and the review photo never take more than about half the window's height */
+  html:root .tiles3 .ptile .art{width:100%;max-height:42svh}
+  html:root .rv-card{min-height:min(clamp(360px,42vw,580px),clamp(200px,34svh,580px))}
+  /* the "Google review" label sits in the top corner: keep the quote clear of it however short the card gets */
+  html:root .rv-card{padding-top:calc(clamp(24px,3vw,36px) + 56px)}
+  /* a dashboard picture shrunk to fit the height sits in the middle of its card */
+  html:root :is(.frame > .app,.tile-gold > .tile-mock).fz-on{margin-inline:auto}
+}
+/* product suite: smaller cards, five across (5 + 4) instead of three rows of three */
+@media (min-width:960px){html:root .products{grid-template-columns:repeat(5,minmax(0,1fr))}}
+/* "How a claim works" on short screens: a tighter claim panel and one line per event */
+@media (min-width:720px) and (max-height:820px),(max-width:719px) and (max-height:900px){
+  html:root main #journey .panel.claim{padding-top:16px!important;padding-bottom:64px!important}   /* 64px underneath: room for the card shadow and the soft background fade to finish, so nothing is cut off in a hard line */
+  html:root main #journey .cl-feed small,html:root main #journey .panel.claim .tk-foot{display:none}
+  html:root main #journey .panel.claim .cl-box + .tk-handler + .cl-box{margin-top:12px}
+}
+@media (min-width:720px) and (max-height:660px){html:root main #journey .panel.claim .panel-bar{display:none}html:root main #journey .panel.claim{padding-bottom:44px!important}}
+/* fleet road scene on short phones: one line per event, so the whole scene fits the screen */
+@media (max-width:719px) and (max-height:700px){html:root .fsim-card li small{display:none}}
+/* the soft cards behind the fleet road scene, the calculator and the customers-page claim lines used to stick out
+   past the section edges; on screens 720px and wider they now sit exactly on the edges, with the content inside them */
+html:root :is(.fsim,.calc,main .routes)::before{border-radius:var(--card-r)}
+@media (min-width:720px){
+  html:root :is(.fsim,.calc,main .routes){padding:clamp(24px,3vw,48px)}
+  html:root :is(.fsim,.calc,main .routes)::before{inset:0}
+}
+/* product suite on short screens: slimmer cards without the feature tags, so both rows fit the window */
+@media (min-width:720px) and (max-height:760px){html:root .prod{padding:20px}html:root .prod .tags{display:none}}

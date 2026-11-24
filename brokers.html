@@ -12,10 +12,10 @@
 <meta property="og:description" content="Legal expenses and add-on products that quote and bind by EDI in Acturis, Open GI and SSP, backed by total claims management from our Bolton team.">
 <meta property="og:url" content="https://olisabdelite.github.io/bdelite-website-preview/brokers">
 <meta property="og:image" content="https://olisabdelite.github.io/bdelite-website-preview/img/fleet.jpg">
-<script>(function(){var k="bde-theme",v=null;try{v=localStorage.getItem(k)}catch(e){}if(v!=="light"&&v!=="dark")v=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";document.documentElement.dataset.theme=v;})();</script>
+<script>(function(){var k="bde-theme",v=null;try{v=localStorage.getItem(k)}catch(e){}if(v!=="light"&&v!=="dark")v=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";document.documentElement.dataset.theme=v;var d=document.documentElement,q=new URLSearchParams(location.search),h=(q.get("hero")||"b").toLowerCase(),g=(q.get("stage")||"c").toLowerCase();d.classList.add("js");var zf=function(){var z=Math.min(1.5,Math.max(1,innerWidth/1536));d.style.zoom=z>1.005?z.toFixed(3):"";};zf();addEventListener("resize",zf);if(h==="a"||h==="b"||h==="c")d.dataset.hero=h;if(g==="a"||g==="b"||g==="c")d.dataset.stage=g;var t0=Date.now(),seen=null,nav=null;try{seen=sessionStorage.getItem("bde-intro");sessionStorage.setItem("bde-intro","1")}catch(e){}try{nav=performance.getEntriesByType("navigation")[0]}catch(e){}if(!seen||(nav&&nav.type==="reload")){d.classList.add("intro-on");var calm=matchMedia("(prefers-reduced-motion: reduce)").matches,done=false;var go=function(){if(done)return;done=true;setTimeout(function(){var c=document.getElementById("intro");if(!c){d.classList.remove("intro-on");return;}var f=c.querySelector(".intro-logo"),t=document.querySelector("header.site .brand svg");if(!calm&&f&&t){var a=f.getBoundingClientRect(),b=t.getBoundingClientRect();var zz=parseFloat(d.style.zoom)||1;if(b.width>0)f.style.transform="translate("+(b.left-a.left)/zz+"px,"+(b.top-a.top)/zz+"px) scale("+(b.width/a.width)+")";}c.classList.add("out");setTimeout(function(){d.classList.add("intro-reveal");c.classList.add("fade");setTimeout(function(){d.classList.remove("intro-on","intro-reveal");c.parentNode&&c.parentNode.removeChild(c);},calm?0:480);},calm?0:780);},Math.max(0,1100-(Date.now()-t0)));};addEventListener("load",go);setTimeout(go,3000);}})();</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap">
 <link rel="stylesheet" href="site.css">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"InsuranceAgency","name":"BDElite","legalName":"BDElite Ltd","url":"https://olisabdelite.github.io/bdelite-website-preview/","email":"bdelite.admin@bdelite.co.uk","telephone":"+44 1204 567 500","foundingDate":"2011","vatID":"GB895086868","address":{"@type":"PostalAddress","streetAddress":"Atria, Spa Road","addressLocality":"Bolton","postalCode":"BL1 4AG","addressCountry":"GB"},"sameAs":["https://www.linkedin.com/company/bdelite","https://www.facebook.com/BDEliteTCM"],"contactPoint":[{"@type":"ContactPoint","contactType":"claims","telephone":"+44 1204 567 567","areaServed":"GB"},{"@type":"ContactPoint","contactType":"emergency","name":"Breakdown","telephone":"+44 1204 567 497"},{"@type":"ContactPoint","contactType":"emergency","name":"Home emergency","telephone":"+44 1204 567 499"},{"@type":"ContactPoint","contactType":"sales","telephone":"+44 1204 567 500"}]}</script>
 </head>
@@ -99,6 +99,17 @@
 </svg>
 
 
+<div id="intro" aria-hidden="true">
+  <svg class="intro-logo" viewBox="0 0 1495 372">
+    <defs>
+      <filter id="introWhite"><feColorMatrix type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1 0"/></filter>
+      <mask id="introMask" maskUnits="userSpaceOnUse" x="-100" y="-100" width="1700" height="600"><use href="#logo" filter="url(#introWhite)"/></mask>
+      <linearGradient id="introShine" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff8e1" stop-opacity="0"/><stop offset=".5" stop-color="#fff8e1" stop-opacity=".95"/><stop offset="1" stop-color="#fff8e1" stop-opacity="0"/></linearGradient>
+    </defs>
+    <use href="#logo"/>
+    <g mask="url(#introMask)"><rect class="intro-shine" x="0" y="-60" width="300" height="500" fill="url(#introShine)"/></g>
+  </svg>
+</div>
 <header class="site">
   <div class="wrap">
     <a class="brand" href="./" data-go="home" aria-label="BDElite home">
@@ -152,7 +163,7 @@
       <a class="mm-lead" href="customers" data-go="customers"><b>For policyholders <svg aria-hidden="true"><use href="#i-arrow"/></svg></b><small>The team behind the cover your broker arranged.</small></a>
       <p class="mm-label">Explore</p>
       <ul class="mm-links">
-        <li><a href="customers#claimform" data-go="customers" data-scroll="#claimform">Start a claim online</a></li>
+        <li><a href="customers#claimform" data-go="customers" data-scroll="#claimform">Make a claim</a></li>
         <li><a href="customers#claim-path" data-go="customers" data-scroll="#claim-path">What happens after you call</a></li>
         <li><a href="customers#covered" data-go="customers" data-scroll="#covered">What you may be covered for</a></li>
         <li><a href="customers#faq" data-go="customers" data-scroll="#faq">Good to know</a></li>
@@ -187,8 +198,7 @@
   <section class="page-hero lite">
     <div class="wrap hero-grid">
       <div>
-        <p class="eyebrow"><svg class="chev c-broker" aria-hidden="true"><use href="#chev"/></svg>For insurance brokers</p>
-        <h1 class="h-xl" style="margin-top:20px">Add-ons for <em class="gold" style="font-style:normal">insurance brokers.</em></h1>
+        <h1 class="h-xl">Add-Ons for <em class="gold" style="font-style:normal">Insurance Brokers.</em></h1>
         <p class="lede" style="margin-top:22px">Legal expenses and add-ons that quote and bind in your own system, with every claim handled by our team.</p>
         <div class="hero-ctas"><a class="btn btn-gold" href="#partner" data-scroll="#partner">Become a partner <svg class="arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a><a class="btn btn-line" href="#bportal" data-scroll="#bportal">Broker portal</a></div>
         <div class="platforms"><small>Transact by EDI in</small><span><img class="plogo" src="img/logo-acturis-colour.png" alt="Acturis"></span><span><img class="plogo" src="img/logo-opengi-colour.svg" alt="Open GI"></span><span><img class="plogo" src="img/logo-ssp-colour.png" alt="SSP"></span></div>
@@ -205,7 +215,7 @@
 
   <section class="band">
     <div class="wrap">
-      <div class="sec-head"><p class="eyebrow">For partners</p><h2 class="h-l">What partners get</h2></div>
+      <div class="sec-head"><h2 class="h-l">What Partners Get</h2></div>
       <div class="cards3">
         <div class="card"><div class="icon"><svg><use href="#i-plug"/></svg></div><h3 class="h-s">Sold inside your workflow</h3><p>EDI with Acturis, Open GI and SSP. Add-ons appear at quote, so they get sold.</p></div>
         <div class="card"><div class="icon"><svg><use href="#i-pound"/></svg></div><h3 class="h-s">Commission you can see</h3><p>Sales, quotes, conversion and commission in the broker portal, updated as business is written.</p></div>
@@ -218,8 +228,7 @@
   <section class="band">
     <div class="wrap split">
       <div>
-        <p class="eyebrow">Fleet</p>
-        <h2 class="h-l" style="margin-top:16px">Fleet cover for your commercial clients</h2>
+        <h2 class="h-l">Fleet Cover for Your Commercial Clients</h2>
         <p class="lede" style="margin-top:18px">Legal expenses, claims management and breakdown for cars, vans and HGVs up to 44 tonnes, on one scheme.</p>
         <div class="hero-ctas"><a class="btn btn-dark" href="fleet" data-go="fleet">See what fleet clients get <svg class="arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a></div>
       </div>
@@ -238,8 +247,7 @@
       <div class="tile tile-gold tall"><div class="tile-mock" data-mock="clients"></div></div>
       <div class="pair-text spread">
         <div>
-          <p class="eyebrow">Broker portal</p>
-          <h2 class="h-l">The broker portal</h2>
+          <h2 class="h-l">The Broker Portal</h2>
           <p class="lede">Sales, quotes, conversion and commission, updated as business is written.</p>
           <div class="tech-list">
             <a href="https://brokerportal.bdelite.co.uk/" target="_blank" rel="noopener">Broker log in <svg class="arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
@@ -252,7 +260,7 @@
 
   <section class="band" id="suite">
     <div class="wrap">
-      <div class="sec-head"><p class="eyebrow">The product suite</p><h2 class="h-l">What you can offer</h2></div>
+      <div class="sec-head"><h2 class="h-l">What You Can Offer</h2></div>
       <div class="products" data-products></div>
     </div>
   </section>
@@ -262,26 +270,19 @@
     <div class="wrap split" style="align-items:start">
       <div>
         <p class="eyebrow">Become a partner</p>
-        <h2 class="h-l" style="margin-top:16px">Request a callback</h2>
-        <p class="lede" style="margin-top:18px">Tell us about your brokerage and we'll call you back. Sales support: <span class="mono" style="color:var(--on-ink);font-weight:600">01204 567 500</span>.</p>
+        <h2 class="h-l" style="margin-top:16px">Talk to Our Sales Team</h2>
+        <p class="lede" style="margin-top:18px">Call or email our Bolton sales team about your brokerage.</p>
         <ol class="steps" style="margin-top:32px">
           <li><b>We call you back</b><p>A short conversation about your book and your platform.</p></li>
           <li><b>We set up EDI</b><p>Products switched on inside Acturis, Open GI or SSP.</p></li>
           <li><b>You start selling</b><p>Portal access, training and support from our Bolton sales team.</p></li>
         </ol>
       </div>
-      <form class="form" id="partnerForm" novalidate style="color:var(--fg)">
-        <div class="fields two">
-          <div class="field"><label for="p-name">Your name</label><input id="p-name" name="name" autocomplete="name" required><span class="err">Enter your name.</span></div>
-          <div class="field"><label for="p-firm">Brokerage</label><input id="p-firm" name="firm" autocomplete="organization" required><span class="err">Enter your brokerage name.</span></div>
-          <div class="field"><label for="p-email">Work email</label><input id="p-email" name="email" type="email" autocomplete="email" required><span class="err">Enter an email address like name@broker.co.uk.</span></div>
-          <div class="field"><label for="p-tel">Phone</label><input id="p-tel" name="tel" type="tel" autocomplete="tel" required><span class="err">Enter a phone number so we can call you back.</span></div>
-        </div>
-        <div class="field"><label for="p-sys">Broking platform</label>
-          <select id="p-sys" name="sys"><option>Acturis</option><option>Open GI</option><option>SSP</option><option>Other / not sure</option></select></div>
-        <div class="field"><label for="p-msg">What are you interested in? <small>(optional)</small></label><textarea id="p-msg" name="msg" placeholder="For example: fleet legal expenses for our commercial motor clients"></textarea></div>
-        <div class="form-actions"><span class="form-note">We'll only use this to contact you about partnering.</span><button class="btn btn-gold" type="submit">Request a callback</button></div>
-      </form>
+      <div class="form reach" style="color:var(--fg)">
+        <div><h3 class="h-s">Sales support</h3><p class="reach-num mono">01204 567 500</p></div>
+        <a class="btn btn-gold" href="tel:01204567500"><svg aria-hidden="true"><use href="#i-phone"/></svg>Call now</a>
+        <p>Or email <a href="mailto:bdelite.admin@bdelite.co.uk?subject=Becoming%20a%20BDElite%20partner">bdelite.admin@bdelite.co.uk</a> with your name, your brokerage, a phone number and your broking platform, and we'll call you back.</p>
+      </div>
     </div>
   </section>
 </main>
@@ -301,7 +302,6 @@
 <footer>
   <div class="wrap">
     <div class="f-main">
-      <a class="f-logo" href="./" data-go="home" aria-label="BDElite home"><svg viewBox="0 0 1495 372" aria-hidden="true"><use href="#logo"/></svg></a>
       <nav class="f-nav" aria-label="Footer">
         <a href="brokers" data-go="brokers">Brokers</a>
         <a href="customers" data-go="customers">Customers</a>
@@ -353,7 +353,7 @@
   <div class="dlg-body">
     <div class="opts">
       <button class="opt" type="button" data-opt="motor" aria-expanded="false"><span class="icon"><svg><use href="#i-car"/></svg></span><span><b>Motor accident</b><small>Damage, injury or a non-fault incident</small></span><svg width="20" height="20" aria-hidden="true"><use href="#i-arrow"/></svg></button>
-      <div class="opt-detail" data-detail="motor" hidden><p>Call the motor claimsline and a handler will take it from there.</p><span class="mono">01204 567 567</span><div class="cta-actions" style="justify-content:flex-start"><a class="btn btn-gold" href="tel:01204567567"><svg aria-hidden="true"><use href="#i-phone"/></svg>Call now</a><a class="btn btn-line" href="customers#claimform" data-go="customers" data-scroll="#claimform" data-close>Start online instead</a></div></div>
+      <div class="opt-detail" data-detail="motor" hidden><p>Call the motor claimsline and a handler will take it from there.</p><span class="mono">01204 567 567</span><div class="cta-actions" style="justify-content:flex-start"><a class="btn btn-gold" href="tel:01204567567"><svg aria-hidden="true"><use href="#i-phone"/></svg>Call now</a></div></div>
       <button class="opt" type="button" data-opt="breakdown" aria-expanded="false"><span class="icon"><svg><use href="#i-tow"/></svg></span><span><b>Breakdown</b><small>Roadside help, recovery or home start</small></span><svg width="20" height="20" aria-hidden="true"><use href="#i-arrow"/></svg></button>
       <div class="opt-detail" data-detail="breakdown" hidden><p>Call our breakdown line. If you're on a motorway, get to a safe place behind the barrier first.</p><span class="mono">01204 567 497</span><div class="cta-actions" style="justify-content:flex-start"><a class="btn btn-gold" href="tel:01204567497"><svg aria-hidden="true"><use href="#i-phone"/></svg>Call now</a><button class="copy" type="button" data-copy="01204 567 497" style="color:var(--fg);border-color:var(--line)"><svg width="16" height="16" aria-hidden="true"><use href="#i-copy"/></svg>Copy number</button></div></div>
       <button class="opt" type="button" data-opt="home" aria-expanded="false"><span class="icon"><svg><use href="#i-home"/></svg></span><span><b>Home emergency</b><small>Boiler, plumbing, electrics, locks</small></span><svg width="20" height="20" aria-hidden="true"><use href="#i-arrow"/></svg></button>

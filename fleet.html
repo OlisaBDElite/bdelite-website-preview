@@ -12,10 +12,10 @@
 <meta property="og:description" content="Fleet legal expenses, breakdown for cars, vans and HGVs up to 44 tonnes, and total claims management, arranged through your insurance broker.">
 <meta property="og:url" content="https://olisabdelite.github.io/bdelite-website-preview/fleet">
 <meta property="og:image" content="https://olisabdelite.github.io/bdelite-website-preview/img/fleet.jpg">
-<script>(function(){var k="bde-theme",v=null;try{v=localStorage.getItem(k)}catch(e){}if(v!=="light"&&v!=="dark")v=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";document.documentElement.dataset.theme=v;})();</script>
+<script>(function(){var k="bde-theme",v=null;try{v=localStorage.getItem(k)}catch(e){}if(v!=="light"&&v!=="dark")v=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";document.documentElement.dataset.theme=v;var d=document.documentElement,q=new URLSearchParams(location.search),h=(q.get("hero")||"b").toLowerCase(),g=(q.get("stage")||"c").toLowerCase();d.classList.add("js");var zf=function(){var z=Math.min(1.5,Math.max(1,innerWidth/1536));d.style.zoom=z>1.005?z.toFixed(3):"";};zf();addEventListener("resize",zf);if(h==="a"||h==="b"||h==="c")d.dataset.hero=h;if(g==="a"||g==="b"||g==="c")d.dataset.stage=g;var t0=Date.now(),seen=null,nav=null;try{seen=sessionStorage.getItem("bde-intro");sessionStorage.setItem("bde-intro","1")}catch(e){}try{nav=performance.getEntriesByType("navigation")[0]}catch(e){}if(!seen||(nav&&nav.type==="reload")){d.classList.add("intro-on");var calm=matchMedia("(prefers-reduced-motion: reduce)").matches,done=false;var go=function(){if(done)return;done=true;setTimeout(function(){var c=document.getElementById("intro");if(!c){d.classList.remove("intro-on");return;}var f=c.querySelector(".intro-logo"),t=document.querySelector("header.site .brand svg");if(!calm&&f&&t){var a=f.getBoundingClientRect(),b=t.getBoundingClientRect();var zz=parseFloat(d.style.zoom)||1;if(b.width>0)f.style.transform="translate("+(b.left-a.left)/zz+"px,"+(b.top-a.top)/zz+"px) scale("+(b.width/a.width)+")";}c.classList.add("out");setTimeout(function(){d.classList.add("intro-reveal");c.classList.add("fade");setTimeout(function(){d.classList.remove("intro-on","intro-reveal");c.parentNode&&c.parentNode.removeChild(c);},calm?0:480);},calm?0:780);},Math.max(0,1100-(Date.now()-t0)));};addEventListener("load",go);setTimeout(go,3000);}})();</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap">
 <link rel="stylesheet" href="site.css">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"InsuranceAgency","name":"BDElite","legalName":"BDElite Ltd","url":"https://olisabdelite.github.io/bdelite-website-preview/","email":"bdelite.admin@bdelite.co.uk","telephone":"+44 1204 567 500","foundingDate":"2011","vatID":"GB895086868","address":{"@type":"PostalAddress","streetAddress":"Atria, Spa Road","addressLocality":"Bolton","postalCode":"BL1 4AG","addressCountry":"GB"},"sameAs":["https://www.linkedin.com/company/bdelite","https://www.facebook.com/BDEliteTCM"],"contactPoint":[{"@type":"ContactPoint","contactType":"claims","telephone":"+44 1204 567 567","areaServed":"GB"},{"@type":"ContactPoint","contactType":"emergency","name":"Breakdown","telephone":"+44 1204 567 497"},{"@type":"ContactPoint","contactType":"emergency","name":"Home emergency","telephone":"+44 1204 567 499"},{"@type":"ContactPoint","contactType":"sales","telephone":"+44 1204 567 500"}]}</script>
 </head>
@@ -99,6 +99,17 @@
 </svg>
 
 
+<div id="intro" aria-hidden="true">
+  <svg class="intro-logo" viewBox="0 0 1495 372">
+    <defs>
+      <filter id="introWhite"><feColorMatrix type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1 0"/></filter>
+      <mask id="introMask" maskUnits="userSpaceOnUse" x="-100" y="-100" width="1700" height="600"><use href="#logo" filter="url(#introWhite)"/></mask>
+      <linearGradient id="introShine" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff8e1" stop-opacity="0"/><stop offset=".5" stop-color="#fff8e1" stop-opacity=".95"/><stop offset="1" stop-color="#fff8e1" stop-opacity="0"/></linearGradient>
+    </defs>
+    <use href="#logo"/>
+    <g mask="url(#introMask)"><rect class="intro-shine" x="0" y="-60" width="300" height="500" fill="url(#introShine)"/></g>
+  </svg>
+</div>
 <header class="site">
   <div class="wrap">
     <a class="brand" href="./" data-go="home" aria-label="BDElite home">
@@ -152,7 +163,7 @@
       <a class="mm-lead" href="customers" data-go="customers"><b>For policyholders <svg aria-hidden="true"><use href="#i-arrow"/></svg></b><small>The team behind the cover your broker arranged.</small></a>
       <p class="mm-label">Explore</p>
       <ul class="mm-links">
-        <li><a href="customers#claimform" data-go="customers" data-scroll="#claimform">Start a claim online</a></li>
+        <li><a href="customers#claimform" data-go="customers" data-scroll="#claimform">Make a claim</a></li>
         <li><a href="customers#claim-path" data-go="customers" data-scroll="#claim-path">What happens after you call</a></li>
         <li><a href="customers#covered" data-go="customers" data-scroll="#covered">What you may be covered for</a></li>
         <li><a href="customers#faq" data-go="customers" data-scroll="#faq">Good to know</a></li>
@@ -189,8 +200,7 @@
   <section class="page-hero lite">
     <div class="wrap hero-grid">
       <div>
-        <p class="eyebrow"><svg class="chev c-fleet" aria-hidden="true"><use href="#chev"/></svg>For fleet operators</p>
-        <h1 class="h-xl" style="margin-top:20px">Fleet legal expenses <em class="gold" style="font-style:normal">and breakdown.</em></h1>
+        <h1 class="h-xl">Fleet Legal Expenses <em class="gold" style="font-style:normal">and Breakdown.</em></h1>
         <p class="lede" style="margin-top:22px">For cars, vans and HGVs, arranged through your insurance broker.</p>
         <div class="hero-ctas"><a class="btn btn-gold" href="#fleetcall" data-scroll="#fleetcall">Talk to us about your fleet <svg class="arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a><a class="btn btn-line" href="#calc" data-scroll="#calc">Cost of downtime</a></div>
       </div>
@@ -420,7 +430,7 @@
 
   <section class="band" id="calc">
     <div class="wrap">
-      <div class="sec-head"><p class="eyebrow">Cost of downtime</p><h2 class="h-l">What do off-road days cost your fleet?</h2><p class="lede">Move the sliders to match your fleet.</p></div>
+      <div class="sec-head"><h2 class="h-l">What Do Off-Road Days Cost Your Fleet?</h2><p class="lede">Move the sliders to match your fleet.</p></div>
       <div class="calc">
         <div class="calc-in card">
           <div class="slider"><div class="slider-top"><label for="s-inc">Incidents per month</label><output for="s-inc" id="o-inc">6</output></div><input type="range" id="s-inc" min="1" max="60" value="6"></div>
@@ -439,7 +449,7 @@
 
   <section class="band">
     <div class="wrap">
-      <div class="sec-head"><p class="eyebrow">Fleet cover</p><h2 class="h-l">Where we save fleets money</h2></div>
+      <div class="sec-head"><h2 class="h-l">Where We Save Fleets Money</h2></div>
       <div class="cards3">
         <div class="card"><div class="icon"><svg><use href="#i-clock"/></svg></div><h3 class="h-s">Downtime</h3><p>Fast roadside response and recovery for cars, vans and HGVs up to 44 tonnes, approved repairers and replacement vehicles to keep drivers earning.</p></div>
         <div class="card"><div class="icon"><svg><use href="#i-user"/></svg></div><h3 class="h-s">Admin</h3><p>Our claims team manages everything from first notification to settlement, and any handler can answer a query, so your transport office isn't chasing updates.</p></div>
@@ -451,8 +461,7 @@
   <section class="band" id="fportal">
     <div class="wrap split" style="align-items:start">
       <div>
-        <p class="eyebrow">Fleet portal &amp; MI pack</p>
-        <h2 class="h-l" style="margin-top:16px">The fleet portal</h2>
+        <h2 class="h-l">The Fleet Portal</h2>
         <p class="lede" style="margin-top:18px">Live claims, handler updates and a monthly MI pack.</p>
         <div class="mi-list">
           <div><span class="mono">01</span><span><b>Claims overview</b><span>Volumes by month, fault and non-fault, open and closed</span></span></div>
@@ -471,21 +480,15 @@
     <div class="waves" aria-hidden="true"></div>
     <div class="wrap split" style="align-items:start">
       <div>
-        <p class="eyebrow">How to arrange it</p>
-        <h2 class="h-l" style="margin-top:16px">Arranged through your insurance broker.</h2>
+        <h2 class="h-l">Arranged Through Your Insurance Broker.</h2>
         <p class="lede" style="margin-top:18px">We work only through brokers. If yours doesn't offer BDElite yet, we'll contact them for you.</p>
         <ul class="checks"><li><svg aria-hidden="true"><use href="#i-checkc"/></svg><span><b>Cars and grey fleet</b> legal expenses and breakdown</span></li><li><svg aria-hidden="true"><use href="#i-checkc"/></svg><span><b>Vans up to 3.5t</b> to keep drivers earning</span></li><li><svg aria-hidden="true"><use href="#i-checkc"/></svg><span><b>HGVs up to 44t</b> with nationwide specialist recovery</span></li><li><svg aria-hidden="true"><use href="#i-checkc"/></svg><span><b>Taxi fleets</b> built for drivers who can't be off the road</span></li></ul>
       </div>
-      <form class="form" id="fleetForm" novalidate style="color:var(--fg)">
-        <div class="fields two">
-          <div class="field"><label for="f-name">Your name</label><input id="f-name" autocomplete="name" required><span class="err">Enter your name.</span></div>
-          <div class="field"><label for="f-co">Company</label><input id="f-co" autocomplete="organization" required><span class="err">Enter your company name.</span></div>
-          <div class="field"><label for="f-tel">Phone</label><input id="f-tel" type="tel" autocomplete="tel" required><span class="err">Enter a phone number.</span></div>
-          <div class="field"><label for="f-size">Fleet size</label><select id="f-size"><option>1 to 10 vehicles</option><option>11 to 50 vehicles</option><option>51 to 250 vehicles</option><option>250+ vehicles</option></select></div>
-        </div>
-        <div class="field"><label for="f-broker">Your broker <small>(optional)</small></label><input id="f-broker"></div>
-        <div class="form-actions"><span class="form-note">Or call 01204 567 500</span><button class="btn btn-gold" type="submit">Request a callback</button></div>
-      </form>
+      <div class="form reach" style="color:var(--fg)">
+        <div><h3 class="h-s">Talk to us about your fleet</h3><p class="reach-num mono">01204 567 500</p></div>
+        <a class="btn btn-gold" href="tel:01204567500"><svg aria-hidden="true"><use href="#i-phone"/></svg>Call now</a>
+        <p>Or email <a href="mailto:bdelite.admin@bdelite.co.uk?subject=Fleet%20enquiry">bdelite.admin@bdelite.co.uk</a> with your name, your company, a phone number, your fleet size and your broker, and we'll call you back.</p>
+      </div>
     </div>
   </section>
 </main>
@@ -503,7 +506,6 @@
 <footer>
   <div class="wrap">
     <div class="f-main">
-      <a class="f-logo" href="./" data-go="home" aria-label="BDElite home"><svg viewBox="0 0 1495 372" aria-hidden="true"><use href="#logo"/></svg></a>
       <nav class="f-nav" aria-label="Footer">
         <a href="brokers" data-go="brokers">Brokers</a>
         <a href="customers" data-go="customers">Customers</a>
@@ -555,7 +557,7 @@
   <div class="dlg-body">
     <div class="opts">
       <button class="opt" type="button" data-opt="motor" aria-expanded="false"><span class="icon"><svg><use href="#i-car"/></svg></span><span><b>Motor accident</b><small>Damage, injury or a non-fault incident</small></span><svg width="20" height="20" aria-hidden="true"><use href="#i-arrow"/></svg></button>
-      <div class="opt-detail" data-detail="motor" hidden><p>Call the motor claimsline and a handler will take it from there.</p><span class="mono">01204 567 567</span><div class="cta-actions" style="justify-content:flex-start"><a class="btn btn-gold" href="tel:01204567567"><svg aria-hidden="true"><use href="#i-phone"/></svg>Call now</a><a class="btn btn-line" href="customers#claimform" data-go="customers" data-scroll="#claimform" data-close>Start online instead</a></div></div>
+      <div class="opt-detail" data-detail="motor" hidden><p>Call the motor claimsline and a handler will take it from there.</p><span class="mono">01204 567 567</span><div class="cta-actions" style="justify-content:flex-start"><a class="btn btn-gold" href="tel:01204567567"><svg aria-hidden="true"><use href="#i-phone"/></svg>Call now</a></div></div>
       <button class="opt" type="button" data-opt="breakdown" aria-expanded="false"><span class="icon"><svg><use href="#i-tow"/></svg></span><span><b>Breakdown</b><small>Roadside help, recovery or home start</small></span><svg width="20" height="20" aria-hidden="true"><use href="#i-arrow"/></svg></button>
       <div class="opt-detail" data-detail="breakdown" hidden><p>Call our breakdown line. If you're on a motorway, get to a safe place behind the barrier first.</p><span class="mono">01204 567 497</span><div class="cta-actions" style="justify-content:flex-start"><a class="btn btn-gold" href="tel:01204567497"><svg aria-hidden="true"><use href="#i-phone"/></svg>Call now</a><button class="copy" type="button" data-copy="01204 567 497" style="color:var(--fg);border-color:var(--line)"><svg width="16" height="16" aria-hidden="true"><use href="#i-copy"/></svg>Copy number</button></div></div>
       <button class="opt" type="button" data-opt="home" aria-expanded="false"><span class="icon"><svg><use href="#i-home"/></svg></span><span><b>Home emergency</b><small>Boiler, plumbing, electrics, locks</small></span><svg width="20" height="20" aria-hidden="true"><use href="#i-arrow"/></svg></button>

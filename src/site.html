@@ -1,12 +1,12 @@
 <!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
 <title>BDElite Website</title>
-<script>(function(){var k="bde-theme",v=null;try{v=localStorage.getItem(k)}catch(e){}if(v!=="light"&&v!=="dark")v=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";document.documentElement.dataset.theme=v;})();</script>
+<script>(function(){var k="bde-theme",v=null;try{v=localStorage.getItem(k)}catch(e){}if(v!=="light"&&v!=="dark")v=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";document.documentElement.dataset.theme=v;var d=document.documentElement,q=new URLSearchParams(location.search),h=(q.get("hero")||"b").toLowerCase(),g=(q.get("stage")||"c").toLowerCase();d.classList.add("js");var zf=function(){var z=Math.min(1.5,Math.max(1,innerWidth/1536));d.style.zoom=z>1.005?z.toFixed(3):"";};zf();addEventListener("resize",zf);if(h==="a"||h==="b"||h==="c")d.dataset.hero=h;if(g==="a"||g==="b"||g==="c")d.dataset.stage=g;var t0=Date.now(),seen=null,nav=null;try{seen=sessionStorage.getItem("bde-intro");sessionStorage.setItem("bde-intro","1")}catch(e){}try{nav=performance.getEntriesByType("navigation")[0]}catch(e){}if(!seen||(nav&&nav.type==="reload")){d.classList.add("intro-on");var calm=matchMedia("(prefers-reduced-motion: reduce)").matches,done=false;var go=function(){if(done)return;done=true;setTimeout(function(){var c=document.getElementById("intro");if(!c){d.classList.remove("intro-on");return;}var f=c.querySelector(".intro-logo"),t=document.querySelector("header.site .brand svg");if(!calm&&f&&t){var a=f.getBoundingClientRect(),b=t.getBoundingClientRect();var zz=parseFloat(d.style.zoom)||1;if(b.width>0)f.style.transform="translate("+(b.left-a.left)/zz+"px,"+(b.top-a.top)/zz+"px) scale("+(b.width/a.width)+")";}c.classList.add("out");setTimeout(function(){d.classList.add("intro-reveal");c.classList.add("fade");setTimeout(function(){d.classList.remove("intro-on","intro-reveal");c.parentNode&&c.parentNode.removeChild(c);},calm?0:480);},calm?0:780);},Math.max(0,1100-(Date.now()-t0)));};addEventListener("load",go);setTimeout(go,3000);}})();</script>
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="robots" content="noindex,nofollow">
 <meta name="description" content="BDElite: legal expenses, breakdown, home emergency and total claims management for UK insurance brokers, their customers and fleets.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap">
 <style>
 /* Layout concept: the logo's three chevrons become the three audiences (customer, broker, fleet).
    Dark "ink" bands carry the brand's gold wave; light paper bands carry the detail. */
@@ -55,12 +55,12 @@ button,input,select,textarea{font:inherit;color:inherit}
 @media (min-width:720px){.wrap{padding-left:max(32px,env(safe-area-inset-left,0px));padding-right:max(32px,env(safe-area-inset-right,0px))}}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .mono{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
-.eyebrow{font:700 12.5px/1.2 var(--f-display);letter-spacing:.14em;text-transform:uppercase;color:var(--gold-text);display:flex;align-items:center;gap:10px}
+.eyebrow{font:600 12.5px/1.2 var(--f-display);letter-spacing:.14em;text-transform:uppercase;color:var(--gold-text);display:flex;align-items:center;gap:10px}
 .ink .eyebrow{color:var(--gold-on-ink)}
-.h-xl{font-size:clamp(38px,5.6vw,68px);line-height:1.02;font-weight:800;letter-spacing:-.035em}
-.h-l{font-size:clamp(30px,3.6vw,44px);line-height:1.08;font-weight:800;letter-spacing:-.03em}
-.h-m{font-size:22px;line-height:1.2;font-weight:700}
-.h-s{font-size:17px;line-height:1.3;font-weight:700;letter-spacing:-.01em}
+.h-xl{font-size:clamp(38px,5.6vw,68px);line-height:1.02;font-weight:600;letter-spacing:-.035em}
+.h-l{font-size:clamp(30px,3.6vw,44px);line-height:1.08;font-weight:600;letter-spacing:-.03em}
+.h-m{font-size:22px;line-height:1.2;font-weight:600}
+.h-s{font-size:17px;line-height:1.3;font-weight:600;letter-spacing:-.01em}
 .lede{font-size:clamp(18px,1.6vw,20px);line-height:1.55;color:var(--muted);max-width:58ch}
 .ink .lede{color:var(--on-ink-muted)}
 .gold{color:var(--gold-text)}
@@ -73,7 +73,7 @@ button,input,select,textarea{font:inherit;color:inherit}
 .ink .c-fleet{color:var(--on-ink)}
 
 /* Buttons */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:0 22px;border-radius:999px;font:700 15px/1 var(--f-display);letter-spacing:-.005em;text-decoration:none;border:1.5px solid transparent;cursor:pointer;transition:background .18s,border-color .18s,transform .18s,color .18s;white-space:nowrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:0 22px;border-radius:999px;font:600 15px/1 var(--f-display);letter-spacing:-.005em;text-decoration:none;border:1.5px solid transparent;cursor:pointer;transition:background .18s,border-color .18s,transform .18s,color .18s;white-space:nowrap}
 .btn:active{transform:translateY(1px)}
 .btn-gold{background:var(--gold);color:#111}
 .btn-gold:hover{background:var(--gold-soft)}
@@ -114,7 +114,7 @@ nav.main a[aria-current="page"]{color:var(--fg);background:var(--sunk)}
 .portal-pop{position:absolute;right:0;top:calc(100% + 10px);width:290px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);padding:8px;z-index:5}
 .portal-pop a{display:grid;grid-template-columns:auto 1fr;gap:2px 12px;padding:12px;border-radius:var(--r-sm);text-decoration:none}
 .portal-pop a:hover{background:var(--sunk)}
-.portal-pop b{font:700 15px/1.2 var(--f-display)}
+.portal-pop b{font:600 15px/1.2 var(--f-display)}
 .portal-pop small{grid-column:2;color:var(--muted);font-size:14px;line-height:1.35}
 .portal-pop .chev{grid-row:span 2;margin-top:2px}
 .menu-btn{display:inline-flex;width:48px;height:48px;border-radius:50%;border:1.5px solid var(--line);background:transparent;align-items:center;justify-content:center;cursor:pointer}
@@ -129,7 +129,7 @@ nav.main a[aria-current="page"]{color:var(--fg);background:var(--sunk)}
   .util .wrap{font-size:13px;gap:10px}
 }
 .mobile-nav{border-top:1px solid var(--line);padding-block:12px 20px;display:grid;gap:4px}
-.mobile-nav a{font:700 18px/1 var(--f-display);text-decoration:none;padding:14px 4px;display:flex;gap:12px;align-items:center;border-bottom:1px solid var(--line)}
+.mobile-nav a{font:600 18px/1 var(--f-display);text-decoration:none;padding:14px 4px;display:flex;gap:12px;align-items:center;border-bottom:1px solid var(--line)}
 @media (min-width:1020px){.mobile-nav{display:none!important}}
 
 /* Sections */
@@ -152,7 +152,7 @@ section{position:relative}
 .door{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:18px;padding:18px 20px;border-radius:var(--r);background:var(--ink-2);border:1px solid var(--ink-line);text-decoration:none;color:var(--on-ink);transition:border-color .2s,background .2s,transform .2s}
 .door:hover{border-color:var(--gold);transform:translateX(4px)}
 .door .chev{width:20px;height:24px}
-.door b{display:block;font:700 18px/1.2 var(--f-display);letter-spacing:-.01em}
+.door b{display:block;font:600 18px/1.2 var(--f-display);letter-spacing:-.01em}
 .door small{display:block;color:var(--on-ink-muted);font-size:15px;line-height:1.35;margin-top:3px}
 .door .go{color:var(--gold-on-ink)}
 .door.urgent{background:var(--gold);border-color:var(--gold);color:#111}
@@ -164,13 +164,13 @@ section{position:relative}
 .tracker{background:var(--ink-2);border:1px solid var(--ink-line);border-radius:20px;padding:24px;box-shadow:0 30px 80px -30px rgba(0,0,0,.8);position:relative;max-width:520px;width:100%;justify-self:center}
 .tk-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap}
 .tk-ref{font:600 13px/1 var(--f-mono);color:var(--on-ink-muted)}
-.tk-title{font:700 19px/1.25 var(--f-display);margin-top:8px}
-.pill{display:inline-flex;align-items:center;gap:7px;font:700 11.5px/1 var(--f-display);letter-spacing:.08em;text-transform:uppercase;padding:7px 10px;border-radius:999px;white-space:nowrap}
+.tk-title{font:600 19px/1.25 var(--f-display);margin-top:8px}
+.pill{display:inline-flex;align-items:center;gap:7px;font:600 11.5px/1 var(--f-display);letter-spacing:.08em;text-transform:uppercase;padding:7px 10px;border-radius:999px;white-space:nowrap}
 .pill::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
 .pill-live{color:#4ade80;background:rgba(74,222,128,.12)}
 .pill-done{color:var(--gold-on-ink);background:rgba(212,180,92,.14)}
 .tk-handler{display:flex;align-items:center;gap:12px;margin-top:18px;padding:12px;border-radius:12px;background:rgba(255,255,255,.04)}
-.avatar{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--gold-soft),var(--gold));color:#111;display:grid;place-items:center;font:800 14px/1 var(--f-display);flex:none}
+.avatar{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--gold-soft),var(--gold));color:#111;display:grid;place-items:center;font:600 14px/1 var(--f-display);flex:none}
 .tk-handler small{display:block;color:var(--on-ink-muted);font-size:13.5px;line-height:1.3}
 .tk-handler b{font-weight:600;font-size:15px}
 .tk-steps{list-style:none;margin:20px 0 0;padding:0;display:grid;gap:0}
@@ -200,12 +200,12 @@ section{position:relative}
 .proof div.item{padding:26px 20px 26px 0;display:grid;gap:4px}
 .proof div.item + div.item{padding-left:20px;border-left:1px solid var(--line)}
 @media (max-width:899px){.proof div.item:nth-child(3){border-left:0;padding-left:0}.proof div.item:nth-child(n+3){border-top:1px solid var(--line)}}
-.proof .num{font:800 clamp(26px,3vw,34px)/1 var(--f-display);letter-spacing:-.03em}
+.proof .num{font:600 clamp(26px,3vw,34px)/1 var(--f-display);letter-spacing:-.03em}
 .proof .lbl{color:var(--muted);font-size:15px;line-height:1.35}
 
 /* Journey */
 .aud-switch{display:inline-flex;padding:5px;border-radius:999px;background:var(--sunk);border:1px solid var(--line);gap:4px;flex-wrap:wrap}
-.aud-switch button{border:0;background:transparent;padding:10px 16px;border-radius:999px;font:700 14.5px/1 var(--f-display);cursor:pointer;color:var(--muted);display:inline-flex;align-items:center;gap:8px;min-height:44px}
+.aud-switch button{border:0;background:transparent;padding:10px 16px;border-radius:999px;font:600 14.5px/1 var(--f-display);cursor:pointer;color:var(--muted);display:inline-flex;align-items:center;gap:8px;min-height:44px}
 .aud-switch button[aria-pressed="true"]{background:var(--surface);color:var(--fg);box-shadow:0 1px 3px rgba(0,0,0,.12)}
 .journey{display:grid;gap:0;margin-top:36px;counter-reset:j}
 @media (min-width:900px){.journey{grid-template-columns:repeat(3,1fr);row-gap:44px}}
@@ -217,7 +217,7 @@ section{position:relative}
 .j-bar i{display:block;height:100%;width:0;background:var(--gold);transition:width .7s cubic-bezier(.2,.7,.2,1)}
 .journey.on .j-bar i{width:100%}
 .j-step:nth-child(2) .j-bar i{transition-delay:.12s}.j-step:nth-child(3) .j-bar i{transition-delay:.24s}.j-step:nth-child(4) .j-bar i{transition-delay:.36s}.j-step:nth-child(5) .j-bar i{transition-delay:.48s}.j-step:nth-child(6) .j-bar i{transition-delay:.6s}
-.j-step h3{font-size:17px;line-height:1.25;font-weight:700}
+.j-step h3{font-size:17px;line-height:1.25;font-weight:600}
 .j-step p{color:var(--muted);font-size:15.5px;line-height:1.5}
 .j-step p[data-fade]{animation:fade .35s ease}
 @keyframes fade{from{opacity:0;transform:translateY(4px)}}
@@ -233,7 +233,7 @@ section{position:relative}
 .prod:hover{border-color:var(--gold);transform:translateY(-2px)}
 .prod-top{display:flex;justify-content:space-between;align-items:center;gap:8px}
 .prod-cat{font:600 12px/1 var(--f-mono);letter-spacing:.04em;color:var(--faint);text-transform:uppercase}
-.prod h3{font-size:21px;font-weight:800}
+.prod h3{font-size:21px;font-weight:600}
 .prod p{color:var(--muted);font-size:15.5px;line-height:1.5}
 .tags{display:flex;flex-wrap:wrap;gap:6px}
 .tag{font:600 12.5px/1 var(--f-body);padding:6px 9px;border-radius:6px;background:var(--gold-wash);color:var(--gold-text)}
@@ -255,7 +255,7 @@ section{position:relative}
 .sys div{position:relative;z-index:1}
 .flow-row{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:14px}
 .sys{display:grid;gap:8px}
-.sys div{background:var(--ink-2);border:1px solid var(--ink-line);border-radius:12px;padding:14px 16px;font:700 16px/1 var(--f-display);display:flex;justify-content:space-between;align-items:center;gap:8px}
+.sys div{background:var(--ink-2);border:1px solid var(--ink-line);border-radius:12px;padding:14px 16px;font:600 16px/1 var(--f-display);display:flex;justify-content:space-between;align-items:center;gap:8px}
 .sys div small{font:500 12px/1 var(--f-mono);color:var(--on-ink-muted)}
 .hub{width:116px;height:116px;border-radius:50%;border:1.5px solid var(--gold);display:grid;place-items:center;text-align:center;position:relative;background:radial-gradient(circle,rgba(212,180,92,.16),transparent 70%)}
 .hub svg{width:70px}
@@ -282,11 +282,11 @@ section{position:relative}
 .mock-bar span{margin-left:8px;font:500 12.5px/1 var(--f-mono);color:var(--faint);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .mock-body{padding:20px;display:grid;gap:16px}
 .mock-head{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap}
-.mock-head b{font:700 17px/1.2 var(--f-display)}
+.mock-head b{font:600 17px/1.2 var(--f-display)}
 .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
 .kpi{border:1px solid var(--line);border-radius:12px;padding:12px;display:grid;gap:4px;min-width:0}
 .kpi small{font-size:12.5px;color:var(--muted);line-height:1.25}
-.kpi b{font:800 21px/1 var(--f-display);letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.kpi b{font:600 21px/1 var(--f-display);letter-spacing:-.02em;font-variant-numeric:tabular-nums}
 .kpi em{font:600 12px/1 var(--f-mono);font-style:normal}
 .up{color:var(--ok)}
 .chart{width:100%;height:auto;display:block}
@@ -296,7 +296,7 @@ section{position:relative}
 .row + .row{border-top:1px solid var(--line)}
 .row .mono{font-size:12.5px;color:var(--faint)}
 .row span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.st{font:700 11px/1 var(--f-display);letter-spacing:.05em;text-transform:uppercase;padding:6px 8px;border-radius:6px;white-space:nowrap}
+.st{font:600 11px/1 var(--f-display);letter-spacing:.05em;text-transform:uppercase;padding:6px 8px;border-radius:6px;white-space:nowrap}
 .st-ok{color:var(--ok);background:var(--ok-wash)}
 .st-info{color:var(--info);background:var(--info-wash)}
 .st-warn{color:var(--warn);background:var(--warn-wash)}
@@ -305,11 +305,11 @@ section{position:relative}
 
 /* Quote */
 .quote{display:grid;gap:28px;max-width:900px}
-.quote blockquote{margin:0;font:700 clamp(26px,3.4vw,40px)/1.2 var(--f-display);letter-spacing:-.025em;text-wrap:balance}
+.quote blockquote{margin:0;font:600 clamp(26px,3.4vw,40px)/1.2 var(--f-display);letter-spacing:-.025em;text-wrap:balance}
 .stars{color:var(--gold);letter-spacing:4px;font-size:20px}
 .gstar{color:var(--gold);font-size:.7em;margin-left:4px;vertical-align:.25em}
 .grating{display:inline-flex;align-items:center;gap:10px;flex-wrap:wrap;padding:10px 14px;border:1px solid var(--line);border-radius:999px;background:var(--surface);font-size:15px;color:var(--muted);width:fit-content}
-.grating b{font:800 17px/1 var(--f-display);color:var(--fg)}
+.grating b{font:600 17px/1 var(--f-display);color:var(--fg)}
 .grating .stars{font-size:15px;letter-spacing:2px}
 .lines{display:grid;gap:0;margin-top:4px}
 .lines div{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 0;border-top:1px solid var(--line);flex-wrap:wrap}
@@ -326,7 +326,7 @@ section{position:relative}
 .promise-list div{display:grid;grid-template-columns:40px 1fr;gap:14px;padding:16px 0;border-top:1px solid var(--line)}
 .promise-list div:first-of-type{border-top:0}
 .promise-list svg{width:40px;height:40px;padding:9px;border-radius:12px;background:var(--gold-wash);color:var(--gold-text)}
-.promise-list b{display:block;font:700 16px/1.3 var(--f-display);margin-bottom:3px}
+.promise-list b{display:block;font:600 16px/1.3 var(--f-display);margin-bottom:3px}
 .promise-list span{color:var(--muted);font-size:15.5px;line-height:1.45}
 /* ===== Visual layer: journey scene, devices, photography ===== */
 .scene{position:relative;margin-top:clamp(40px,5vw,64px);overflow:hidden;border-top:1px solid rgba(212,180,92,.18);padding-top:12px}
@@ -386,10 +386,10 @@ section{position:relative}
 .pcard::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(10,10,12,.05) 20%,rgba(10,10,12,.55) 55%,rgba(10,10,12,.92))}
 .pcard:hover .pc-img{transform:scale(1.08);filter:saturate(.95) contrast(1.05) brightness(.9)}
 .pc-body{display:grid;gap:10px;padding:26px}
-.pc-tag{display:flex;align-items:center;gap:8px;font:700 12px/1 var(--f-display);letter-spacing:.12em;text-transform:uppercase;color:#d4b45c}
+.pc-tag{display:flex;align-items:center;gap:8px;font:600 12px/1 var(--f-display);letter-spacing:.12em;text-transform:uppercase;color:#d4b45c}
 .pcard .c-fleet{color:#f5f5f4}
-.pc-body b{font:800 clamp(21px,2vw,25px)/1.15 var(--f-display);letter-spacing:-.02em;text-wrap:balance}
-.pc-go{display:inline-flex;align-items:center;gap:8px;font:700 14.5px/1 var(--f-display);color:#d4b45c;margin-top:4px}
+.pc-body b{font:600 clamp(21px,2vw,25px)/1.15 var(--f-display);letter-spacing:-.02em;text-wrap:balance}
+.pc-go{display:inline-flex;align-items:center;gap:8px;font:600 14.5px/1 var(--f-display);color:#d4b45c;margin-top:4px}
 
 .hero-photo{position:absolute;inset:0 0 0 30%;background:var(--img) var(--pos,center)/cover no-repeat;filter:saturate(.75) brightness(.7) contrast(1.05);-webkit-mask-image:linear-gradient(90deg,transparent,#000 45%);mask-image:linear-gradient(90deg,transparent,#000 45%)}
 .hero-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(18,18,20,.8),transparent 40%)}
@@ -434,7 +434,7 @@ section{position:relative}
 .inhouse-list{list-style:none;margin:0;padding:0;display:grid;gap:12px}
 @media (min-width:640px){.inhouse-list{grid-template-columns:repeat(3,1fr)}}
 .inhouse-list li{display:grid;gap:6px;align-content:start;padding:22px;border:1px solid var(--ink-line);border-radius:16px;background:var(--ink-2)}
-.inhouse-list b{font:700 16px/1.25 var(--f-display);margin-top:8px}
+.inhouse-list b{font:600 16px/1.25 var(--f-display);margin-top:8px}
 .inhouse-list li > span:last-child{color:var(--on-ink-muted);font-size:15px;line-height:1.4}
 .ih-icon{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;background:rgba(212,180,92,.12);color:var(--gold-on-ink)}
 .ih-icon svg{width:22px;height:22px}
@@ -455,7 +455,7 @@ section{position:relative}
 .steps{list-style:none;padding:0;margin:0;display:grid;gap:14px;counter-reset:s}
 @media (min-width:860px){.steps.h{grid-template-columns:repeat(4,1fr)}}
 .steps li{counter-increment:s;display:grid;gap:8px;padding:22px;border-radius:var(--r);background:var(--surface);border:1px solid var(--line);align-content:start}
-.steps li::before{content:counter(s);width:34px;height:34px;border-radius:50%;background:var(--fg);color:var(--paper);display:grid;place-items:center;font:800 15px/1 var(--f-display)}
+.steps li::before{content:counter(s);width:34px;height:34px;border-radius:50%;background:var(--fg);color:var(--paper);display:grid;place-items:center;font:600 15px/1 var(--f-display)}
 .steps li p{color:var(--muted);font-size:15.5px}
 
 /* Brokers hero */
@@ -466,7 +466,7 @@ section{position:relative}
 .hero-ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px}
 .platforms{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px;align-items:center}
 .platforms small{color:var(--on-ink-muted);font-size:14px;margin-right:4px}
-.platforms span{font:700 14px/1 var(--f-display);padding:10px 14px;border:1px solid var(--ink-line);border-radius:10px;color:var(--on-ink)}
+.platforms span{font:600 14px/1 var(--f-display);padding:10px 14px;border:1px solid var(--ink-line);border-radius:10px;color:var(--on-ink)}
 
 /* Customers hero */
 .claim-hero{background:var(--surface);border-bottom:1px solid var(--line)}
@@ -474,7 +474,7 @@ section{position:relative}
 .callcard{background:var(--ink);color:var(--on-ink);border-radius:22px;padding:clamp(24px,3vw,36px);position:relative;overflow:hidden;display:grid;gap:18px}
 .callcard .waves{opacity:.3}
 .callcard > *{position:relative}
-.callcard .label{font:700 12.5px/1 var(--f-display);letter-spacing:.14em;text-transform:uppercase;color:var(--gold-on-ink)}
+.callcard .label{font:600 12.5px/1 var(--f-display);letter-spacing:.14em;text-transform:uppercase;color:var(--gold-on-ink)}
 .bignum{font:600 clamp(32px,4.4vw,48px)/1 var(--f-mono);letter-spacing:-.02em;color:var(--on-ink);text-decoration:none;display:block;user-select:all}
 .callcard .row2{display:flex;gap:10px;flex-wrap:wrap}
 .copy{background:transparent;border:1.5px solid var(--ink-line);color:var(--on-ink);border-radius:999px;min-height:44px;padding:0 16px;font:600 14px/1 var(--f-display);cursor:pointer;display:inline-flex;gap:8px;align-items:center}
@@ -534,14 +534,14 @@ section{position:relative}
 input[type=range]{width:100%;accent-color:var(--gold);min-height:28px}
 .calc-out{background:var(--ink);color:var(--on-ink);border-radius:20px;padding:clamp(24px,3vw,36px);display:grid;gap:18px;align-content:space-between;position:relative;overflow:hidden}
 .calc-out > *{position:relative}
-.calc-out .big{font:800 clamp(40px,6vw,64px)/1 var(--f-display);letter-spacing:-.04em;font-variant-numeric:tabular-nums}
+.calc-out .big{font:600 clamp(40px,6vw,64px)/1 var(--f-display);letter-spacing:-.04em;font-variant-numeric:tabular-nums}
 .calc-out .sub{color:var(--on-ink-muted)}
 .calc-out .per{display:grid;grid-template-columns:1fr 1fr;gap:12px;border-top:1px solid var(--ink-line);padding-top:18px}
-.calc-out .per b{font:700 24px/1.1 var(--f-display);display:block;font-variant-numeric:tabular-nums;color:var(--gold-on-ink)}
+.calc-out .per b{font:600 24px/1.1 var(--f-display);display:block;font-variant-numeric:tabular-nums;color:var(--gold-on-ink)}
 .calc-out .per small{color:var(--on-ink-muted);font-size:14px}
 .fleet-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;max-width:520px;width:100%;justify-self:center}
 .fs{background:var(--ink-2);border:1px solid var(--ink-line);border-radius:16px;padding:22px;display:grid;gap:6px}
-.fs b{font:800 clamp(34px,4vw,46px)/1 var(--f-display);letter-spacing:-.04em;color:var(--on-ink)}
+.fs b{font:600 clamp(34px,4vw,46px)/1 var(--f-display);letter-spacing:-.04em;color:var(--on-ink)}
 .fs b sup{font-size:.45em;color:var(--gold-on-ink);vertical-align:top;margin-left:2px;letter-spacing:0}
 .fs small{color:var(--on-ink-muted);font-size:15px;line-height:1.35}
 .fs.wide{grid-column:span 2;display:flex;align-items:center;justify-content:space-between;gap:16px}
@@ -571,7 +571,7 @@ footer{border-top:1px solid var(--ink-line)}
 @media (min-width:960px){.f-top{grid-template-columns:1.3fr repeat(4,1fr)}}
 .f-brand svg{width:170px;--logo-k:#f4f4f5}
 .f-brand p{margin-top:16px;max-width:34ch;line-height:1.55}
-.f-col h4{font:700 13px/1 var(--f-display);letter-spacing:.12em;text-transform:uppercase;color:var(--on-ink);margin-bottom:16px}
+.f-col h4{font:600 13px/1 var(--f-display);letter-spacing:.12em;text-transform:uppercase;color:var(--on-ink);margin-bottom:16px}
 .f-col ul{list-style:none;padding:0;margin:0;display:grid;gap:10px}
 .f-col a{text-decoration:none;cursor:pointer}
 .f-col a:hover{color:var(--gold-on-ink)}
@@ -588,7 +588,7 @@ dialog.claim::backdrop{background:rgba(8,8,10,.6);backdrop-filter:blur(4px)}
 .opts{display:grid;gap:8px}
 .opt{display:grid;grid-template-columns:44px 1fr auto;gap:14px;align-items:center;padding:14px 16px;border:1.5px solid var(--line);border-radius:14px;background:var(--surface);cursor:pointer;text-align:left}
 .opt:hover,.opt[aria-expanded="true"]{border-color:var(--gold)}
-.opt b{font:700 16px/1.2 var(--f-display);display:block}
+.opt b{font:600 16px/1.2 var(--f-display);display:block}
 .opt small{color:var(--muted);font-size:14.5px;line-height:1.3;display:block;margin-top:2px}
 .opt-detail{padding:16px 18px;border-radius:14px;background:var(--sunk);display:grid;gap:12px}
 .opt-detail .mono{font-size:26px;font-weight:600}
@@ -611,9 +611,9 @@ main[data-view][hidden]{display:none}
   --ink:#262626; --ink-2:rgba(255,255,255,.05); --ink-line:rgba(255,255,255,.11); --on-ink:#ededf1; --on-ink-muted:#a9a9b5; --gold-on-ink:#d9bd6a;
   --ok:#0f7a55; --ok-wash:rgba(16,185,129,.12); --info:#1d55c9; --info-wash:rgba(59,130,246,.12); --warn:#a34a06; --warn-wash:rgba(245,158,11,.12);
   --logo-k:#1b1b1b;
-  --f-display:"Hanken Grotesk","Segoe UI",-apple-system,BlinkMacSystemFont,Roboto,Arial,sans-serif;
-  --f-body:"Hanken Grotesk","Segoe UI",-apple-system,BlinkMacSystemFont,Roboto,Arial,sans-serif;
-  --f-mono:"Hanken Grotesk","Segoe UI",-apple-system,BlinkMacSystemFont,Roboto,Arial,sans-serif;
+  --f-display:"Poppins","Segoe UI",-apple-system,BlinkMacSystemFont,Roboto,Arial,sans-serif;
+  --f-body:"Poppins","Segoe UI",-apple-system,BlinkMacSystemFont,Roboto,Arial,sans-serif;
+  --f-mono:"Poppins","Segoe UI",-apple-system,BlinkMacSystemFont,Roboto,Arial,sans-serif;
   --r:12px; --r-sm:8px;
   --shadow:0 1px 2px rgba(20,20,20,.04),0 16px 40px -20px rgba(20,20,20,.18);
   --max:1180px;
@@ -3277,6 +3277,11 @@ main > section.page-hero.lite.text-hero{padding-bottom:clamp(40px,5vw,72px)}
 .prose strong{font-weight:600}
 .prose .form{margin-bottom:8px}
 .contact-card{margin:8px 0 24px;padding:24px 28px;border:1px solid transparent;border-radius:16px;background:var(--sunk);line-height:1.75}
+/* "call or email us" panels that stand in for the forms until they're connected; same box as a form */
+.reach{align-content:start}
+.reach .reach-num{font-size:clamp(24px,3vw,32px);font-weight:600;letter-spacing:-.01em;margin-top:6px}
+.reach .btn{justify-self:start}
+.reach p a{color:inherit;text-decoration:underline;text-underline-offset:3px}
 .draft-note{margin:0 0 48px;max-width:820px}
 .draft-note p{font-size:15.5px;line-height:1.55}
 .prose ol li::marker{color:var(--gold-text);font-weight:600}
@@ -3342,6 +3347,228 @@ html .a-card{box-shadow:0 20px 40px -18px rgba(0,0,0,.75),inset 0 1px 0 rgba(255
 html .a-toast.t1{box-shadow:0 18px 36px -14px rgba(0,0,0,.7),0 0 40px rgba(236,212,140,.35)}
 html .a-orb{box-shadow:0 0 0 10px rgba(236,212,140,.14),0 0 44px rgba(236,212,140,.6)}
 html .frame .app,html[data-hero] .frame .app{box-shadow:0 -1px 0 rgba(255,255,255,.35),0 20px 50px -16px rgba(50,35,0,.6)}
+
+/* ===== SCREEN-SIZE PASS (23 Nov): tablets, small phones, big monitors, 44px tap targets ===== */
+/* big monitors: the top bar lines up with the page's content column instead of running edge to edge */
+header.site .wrap{max-width:var(--max)}
+/* home on tablets: "Who we look after" three across instead of one huge card per row */
+@media (min-width:600px){.spot{grid-template-columns:repeat(3,minmax(0,1fr))}}
+/* home on tablets: "What you can expect" tiles sit picture-left, words-right instead of one huge tile per row */
+@media (min-width:600px) and (max-width:859px){
+  .tiles3 .ptile{grid-template-columns:minmax(0,3fr) minmax(0,2fr);grid-template-rows:1fr 1fr;column-gap:24px;row-gap:4px}
+  .tiles3 .ptile .art{grid-row:1 / span 2;margin-bottom:0}
+  .tiles3 .ptile > b{align-self:end}
+  .tiles3 .ptile > span{align-self:start}
+}
+/* any row of exactly three cards (e.g. Fleet "Where we save fleets money"): three across on tablets, no lone card */
+@media (min-width:600px){.cards3:has(> :nth-child(3):last-child){grid-template-columns:repeat(3,minmax(0,1fr))}}
+/* phones: the picture tiles above each card are shorter, so pages are less of a scroll */
+@media (max-width:599px){.cards3 .card > .icon{aspect-ratio:16/9}}
+/* phones: the claim tracker loses a layer of padding, and each step's time sits under its text */
+@media (max-width:520px){
+  /* !important: the panel's look is set by several very specific earlier layers; this phone-only trim must win over all of them */
+  #journey .panel.claim .panel-bar{padding-inline:12px!important}
+  #journey .panel.claim .cl-box,#journey .panel.claim .tk-handler{margin-inline:12px!important}
+  #journey .panel.claim .cl-box{padding-inline:12px!important}
+  #journey .panel.claim .tk-handler{padding-inline:16px!important}
+  .cl-feed li{grid-template-columns:22px minmax(0,1fr);column-gap:10px}
+  .cl-feed time{grid-column:2;padding-top:0;margin-top:-4px}
+  .cl-feed li.next time{display:none}
+}
+/* fleet road scene on phones and small tablets: the four tabs sit two by two instead of running off the edge */
+@media (max-width:699px){
+  html:root .fsim.fsim-road .fs-tabs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));width:100%;overflow:visible}
+  html:root .fsim.fsim-road .fs-tabs button{min-height:48px;padding:0 12px;justify-content:center}
+}
+/* Poppins is wider: on phones each tab shows the vehicle on top and the cover underneath, so "Car / Motoring defence" fits */
+@media (max-width:480px){
+  html:root .fsim.fsim-road .fs-tabs button{flex-direction:column;gap:1px;padding:6px 6px;line-height:1.2;min-height:56px;text-align:center}
+  html:root .fsim.fsim-road .fs-tabs button > *{white-space:normal}
+}
+/* tap targets: at least 44px tall */
+.head-actions .btn-gold{min-height:44px}
+@media (max-width:520px){.head-actions .btn-gold{min-height:44px}}
+.aud-switch button{min-height:44px}
+.chip{min-height:44px}
+a.brand{padding-block:9px;margin-block:-9px}
+.f-logo{padding-block:6px;margin-block:-6px}
+.f-lines li{padding-block:0}
+.f-lines a.tel,.f-lines a.f-mail{min-height:44px;display:flex;align-items:center}
+.f-contact a{display:inline-flex;align-items:center;min-height:44px}
+footer .f-contact{row-gap:0}
+.bignum{padding-block:5px;margin-block:-5px}
+.routes a.mono{display:inline-flex;align-items:center;min-height:44px;margin-block:-8px}
+input[type=range]{min-height:44px;margin-block:-8px}
+main a.mono{padding-block:5px;margin-block:-5px}
+.legal-aside .card a.tel{padding-block:7px;margin-block:-7px}
+.rv-bars button{height:44px;margin-block:-8px}
+.f-cols a{min-width:44px}
+/* footer link row: bigger tap area without moving the words */
+.f-nav a{padding-inline:6px;margin-inline:-6px}
+
+/* ===== PHONE PASS 2 (23 Nov): phones and small tablets match the desktop pictures ===== */
+/* home: laptop and phone side by side on small screens too, in desktop proportions (corners scale with the phone) */
+@media (max-width:759px){
+  .hero-devs #heroDevs{padding-right:24%;display:block}
+  #heroDevs .lp{width:100%}
+  #heroDevs .ph{position:absolute;right:0;bottom:0;width:28%;margin-top:0}
+  #heroDevs .fake-cursor svg{scale:.6}
+}
+/* home phone picture, every size: everything is a share of the phone's own width, so it looks the same large or small.
+   Silver edge 0.8% wide, black band 2.4%; outer corners 15%, black band 15 - 0.8 = 14.2%, screen 14.2 - 2.4 = 11.8%,
+   so the curves stay parallel. (7.18% is the same 15% corner measured against the phone's height.) */
+#heroDevs .ph{container-type:inline-size;padding:0;border-radius:15% / 7.18%}
+#heroDevs .ph-glass{margin:.8cqw;padding:2.4cqw;border-radius:14.2cqw}
+#heroDevs .ph-view{margin:0;border-radius:11.8cqw}
+/* brokers and fleet: whenever there isn't room for the full desktop dashboard (any screen size), it keeps the desktop
+   layout and is shrunk to fit. The script adds .fz-on and sets --fz only when the space is narrower than the design. */
+.frame > .app.fz-on{width:1136px;max-width:none;grid-template-columns:210px minmax(0,1fr);zoom:var(--fz,1)}
+.frame > .app.fz-on .app-side{display:grid}
+.frame > .app.fz-on .app-main{padding:20px}
+.frame > .app.fz-on .app-main:not(.one){grid-template-columns:1.25fr 1fr}
+.tile-gold > .tile-mock.fz-on{width:524px;max-width:none;zoom:var(--fz,1)}
+:is(.frame > .app,.tile-gold > .tile-mock).fz-on .kpis{grid-template-columns:repeat(3,1fr)}
+:is(.frame > .app,.tile-gold > .tile-mock).fz-on .kpis .kpi:last-child{grid-column:auto}
+/* phone-number rows: a long label wraps, the number stays on the right */
+.route-lines > div,.pb-lines > div{flex-wrap:nowrap;column-gap:16px}
+.route-lines > div > :first-child,.pb-lines > div > :first-child{flex:1 1 auto;min-width:0}
+.route-lines > div > :last-child,.pb-lines > div > :last-child{flex:none;white-space:nowrap}
+/* the dark breakdown box uses big numbers: on phones each number sits under its label, the same in every row */
+@media (max-width:480px){.pb-lines > div{flex-direction:column;align-items:flex-start;row-gap:2px}}
+/* phones: text blocks beside pictures line up with every other section's left edge */
+@media (max-width:640px){.tabs-text,.pair-text,.pair-text.spread{padding-left:0}}
+/* brokers top: "Transact by EDI in" on its own line so the three logos share one row */
+@media (max-width:520px){.platforms > small{flex-basis:100%}}
+
+/* ===== ONE WIDTH FOR EVERY SECTION (24 Nov) =====
+   Every section lines up with the laptop-and-phone card at the top of the home page: up to 1600px wide, with
+   clamp(32px,5vw,96px) of space at each side. The dark bands and the photo band become rounded cards with exactly
+   those edges, nothing runs off the side of the screen, and the footer is the only thing that runs full width.
+   (!important: several earlier layers and some inline styles set narrower widths; this rule must beat all of them.)
+   Phones are unchanged. */
+@media (min-width:720px){
+  :root{--edge:clamp(32px,5vw,96px)}
+  html:root main > section > .wrap,html:root header.site .wrap{max-width:1600px!important;padding-inline:var(--edge)!important}
+  /* dark bands and the photo band: a card whose edges match the hero card; its words get their own inner space */
+  html:root main > section.ink{margin-inline:max(var(--edge),calc((100% - 1600px) / 2 + var(--edge)))!important;border-radius:var(--card-r);clip-path:none!important;overflow:hidden}
+  html:root main > section.ink:not(.photo-band) > .wrap{padding-inline:clamp(28px,4vw,72px)!important}
+  /* the same white space above and below a dark card as between any two sections */
+  html:root main > section.ink{margin-top:0!important;margin-bottom:var(--sec-gap)!important}
+  /* the two panels that used to run off the screen edge stay inside it */
+  html:root main #journey .panel.claim{margin-right:0!important}
+  html:root main #edi .pair > .tile{margin-left:0!important}
+}
+
+/* ===== FOOTER: curved top that widens and slides into place (24 Nov) =====
+   As the footer comes up the screen it starts slightly inset with rounder shoulders and widens to full width, and
+   its contents rise into place. --p (0 to 1) is set by the "Header" script. */
+html.bgsw footer.sheet{clip-path:inset(0 calc((1 - var(--p,1)) * 5vw) 0 calc((1 - var(--p,1)) * 5vw) round calc(var(--R) + (1 - var(--p,1)) * 12px) calc(var(--R) + (1 - var(--p,1)) * 12px) 0 0)}
+html.bgsw footer.sheet > .wrap{transform:translateY(calc((1 - var(--p,1)) * 56px));opacity:calc(.25 + var(--p,1) * .75)}
+@media (max-width:640px){html.bgsw footer.sheet{clip-path:inset(0 calc((1 - var(--p,1)) * 3vw) 0 calc((1 - var(--p,1)) * 3vw) round var(--R) var(--R) 0 0)}}
+
+/* ===== NUMBER STRIPS CENTRED (24 Nov) =====
+   Home "2011 / 400+ / 4.4 / 797920" and brokers "0 / 9 / Any / 400+": each number and its label centred in its column,
+   with even space either side so the centring is true. */
+html:root .t-item,html:root .t-item:first-child{text-align:center;justify-items:center;padding-inline:clamp(12px,2vw,28px)}
+@media (max-width:859px){html:root .t-item:nth-child(3){padding-inline:clamp(12px,2vw,28px)}}
+html:root .page-hero .fleet-stats:not(.fsim-facts) .fs{text-align:center;justify-items:center;padding-inline:10px}
+
+/* ===== EVERYTHING SLIDES UP (24 Nov) =====
+   Things that used to come in from the side now rise into place instead. (A later @keyframes with the same name
+   replaces the earlier one, so the demo rows below keep their timing and colours and only change direction.)
+   Left as they were on purpose: the slow pan on background photos, the phone menu's sideways sub-menus, and the
+   vehicles driving along the fleet road scene. */
+/* home laptop-and-phone card: the phone rises with the laptop instead of swinging in from the right */
+.js #heroDevs .ph{translate:0 48px;rotate:0deg}
+/* EDI demo: the "no double keying" style labels rise in */
+.pipe.run .pipe-link b{transform:translateY(calc(-50% + 10px)) scale(.9)}
+/* rows and times appearing in the claim, fleet and dashboard demos */
+@keyframes rowIn{from{transform:translateY(10px);background:rgba(217,189,106,.16)}to{transform:none;background:rgba(255,255,255,.06)}}
+@keyframes rowInLight{from{transform:translateY(10px);background:rgba(201,166,70,.32)}to{transform:none;background:rgba(201,166,70,.13)}}
+@keyframes rowInSpot{from{transform:translateY(10px);background:rgba(230,205,131,.34)}to{transform:none;background:rgba(230,205,131,.15)}}
+@keyframes timeIn{from{opacity:0;transform:translateY(8px)}}
+@keyframes sideIn{from{opacity:0;transform:translateY(12px)}}
+@keyframes rowSlide{from{opacity:0;transform:translateY(18px)}}
+
+/* ===== LOGO INTRO (24 Nov) =====
+   While the page loads, the logo sits in the middle of a cover in the page colour with a gold-white shimmer running
+   across it. Once the page has loaded (at least about a second, at most 3), the logo glides and shrinks into its place
+   in the top bar while the cover stays up; only once it has landed does the cover fade and the page (hero first)
+   appear, with its own slide-up animations. The head script switches it on
+   (html.intro-on) on the first page of a visit or a refresh. */
+#intro{display:none}
+html.intro-on #intro{display:grid;place-items:center;position:fixed;inset:0;z-index:9999;background-color:var(--paper)}
+/* the cover stays solid while the logo glides, and only fades once the logo has landed */
+html.intro-on #intro.fade{background-color:transparent;transition:background-color .45s ease-out}
+#intro .intro-logo{width:clamp(200px,30vw,340px);height:auto;display:block;transform-origin:0 0;transition:transform .75s cubic-bezier(.65,0,.35,1)}
+#intro .intro-shine{animation:introShine 1.2s cubic-bezier(.45,0,.25,1) infinite}
+@keyframes introShine{from{transform:translateX(-450px) skewX(-18deg)}to{transform:translateX(1750px) skewX(-18deg)}}
+#intro.out .intro-shine{animation:none;opacity:0}
+/* the top-bar logo stays hidden until the moving logo lands exactly on it */
+html.intro-on:not(.intro-reveal) header.site .brand svg{visibility:hidden}
+/* the page's own entrance animations wait until the logo has landed */
+html.intro-on:not(.intro-reveal) .su.su-in{opacity:0;translate:0 48px}
+html.intro-on:not(.intro-reveal) #heroDevs.in .lp{opacity:0;transform:translateY(48px) scale(.97)}
+html.intro-on:not(.intro-reveal) #heroDevs.in .ph{opacity:0;translate:0 48px}
+
+/* ===== ONE CORNER ROUNDING FOR EVERY CARD (24 Nov) =====
+   Every card on the site uses the same 16px corners as the laptop-and-phone card at the top of the home page,
+   including the small cards inside the example dashboards. Round buttons, pills, icons in circles and the
+   laptop and phone outlines keep their own shapes. (!important: older layers set 8, 10, 12, 18 and 55px.) */
+:root{--card-r:16px}
+html:root :is(.card,.prod,.tile,.frame,.panel,.rv-card,.photo-band,.form,.contact-card,.notice,.cl-box,.tk-handler,.spot-card,.spot-img,.x-card,.mock,.kpi,.rows,.fs,.route,.calc-out,.fsim-shell,.pipe-card,.promise-list,.review){border-radius:var(--card-r)!important}
+/* not cards: the numbered steps, the FAQ questions and the "Run From Bolton" list are plain divider lines, so they stay square-ended */
+/* customers "Who We Are" (Your broker, BDElite, You): an older layer had hidden its dividing lines and greyed out the
+   arrows, so it looked broken. It now matches the numbered steps above it: a straight line over each item, and a gold
+   arrow between them, level with the headings. */
+html:root main .chain > .card{background:none!important;border:0!important;border-top:1px solid var(--fg)!important;border-radius:0!important;padding:18px 0 0!important}
+:root[data-theme="dark"] main .chain > .card{border-top-color:var(--line)!important}
+html:root main .chain .joiner{color:var(--gold)}
+@media (min-width:860px){html:root main .chain .joiner{place-items:start center;padding-top:18px}}
+
+/* ===== WHITE SPACE BETWEEN SECTIONS (24 Nov) =====
+   Plenty of space between sections on every screen; it grows with the window's height. */
+:root{--sec-gap:clamp(128px,26svh,340px)}
+
+/* ===== EVERY SECTION FITS THE SCREEN HEIGHT (24 Nov) =====
+   The space between sections, and inside the dark cards, grows and shrinks with the window's height as well as
+   its width: roomy on a big monitor, tighter on a short laptop screen, so no section runs past the bottom of the
+   window. The script "Every section fits the screen height" does the rest. FAQ and policy pages are left as they are. */
+html:root main:not(:is([data-view="faq"],[data-view="key-recovery"],[data-view="accessibility"],[data-view="careers"],[data-view="complaints-procedure"],[data-view="privacy-statement"],[data-view="cookies"],[data-view="fca-authorisation"])) > section:not(.ink){padding-bottom:var(--sec-gap)!important}
+@media (min-width:720px){
+  html:root main > section.ink:not(.photo-band){padding-top:clamp(48px,11svh,120px)!important;padding-bottom:clamp(48px,11svh,120px)!important}
+  /* broker portal and fleet portal pictures: never taller than about two thirds of the window */
+  html:root .tile.tall{min-height:min(clamp(380px,44vw,620px),62svh)}
+  /* customers page reviews: the dark card holds a heading and a photo, so it keeps a little less inner space */
+  html:root main > section#cust-reviews{padding-block:clamp(40px,8svh,120px)!important}
+  /* "What you can expect" pictures and the review photo never take more than about half the window's height */
+  html:root .tiles3 .ptile .art{width:100%;max-height:42svh}
+  html:root .rv-card{min-height:min(clamp(360px,42vw,580px),clamp(200px,34svh,580px))}
+  /* the "Google review" label sits in the top corner: keep the quote clear of it however short the card gets */
+  html:root .rv-card{padding-top:calc(clamp(24px,3vw,36px) + 56px)}
+  /* a dashboard picture shrunk to fit the height sits in the middle of its card */
+  html:root :is(.frame > .app,.tile-gold > .tile-mock).fz-on{margin-inline:auto}
+}
+/* product suite: smaller cards, five across (5 + 4) instead of three rows of three */
+@media (min-width:960px){html:root .products{grid-template-columns:repeat(5,minmax(0,1fr))}}
+/* "How a claim works" on short screens: a tighter claim panel and one line per event */
+@media (min-width:720px) and (max-height:820px),(max-width:719px) and (max-height:900px){
+  html:root main #journey .panel.claim{padding-top:16px!important;padding-bottom:64px!important}   /* 64px underneath: room for the card shadow and the soft background fade to finish, so nothing is cut off in a hard line */
+  html:root main #journey .cl-feed small,html:root main #journey .panel.claim .tk-foot{display:none}
+  html:root main #journey .panel.claim .cl-box + .tk-handler + .cl-box{margin-top:12px}
+}
+@media (min-width:720px) and (max-height:660px){html:root main #journey .panel.claim .panel-bar{display:none}html:root main #journey .panel.claim{padding-bottom:44px!important}}
+/* fleet road scene on short phones: one line per event, so the whole scene fits the screen */
+@media (max-width:719px) and (max-height:700px){html:root .fsim-card li small{display:none}}
+/* the soft cards behind the fleet road scene, the calculator and the customers-page claim lines used to stick out
+   past the section edges; on screens 720px and wider they now sit exactly on the edges, with the content inside them */
+html:root :is(.fsim,.calc,main .routes)::before{border-radius:var(--card-r)}
+@media (min-width:720px){
+  html:root :is(.fsim,.calc,main .routes){padding:clamp(24px,3vw,48px)}
+  html:root :is(.fsim,.calc,main .routes)::before{inset:0}
+}
+/* product suite on short screens: slimmer cards without the feature tags, so both rows fit the window */
+@media (min-width:720px) and (max-height:760px){html:root .prod{padding:20px}html:root .prod .tags{display:none}}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -3422,6 +3649,17 @@ html .frame .app,html[data-hero] .frame .app{box-shadow:0 -1px 0 rgba(255,255,25
 </svg>
 
 
+<div id="intro" aria-hidden="true">
+  <svg class="intro-logo" viewBox="0 0 1495 372">
+    <defs>
+      <filter id="introWhite"><feColorMatrix type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1 0"/></filter>
+      <mask id="introMask" maskUnits="userSpaceOnUse" x="-100" y="-100" width="1700" height="600"><use href="#logo" filter="url(#introWhite)"/></mask>
+      <linearGradient id="introShine" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff8e1" stop-opacity="0"/><stop offset=".5" stop-color="#fff8e1" stop-opacity=".95"/><stop offset="1" stop-color="#fff8e1" stop-opacity="0"/></linearGradient>
+    </defs>
+    <use href="#logo"/>
+    <g mask="url(#introMask)"><rect class="intro-shine" x="0" y="-60" width="300" height="500" fill="url(#introShine)"/></g>
+  </svg>
+</div>
 <header class="site">
   <div class="wrap">
     <a class="brand" href="./" data-go="home" aria-label="BDElite home">
@@ -3475,7 +3713,7 @@ html .frame .app,html[data-hero] .frame .app{box-shadow:0 -1px 0 rgba(255,255,25
       <a class="mm-lead" href="customers" data-go="customers"><b>For policyholders <svg aria-hidden="true"><use href="#i-arrow"/></svg></b><small>The team behind the cover your broker arranged.</small></a>
       <p class="mm-label">Explore</p>
       <ul class="mm-links">
-        <li><a href="customers#claimform" data-go="customers" data-scroll="#claimform">Start a claim online</a></li>
+        <li><a href="customers#claimform" data-go="customers" data-scroll="#claimform">Make a claim</a></li>
         <li><a href="customers#claim-path" data-go="customers" data-scroll="#claim-path">What happens after you call</a></li>
         <li><a href="customers#covered" data-go="customers" data-scroll="#covered">What you may be covered for</a></li>
         <li><a href="customers#faq" data-go="customers" data-scroll="#faq">Good to know</a></li>
@@ -3507,11 +3745,11 @@ html .frame .app,html[data-hero] .frame .app{box-shadow:0 -1px 0 rgba(255,255,25
 <!-- ============================ HOME ============================ -->
 <main data-view="home">
   <!-- 1. Hero: photograph, centred line, one field + two pills, fine print pinned low -->
-  <section class="ink hero">
+  <section class="hero">
     <div class="hero-bg" aria-hidden="true" style="--img:url('img/car.jpg');--pos:30% 40%"></div>
     <div class="wrap hero-stage">
       <div class="hero-copy">
-        <h1 class="h-xl"><span class="h1-a">Insurance add&#8209;ons and claims,</span><br><em style="font-style:normal">end to end.</em></h1>
+        <h1 class="h-xl"><span class="h1-a">Insurance Add&#8209;Ons and Claims,</span><br><em style="font-style:normal">End to End.</em></h1>
         <p class="lede">Add-on products, claims management and replacement vehicles for UK brokers and their customers, run by our team in Bolton.</p>
         <div class="chooser">
           <nav class="chooser-main hero-routes" aria-label="Choose where to go">
@@ -3554,10 +3792,10 @@ html .frame .app,html[data-hero] .frame .app{box-shadow:0 -1px 0 rgba(255,255,25
   </section>
 
   <!-- 3. Claims, one group: how a claim works, what to expect, then reviews -->
-  <section class="ink band" id="journey">
+  <section class="band" id="journey">
     <div class="wrap tabs-row">
       <div class="tabs-text">
-        <h2 class="h-m2">How a claim works</h2>
+        <h2 class="h-m2">How a Claim Works</h2>
         <div class="aud-switch" role="group" aria-label="Show the journey for">
           <button type="button" data-aud="customer" aria-pressed="true">Customer</button>
           <button type="button" data-aud="broker" aria-pressed="false">Broker</button>
@@ -3592,7 +3830,7 @@ html .frame .app,html[data-hero] .frame .app{box-shadow:0 -1px 0 rgba(255,255,25
     <div class="wrap pair">
       <div class="pair-text end">
         <p class="eyebrow">For brokers</p>
-        <h2 class="h-m2">Sell add-ons inside Acturis, Open GI and SSP</h2>
+        <h2 class="h-m2">Sell Add-Ons Inside Acturis, Open GI and SSP</h2>
         <p class="lede">Our products quote and bind by EDI in the system your team already uses.</p>
         <ul class="plist">
           <li><b>Quote and bind in Acturis, Open GI and SSP.</b><span>No separate login at point of sale.</span></li>
@@ -3632,7 +3870,7 @@ html .frame .app,html[data-hero] .frame .app{box-shadow:0 -1px 0 rgba(255,255,25
   <section class="band grp" id="products">
     <div class="wrap">
       <div class="left-head">
-        <h2 class="h-m2">Our products</h2>
+        <h2 class="h-m2">Our Products</h2>
         <div class="filters" role="group" aria-label="Filter products">
           <button class="chip" type="button" data-filter="all" aria-pressed="true">All products</button>
           <button class="chip" type="button" data-filter="motor" aria-pressed="false">Motor &amp; commercial vehicle</button>
@@ -3646,7 +3884,7 @@ html .frame .app,html[data-hero] .frame .app{box-shadow:0 -1px 0 rgba(255,255,25
 
   <section class="band ruled grp">
     <div class="wrap">
-      <div class="left-head"><h2 class="h-m2">What you can expect</h2></div>
+      <div class="left-head"><h2 class="h-m2">What You Can Expect</h2></div>
       <div class="tiles3">
         <div class="ptile"><div class="art a1" aria-hidden="true">
           <span class="glow"></span>
@@ -3671,7 +3909,7 @@ html .frame .app,html[data-hero] .frame .app{box-shadow:0 -1px 0 rgba(255,255,25
   <!-- 5. Who we look after: the one place to choose policyholder, broker or fleet -->
   <section class="band" id="who">
     <div class="wrap">
-      <div class="left-head"><h2 class="h-m2">Who we look after</h2></div>
+      <div class="left-head"><h2 class="h-m2">Who We Look After</h2></div>
       <div class="spot">
         <a class="spot-card" href="customers" data-go="customers"><span class="spot-img" style="--img:url('img/car.jpg');--pos:28% 55%"></span><small>For policyholders</small><b>Make a claim or check your cover.</b><span class="spot-go" aria-hidden="true"><svg><use href="#i-arrow"/></svg></span><span class="sr">Make a claim</span></a>
         <a class="spot-card" href="brokers" data-go="brokers"><span class="spot-img" style="--img:url('img/van.jpg');--pos:22% 50%"></span><small>For brokers</small><b>Add-ons that quote and bind in your own system.</b><span class="spot-go" aria-hidden="true"><svg><use href="#i-arrow"/></svg></span><span class="sr">See the broker offer</span></a>
@@ -3682,7 +3920,7 @@ html .frame .app,html[data-hero] .frame .app{box-shadow:0 -1px 0 rgba(255,255,25
 
   <section class="band grp" id="loved">
     <div class="wrap">
-      <div class="sec-head"><h2 class="h-l">What our customers say</h2><div class="grating"><b>4.4</b><span class="stars" aria-hidden="true">★★★★☆</span><span>from 109 Google reviews</span></div></div>
+      <div class="sec-head"><h2 class="h-l">What Our Customers Say</h2><div class="grating"><b>4.4</b><span class="stars" aria-hidden="true">★★★★☆</span><span>from 109 Google reviews</span></div></div>
       <div data-reviews></div>
     </div>
   </section>
@@ -3694,7 +3932,7 @@ html .frame .app,html[data-hero] .frame .app{box-shadow:0 -1px 0 rgba(255,255,25
   <section class="ink band closing">
     <div class="wrap">
       <div class="cta-grid">
-        <div><h2 class="h-l">Become a broker partner</h2><p class="lede" style="margin-top:14px">We set up EDI and train your team.</p></div>
+        <div><h2 class="h-l">Become a Broker Partner</h2><p class="lede" style="margin-top:14px">We set up EDI and train your team.</p></div>
         <div class="cta-actions"><a class="btn btn-gold" href="brokers#partner" data-go="brokers" data-scroll="#partner">Become a partner</a><a class="btn btn-line" href="tel:01204567500">Call 01204 567 500</a></div>
       </div>
     </div>
@@ -3706,8 +3944,7 @@ html .frame .app,html[data-hero] .frame .app{box-shadow:0 -1px 0 rgba(255,255,25
   <section class="page-hero lite">
     <div class="wrap hero-grid">
       <div>
-        <p class="eyebrow"><svg class="chev c-broker" aria-hidden="true"><use href="#chev"/></svg>For insurance brokers</p>
-        <h1 class="h-xl" style="margin-top:20px">Add-ons for <em class="gold" style="font-style:normal">insurance brokers.</em></h1>
+        <h1 class="h-xl">Add-Ons for <em class="gold" style="font-style:normal">Insurance Brokers.</em></h1>
         <p class="lede" style="margin-top:22px">Legal expenses and add-ons that quote and bind in your own system, with every claim handled by our team.</p>
         <div class="hero-ctas"><a class="btn btn-gold" href="#partner" data-scroll="#partner">Become a partner <svg class="arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a><a class="btn btn-line" href="#bportal" data-scroll="#bportal">Broker portal</a></div>
         <div class="platforms"><small>Transact by EDI in</small><span><img class="plogo" src="img/logo-acturis-colour.png" alt="Acturis"></span><span><img class="plogo" src="img/logo-opengi-colour.svg" alt="Open GI"></span><span><img class="plogo" src="img/logo-ssp-colour.png" alt="SSP"></span></div>
@@ -3724,7 +3961,7 @@ html .frame .app,html[data-hero] .frame .app{box-shadow:0 -1px 0 rgba(255,255,25
 
   <section class="band">
     <div class="wrap">
-      <div class="sec-head"><p class="eyebrow">For partners</p><h2 class="h-l">What partners get</h2></div>
+      <div class="sec-head"><h2 class="h-l">What Partners Get</h2></div>
       <div class="cards3">
         <div class="card"><div class="icon"><svg><use href="#i-plug"/></svg></div><h3 class="h-s">Sold inside your workflow</h3><p>EDI with Acturis, Open GI and SSP. Add-ons appear at quote, so they get sold.</p></div>
         <div class="card"><div class="icon"><svg><use href="#i-pound"/></svg></div><h3 class="h-s">Commission you can see</h3><p>Sales, quotes, conversion and commission in the broker portal, updated as business is written.</p></div>
@@ -3737,8 +3974,7 @@ html .frame .app,html[data-hero] .frame .app{box-shadow:0 -1px 0 rgba(255,255,25
   <section class="band">
     <div class="wrap split">
       <div>
-        <p class="eyebrow">Fleet</p>
-        <h2 class="h-l" style="margin-top:16px">Fleet cover for your commercial clients</h2>
+        <h2 class="h-l">Fleet Cover for Your Commercial Clients</h2>
         <p class="lede" style="margin-top:18px">Legal expenses, claims management and breakdown for cars, vans and HGVs up to 44 tonnes, on one scheme.</p>
         <div class="hero-ctas"><a class="btn btn-dark" href="fleet" data-go="fleet">See what fleet clients get <svg class="arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a></div>
       </div>
@@ -3757,8 +3993,7 @@ html .frame .app,html[data-hero] .frame .app{box-shadow:0 -1px 0 rgba(255,255,25
       <div class="tile tile-gold tall"><div class="tile-mock" data-mock="clients"></div></div>
       <div class="pair-text spread">
         <div>
-          <p class="eyebrow">Broker portal</p>
-          <h2 class="h-l">The broker portal</h2>
+          <h2 class="h-l">The Broker Portal</h2>
           <p class="lede">Sales, quotes, conversion and commission, updated as business is written.</p>
           <div class="tech-list">
             <a href="https://brokerportal.bdelite.co.uk/" target="_blank" rel="noopener">Broker log in <svg class="arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
@@ -3771,7 +4006,7 @@ html .frame .app,html[data-hero] .frame .app{box-shadow:0 -1px 0 rgba(255,255,25
 
   <section class="band" id="suite">
     <div class="wrap">
-      <div class="sec-head"><p class="eyebrow">The product suite</p><h2 class="h-l">What you can offer</h2></div>
+      <div class="sec-head"><h2 class="h-l">What You Can Offer</h2></div>
       <div class="products" data-products></div>
     </div>
   </section>
@@ -3781,26 +4016,19 @@ html .frame .app,html[data-hero] .frame .app{box-shadow:0 -1px 0 rgba(255,255,25
     <div class="wrap split" style="align-items:start">
       <div>
         <p class="eyebrow">Become a partner</p>
-        <h2 class="h-l" style="margin-top:16px">Request a callback</h2>
-        <p class="lede" style="margin-top:18px">Tell us about your brokerage and we'll call you back. Sales support: <span class="mono" style="color:var(--on-ink);font-weight:600">01204 567 500</span>.</p>
+        <h2 class="h-l" style="margin-top:16px">Talk to Our Sales Team</h2>
+        <p class="lede" style="margin-top:18px">Call or email our Bolton sales team about your brokerage.</p>
         <ol class="steps" style="margin-top:32px">
           <li><b>We call you back</b><p>A short conversation about your book and your platform.</p></li>
           <li><b>We set up EDI</b><p>Products switched on inside Acturis, Open GI or SSP.</p></li>
           <li><b>You start selling</b><p>Portal access, training and support from our Bolton sales team.</p></li>
         </ol>
       </div>
-      <form class="form" id="partnerForm" novalidate style="color:var(--fg)">
-        <div class="fields two">
-          <div class="field"><label for="p-name">Your name</label><input id="p-name" name="name" autocomplete="name" required><span class="err">Enter your name.</span></div>
-          <div class="field"><label for="p-firm">Brokerage</label><input id="p-firm" name="firm" autocomplete="organization" required><span class="err">Enter your brokerage name.</span></div>
-          <div class="field"><label for="p-email">Work email</label><input id="p-email" name="email" type="email" autocomplete="email" required><span class="err">Enter an email address like name@broker.co.uk.</span></div>
-          <div class="field"><label for="p-tel">Phone</label><input id="p-tel" name="tel" type="tel" autocomplete="tel" required><span class="err">Enter a phone number so we can call you back.</span></div>
-        </div>
-        <div class="field"><label for="p-sys">Broking platform</label>
-          <select id="p-sys" name="sys"><option>Acturis</option><option>Open GI</option><option>SSP</option><option>Other / not sure</option></select></div>
-        <div class="field"><label for="p-msg">What are you interested in? <small>(optional)</small></label><textarea id="p-msg" name="msg" placeholder="For example: fleet legal expenses for our commercial motor clients"></textarea></div>
-        <div class="form-actions"><span class="form-note">We'll only use this to contact you about partnering.</span><button class="btn btn-gold" type="submit">Request a callback</button></div>
-      </form>
+      <div class="form reach" style="color:var(--fg)">
+        <div><h3 class="h-s">Sales support</h3><p class="reach-num mono">01204 567 500</p></div>
+        <a class="btn btn-gold" href="tel:01204567500"><svg aria-hidden="true"><use href="#i-phone"/></svg>Call now</a>
+        <p>Or email <a href="mailto:bdelite.admin@bdelite.co.uk?subject=Becoming%20a%20BDElite%20partner">bdelite.admin@bdelite.co.uk</a> with your name, your brokerage, a phone number and your broking platform, and we'll call you back.</p>
+      </div>
     </div>
   </section>
 </main>
@@ -3811,7 +4039,7 @@ html .frame .app,html[data-hero] .frame .app{box-shadow:0 -1px 0 rgba(255,255,25
     <div class="wrap">
       <div class="cust-intro">
         <p class="eyebrow">For policyholders</p>
-        <h1 class="h-xl">Make a claim<br><em class="gold" style="font-style:normal">or check your cover.</em></h1>
+        <h1 class="h-xl">Make a Claim<br><em class="gold" style="font-style:normal">or Check Your Cover.</em></h1>
         <p class="lede">Start a claim, or find out who we are and what you're covered for.</p>
       </div>
       <div class="routes">
@@ -3821,11 +4049,10 @@ html .frame .app,html[data-hero] .frame .app{box-shadow:0 -1px 0 rgba(255,255,25
           <a class="bignum" href="tel:01204567567">01204 567 567</a>
           <div class="row2">
             <button class="copy" type="button" data-copy="01204 567 567"><svg width="16" height="16" aria-hidden="true"><use href="#i-copy"/></svg>Copy number</button>
-            <a class="btn btn-gold" href="#claimform" data-scroll="#claimform">Start my claim online <svg class="arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
           </div>
           <div class="route-lines">
             <div><span>Breakdown</span><a class="mono" href="tel:01204567497">01204 567 497</a></div>
-            <div><span>Home emergency · 24/7/365</span><a class="mono" href="tel:01204567499">01204 567 499</a></div>
+            <div><span>Home emergency&nbsp;· 24/7/365</span><a class="mono" href="tel:01204567499">01204 567 499</a></div>
             <div><span>Household claims</span><a class="mono" href="tel:01204567480">01204 567 480</a></div>
           </div>
         </div>
@@ -3847,9 +4074,9 @@ html .frame .app,html[data-hero] .frame .app{box-shadow:0 -1px 0 rgba(255,255,25
 
   <section class="band" id="claim-path">
     <div class="wrap">
-      <div class="sec-head"><p class="eyebrow">If you need to claim</p><h2 class="h-l">What happens after you call us</h2><p class="lede">No call-centre runaround and no chasing. Any of our handlers can pick up your claim.</p></div>
+      <div class="sec-head"><p class="eyebrow">If you need to claim</p><h2 class="h-l">What Happens After You Call Us</h2><p class="lede">No call-centre runaround and no chasing. Any of our handlers can pick up your claim.</p></div>
       <ol class="steps h">
-        <li><b>You tell us what happened</b><p>By phone or online. We take it from there, with no forms to chase.</p></li>
+        <li><b>You tell us what happened</b><p>By phone. We take it from there, with no forms to chase.</p></li>
         <li><b>Our claims team takes it on</b><p>Any handler can answer your questions, so you're never waiting for one person to be free. We keep you updated.</p></li>
         <li><b>We keep you moving</b><p>Repairs at an approved repairer, a replacement vehicle where you're covered, and your losses pursued.</p></li>
         <li><b>Settled, then aftercare</b><p>We see it through to settlement and check in once it's done.</p></li>
@@ -3864,56 +4091,18 @@ html .frame .app,html[data-hero] .frame .app{box-shadow:0 -1px 0 rgba(255,255,25
   <section class="band" id="claimform">
     <div class="wrap split" style="align-items:start">
       <div>
-        <p class="eyebrow">Online claim</p>
-        <h2 class="h-l" style="margin-top:16px">Start a claim online</h2>
-        <p class="lede" style="margin-top:18px">Prefer to talk? Call <span class="mono" style="color:var(--fg);font-weight:600">01204 567 567</span>. If anyone is hurt or the road is blocked, call 999 first.</p>
+        <h2 class="h-l">Start Your Claim by Phone</h2>
+        <p class="lede" style="margin-top:18px">Call the motor claimsline and a handler will take it from there. If anyone is hurt or the road is blocked, call 999 first.</p>
         <div class="notice" style="margin-top:32px">
           <svg aria-hidden="true"><use href="#i-shield"/></svg>
           <div><p><b>Stay safe from claims scams.</b> Only deal with BDElite through the numbers on this page or your policy documents. If someone calls about an accident you didn't report, hang up and call us on 01204 567 567.</p></div>
         </div>
       </div>
-      <form class="form" id="claimForm" novalidate>
-        <div class="form-steps" aria-hidden="true"><i class="on"></i><i></i><i></i></div>
-        <div data-step="1">
-          <p class="eyebrow" style="margin-bottom:14px">Step 1 of 3 · About you</p>
-          <div class="fields two">
-            <div class="field"><label for="c-name">Full name</label><input id="c-name" autocomplete="name" required><span class="err">Enter your full name.</span></div>
-            <div class="field"><label for="c-tel">Phone</label><input id="c-tel" type="tel" autocomplete="tel" required><span class="err">Enter a phone number so a handler can call you.</span></div>
-            <div class="field"><label for="c-pol">Policy number <small>(if you have it)</small></label><input id="c-pol" placeholder="e.g. BDE/123456"></div>
-            <div class="field"><label for="c-broker">Your broker</label><input id="c-broker" placeholder="Who sold you the policy?"></div>
-          </div>
-        </div>
-        <div data-step="2" hidden>
-          <p class="eyebrow" style="margin-bottom:14px">Step 2 of 3 · What happened</p>
-          <div class="field" style="margin-bottom:16px"><span style="font-weight:600;font-size:14.5px">Type of claim</span>
-            <div class="radios">
-              <label><input type="radio" name="ctype" id="ct-1" value="Motor accident" checked>Motor accident</label>
-              <label><input type="radio" name="ctype" id="ct-2" value="Legal advice">Legal advice</label>
-              <label><input type="radio" name="ctype" id="ct-3" value="Other">Something else</label>
-            </div></div>
-          <div class="fields two">
-            <div class="field"><label for="c-date">Date of incident</label><input id="c-date" type="date" required><span class="err">Enter the date it happened.</span></div>
-            <div class="field"><label for="c-reg">Your registration</label><input id="c-reg" placeholder="e.g. BD24 ELT" style="text-transform:uppercase"></div>
-          </div>
-          <div class="field" style="margin-top:16px"><label for="c-what">Tell us briefly what happened</label><textarea id="c-what" required></textarea><span class="err">A sentence or two is enough.</span></div>
-        </div>
-        <div data-step="3" hidden>
-          <p class="eyebrow" style="margin-bottom:14px">Step 3 of 3 · Check and send</p>
-          <div class="rows" id="c-review"></div>
-          <p class="form-note" style="margin-top:14px">By sending, you agree we can use these details to handle your claim, as set out in our privacy statement.</p>
-        </div>
-        <div class="success" data-step="done" hidden>
-          <div class="icon"><svg><use href="#i-check"/></svg></div>
-          <h3 class="h-m">Thanks, your claim is with us.</h3>
-          <p style="color:var(--muted)">Your reference is <span class="ref" id="c-ref">BDE-00000</span>. A handler will call you, usually the same working day.</p>
-          <p class="form-note">Prototype: in the live site this sends to the claims team.</p>
-        </div>
-        <div class="form-actions" id="c-actions">
-          <button class="btn btn-line" type="button" id="c-back" hidden>Back</button>
-          <span></span>
-          <button class="btn btn-gold" type="submit" id="c-next">Continue <svg class="arrow" aria-hidden="true"><use href="#i-arrow"/></svg></button>
-        </div>
-      </form>
+      <div class="form reach">
+        <div><h3 class="h-s">Motor claimsline</h3><p class="reach-num mono">01204 567 567</p></div>
+        <a class="btn btn-gold" href="tel:01204567567"><svg aria-hidden="true"><use href="#i-phone"/></svg>Call now</a>
+        <p>Breakdown, home emergency and household claims have their own lines, listed at the top of this page.</p>
+      </div>
     </div>
   </section>
 
@@ -3922,10 +4111,10 @@ html .frame .app,html[data-hero] .frame .app{box-shadow:0 -1px 0 rgba(255,255,25
     <div class="wrap pb-inner">
       <div class="pb-text">
         <p class="eyebrow">24/7 lines</p>
-        <h2 class="h-l" style="margin-top:14px">Breakdown and home emergency</h2>
+        <h2 class="h-l" style="margin-top:14px">Breakdown and Home Emergency</h2>
         <div class="pb-lines">
           <div><span>Breakdown</span><a class="mono" href="tel:01204567497">01204 567 497</a></div>
-          <div><span>Home emergency · 24/7/365</span><a class="mono" href="tel:01204567499">01204 567 499</a></div>
+          <div><span>Home emergency&nbsp;· 24/7/365</span><a class="mono" href="tel:01204567499">01204 567 499</a></div>
         </div>
       </div>
     </div>
@@ -3933,7 +4122,7 @@ html .frame .app,html[data-hero] .frame .app{box-shadow:0 -1px 0 rgba(255,255,25
 
   <section class="band" id="about-cover">
     <div class="wrap">
-      <div class="sec-head"><p class="eyebrow">About BDElite</p><h2 class="h-l">Who we are</h2><p class="lede">Your broker sold your policy and still looks after it. We provide the added cover and handle any claim on it.</p></div>
+      <div class="sec-head"><h2 class="h-l">Who We Are</h2><p class="lede">Your broker sold your policy and still looks after it. We provide the added cover and handle any claim on it.</p></div>
       <div class="chain">
         <div class="card"><svg class="chev c-broker" style="width:20px;height:24px" aria-hidden="true"><use href="#chev"/></svg><h3 class="h-s">Your broker</h3><p>Arranges your insurance and adds the cover that suits you.</p></div>
         <div class="joiner" aria-hidden="true"><svg><use href="#i-arrow"/></svg></div>
@@ -3946,7 +4135,7 @@ html .frame .app,html[data-hero] .frame .app{box-shadow:0 -1px 0 rgba(255,255,25
 
   <section class="band" id="covered">
     <div class="wrap">
-      <div class="sec-head"><p class="eyebrow">Your cover</p><h2 class="h-l">What you may be covered for</h2></div>
+      <div class="sec-head"><h2 class="h-l">What You May Be Covered For</h2></div>
       <div class="cards3">
         <div class="card"><div class="icon"><svg><use href="#i-scale"/></svg></div><h3 class="h-s">Legal expenses</h3><p>If an accident wasn't your fault, we pursue your uninsured losses, including your excess, and give you access to legal advice.</p></div>
         <div class="card"><div class="icon"><svg><use href="#i-tow"/></svg></div><h3 class="h-s">Breakdown assistance</h3><p>Roadside help, recovery and home start, so a breakdown doesn't leave you stranded.</p><p class="mono num-line">01204 567 497</p></div>
@@ -3958,7 +4147,7 @@ html .frame .app,html[data-hero] .frame .app{box-shadow:0 -1px 0 rgba(255,255,25
 
   <section class="band" id="faq">
     <div class="wrap">
-      <div class="sec-head"><p class="eyebrow">Questions about your cover</p><h2 class="h-l">Good to know</h2></div>
+      <div class="sec-head"><p class="eyebrow">Questions about your cover</p><h2 class="h-l">Good to Know</h2></div>
       <div class="faq">
         <details><summary>Why haven't I heard of BDElite before?</summary><p>We work through insurance brokers rather than selling to the public directly, so most people first hear our name when they read their policy documents. Your broker chose us to provide the added cover on your policy and to look after you if you need to claim.</p></details>
         <details><summary>Who do I contact about my policy or renewal?</summary><p>Your broker looks after your main policy, any changes to it and your renewal. Contact us about the BDElite cover itself or a claim, on 01204 567 500 for general questions or 01204 567 567 for motor claims.</p></details>
@@ -3972,7 +4161,7 @@ html .frame .app,html[data-hero] .frame .app{box-shadow:0 -1px 0 rgba(255,255,25
 
   <section class="ink band" id="cust-reviews">
     <div class="wrap">
-      <div class="rev-head"><div class="sec-head" style="margin-bottom:0"><p class="eyebrow">Google reviews</p><h2 class="h-l">What our customers say</h2></div><div class="grating"><b>4.4</b><span class="stars" aria-hidden="true">★★★★☆</span><span>from 109 Google reviews</span></div></div>
+      <div class="rev-head"><div class="sec-head" style="margin-bottom:0"><h2 class="h-l">What Our Customers Say</h2></div><div class="grating"><b>4.4</b><span class="stars" aria-hidden="true">★★★★☆</span><span>from 109 Google reviews</span></div></div>
       <div class="reviews" data-reviews></div>
     </div>
   </section>
@@ -3983,8 +4172,7 @@ html .frame .app,html[data-hero] .frame .app{box-shadow:0 -1px 0 rgba(255,255,25
   <section class="page-hero lite">
     <div class="wrap hero-grid">
       <div>
-        <p class="eyebrow"><svg class="chev c-fleet" aria-hidden="true"><use href="#chev"/></svg>For fleet operators</p>
-        <h1 class="h-xl" style="margin-top:20px">Fleet legal expenses <em class="gold" style="font-style:normal">and breakdown.</em></h1>
+        <h1 class="h-xl">Fleet Legal Expenses <em class="gold" style="font-style:normal">and Breakdown.</em></h1>
         <p class="lede" style="margin-top:22px">For cars, vans and HGVs, arranged through your insurance broker.</p>
         <div class="hero-ctas"><a class="btn btn-gold" href="#fleetcall" data-scroll="#fleetcall">Talk to us about your fleet <svg class="arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a><a class="btn btn-line" href="#calc" data-scroll="#calc">Cost of downtime</a></div>
       </div>
@@ -4214,7 +4402,7 @@ html .frame .app,html[data-hero] .frame .app{box-shadow:0 -1px 0 rgba(255,255,25
 
   <section class="band" id="calc">
     <div class="wrap">
-      <div class="sec-head"><p class="eyebrow">Cost of downtime</p><h2 class="h-l">What do off-road days cost your fleet?</h2><p class="lede">Move the sliders to match your fleet.</p></div>
+      <div class="sec-head"><h2 class="h-l">What Do Off-Road Days Cost Your Fleet?</h2><p class="lede">Move the sliders to match your fleet.</p></div>
       <div class="calc">
         <div class="calc-in card">
           <div class="slider"><div class="slider-top"><label for="s-inc">Incidents per month</label><output for="s-inc" id="o-inc">6</output></div><input type="range" id="s-inc" min="1" max="60" value="6"></div>
@@ -4233,7 +4421,7 @@ html .frame .app,html[data-hero] .frame .app{box-shadow:0 -1px 0 rgba(255,255,25
 
   <section class="band">
     <div class="wrap">
-      <div class="sec-head"><p class="eyebrow">Fleet cover</p><h2 class="h-l">Where we save fleets money</h2></div>
+      <div class="sec-head"><h2 class="h-l">Where We Save Fleets Money</h2></div>
       <div class="cards3">
         <div class="card"><div class="icon"><svg><use href="#i-clock"/></svg></div><h3 class="h-s">Downtime</h3><p>Fast roadside response and recovery for cars, vans and HGVs up to 44 tonnes, approved repairers and replacement vehicles to keep drivers earning.</p></div>
         <div class="card"><div class="icon"><svg><use href="#i-user"/></svg></div><h3 class="h-s">Admin</h3><p>Our claims team manages everything from first notification to settlement, and any handler can answer a query, so your transport office isn't chasing updates.</p></div>
@@ -4245,8 +4433,7 @@ html .frame .app,html[data-hero] .frame .app{box-shadow:0 -1px 0 rgba(255,255,25
   <section class="band" id="fportal">
     <div class="wrap split" style="align-items:start">
       <div>
-        <p class="eyebrow">Fleet portal &amp; MI pack</p>
-        <h2 class="h-l" style="margin-top:16px">The fleet portal</h2>
+        <h2 class="h-l">The Fleet Portal</h2>
         <p class="lede" style="margin-top:18px">Live claims, handler updates and a monthly MI pack.</p>
         <div class="mi-list">
           <div><span class="mono">01</span><span><b>Claims overview</b><span>Volumes by month, fault and non-fault, open and closed</span></span></div>
@@ -4265,21 +4452,15 @@ html .frame .app,html[data-hero] .frame .app{box-shadow:0 -1px 0 rgba(255,255,25
     <div class="waves" aria-hidden="true"></div>
     <div class="wrap split" style="align-items:start">
       <div>
-        <p class="eyebrow">How to arrange it</p>
-        <h2 class="h-l" style="margin-top:16px">Arranged through your insurance broker.</h2>
+        <h2 class="h-l">Arranged Through Your Insurance Broker.</h2>
         <p class="lede" style="margin-top:18px">We work only through brokers. If yours doesn't offer BDElite yet, we'll contact them for you.</p>
         <ul class="checks"><li><svg aria-hidden="true"><use href="#i-checkc"/></svg><span><b>Cars and grey fleet</b> legal expenses and breakdown</span></li><li><svg aria-hidden="true"><use href="#i-checkc"/></svg><span><b>Vans up to 3.5t</b> to keep drivers earning</span></li><li><svg aria-hidden="true"><use href="#i-checkc"/></svg><span><b>HGVs up to 44t</b> with nationwide specialist recovery</span></li><li><svg aria-hidden="true"><use href="#i-checkc"/></svg><span><b>Taxi fleets</b> built for drivers who can't be off the road</span></li></ul>
       </div>
-      <form class="form" id="fleetForm" novalidate style="color:var(--fg)">
-        <div class="fields two">
-          <div class="field"><label for="f-name">Your name</label><input id="f-name" autocomplete="name" required><span class="err">Enter your name.</span></div>
-          <div class="field"><label for="f-co">Company</label><input id="f-co" autocomplete="organization" required><span class="err">Enter your company name.</span></div>
-          <div class="field"><label for="f-tel">Phone</label><input id="f-tel" type="tel" autocomplete="tel" required><span class="err">Enter a phone number.</span></div>
-          <div class="field"><label for="f-size">Fleet size</label><select id="f-size"><option>1 to 10 vehicles</option><option>11 to 50 vehicles</option><option>51 to 250 vehicles</option><option>250+ vehicles</option></select></div>
-        </div>
-        <div class="field"><label for="f-broker">Your broker <small>(optional)</small></label><input id="f-broker"></div>
-        <div class="form-actions"><span class="form-note">Or call 01204 567 500</span><button class="btn btn-gold" type="submit">Request a callback</button></div>
-      </form>
+      <div class="form reach" style="color:var(--fg)">
+        <div><h3 class="h-s">Talk to us about your fleet</h3><p class="reach-num mono">01204 567 500</p></div>
+        <a class="btn btn-gold" href="tel:01204567500"><svg aria-hidden="true"><use href="#i-phone"/></svg>Call now</a>
+        <p>Or email <a href="mailto:bdelite.admin@bdelite.co.uk?subject=Fleet%20enquiry">bdelite.admin@bdelite.co.uk</a> with your name, your company, a phone number, your fleet size and your broker, and we'll call you back.</p>
+      </div>
     </div>
   </section>
 </main>
@@ -4296,8 +4477,7 @@ html .frame .app,html[data-hero] .frame .app{box-shadow:0 -1px 0 rgba(255,255,25
   <section class="band">
     <div class="wrap about-grid">
       <div>
-        <p class="eyebrow">Our story</p>
-        <h2 class="h-l" style="margin-top:16px">How we've grown</h2>
+        <h2 class="h-l">How We've Grown</h2>
         <p class="lede" style="margin-top:18px">We build add-on products with brokers and handle every claim in-house.</p>
         <div class="hero-ctas"><a class="btn btn-dark" href="careers">Careers at BDElite</a><a class="btn btn-line" href="brokers" data-go="brokers">Partner with us</a></div>
       </div>
@@ -4322,7 +4502,7 @@ html .frame .app,html[data-hero] .frame .app{box-shadow:0 -1px 0 rgba(255,255,25
     <div class="wrap inhouse">
       <div>
         <p class="eyebrow">Our team</p>
-        <h2 class="h-l" style="margin-top:16px">Run from Bolton</h2>
+        <h2 class="h-l" style="margin-top:16px">Run From Bolton</h2>
         <p class="lede" style="margin-top:16px">Claims, products and technology are all handled by our own people in Bolton.</p>
       </div>
       <ul class="inhouse-list">
@@ -4339,8 +4519,7 @@ html .frame .app,html[data-hero] .frame .app{box-shadow:0 -1px 0 rgba(255,255,25
 <main data-view="faq" hidden>
   <section class="page-hero lite text-hero">
     <div class="wrap about-hero" style="position:relative;max-width:var(--max)">
-      <p class="eyebrow">Frequently asked questions</p>
-      <h1 class="h-xl" style="margin-top:20px;max-width:20ch">Answers to<br><em class="gold" style="font-style:normal">common questions.</em></h1>
+      <h1 class="h-xl" style="max-width:20ch">Answers to<br><em class="gold" style="font-style:normal">Common Questions.</em></h1>
       <p class="lede" style="margin-top:22px">Can't find what you're looking for? Call us on 01204 567 500, or 01204 567 567 if you need to make a motor claim.</p>
     </div>
   </section>
@@ -4351,7 +4530,7 @@ html .frame .app,html[data-hero] .frame .app{box-shadow:0 -1px 0 rgba(255,255,25
         <section class="faq-group" id="claims" aria-labelledby="claims-h">
           <h2 id="claims-h">Making a claim</h2>
           <div class="faq">
-            <details><summary>I've had a motor accident. What should I do?</summary><div class="ans"><p>Make sure everyone is safe, then call the motor claimsline on <a href="tel:01204567567">01204 567 567</a>, or <a href="customers#claimform">start your claim online</a> and a handler will call you back. The sooner you tell us, the sooner we can arrange a repair or replacement vehicle.</p></div></details>
+            <details><summary>I've had a motor accident. What should I do?</summary><div class="ans"><p>Make sure everyone is safe, then call the motor claimsline on <a href="tel:01204567567">01204 567 567</a>. The sooner you tell us, the sooner we can arrange a repair or replacement vehicle.</p></div></details>
             <details><summary>What information do I need when I call?</summary><div class="ans"><p>Whatever you have to hand. It helps to have:</p><ul><li>Your policy number, or your broker's name</li><li>Your vehicle registration</li><li>When and where it happened</li><li>The other driver's name, registration and insurer, if there was one</li><li>Any photos, dashcam footage or witness details</li><li>A crime reference number, if your vehicle was stolen or vandalised</li></ul><p>Don't worry if you don't have everything. We can start your claim and collect the rest later.</p></div></details>
             <details><summary>Which number do I call?</summary><div class="ans"><ul><li>Motor claims: <a href="tel:01204567567">01204 567 567</a></li><li>Breakdown, 24/7: <a href="tel:01204567497">01204 567 497</a></li><li>Home emergency, 24/7/365: <a href="tel:01204567499">01204 567 499</a></li><li>Household claims: <a href="tel:01204567480">01204 567 480</a></li><li>Tools in transit claims (handled by Davies Group): <a href="tel:01204567528">01204 567 528</a></li><li>Personal accident claims (handled by Davies Group): <a href="tel:01204567529">01204 567 529</a> or <a href="mailto:personalaccidentclaims@bdelite.co.uk">personalaccidentclaims@bdelite.co.uk</a></li><li>Lost keys with a BDElite tag: <a href="tel:01204567482">01204 567 482</a></li></ul><p>The right number for your cover is also printed on your certificate of insurance.</p></div></details>
             <details><summary>The accident wasn't my fault. Will I have to pay my excess?</summary><div class="ans"><p>If you have motor legal expenses cover, we can try to recover your uninsured losses from the person at fault. That can include your policy excess, hire costs, loss of earnings and compensation for injury.</p></div></details>
@@ -4396,7 +4575,7 @@ html .frame .app,html[data-hero] .frame .app{box-shadow:0 -1px 0 rgba(255,255,25
             <details><summary>Do you sell direct to the public?</summary><div class="ans"><p>No. Our products are only available through insurance brokers.</p></div></details>
             <details><summary>Which broking platforms do you work with?</summary><div class="ans"><p>Our products quote and bind by EDI in Acturis, Open GI and SSP, so there's no double keying.</p></div></details>
             <details><summary>Who underwrites your products?</summary><div class="ans"><p>Legal expenses and breakdown products are underwritten by Financial &amp; Legal Insurance Company Limited. Home emergency is underwritten by AmTrust Specialty and administered by Arc Legal Assistance. Personal accident and tools in transit cover are underwritten by Collinson Insurance, with claims handled by Davies Group. Each policy wording confirms its insurer.</p></div></details>
-            <details><summary>How do I become a BDElite partner?</summary><div class="ans"><p><a href="brokers#partner">Request a callback</a> or call our sales team on <a href="tel:01204567500">01204 567 500</a>. Existing partners can use the <a href="https://brokerportal.bdelite.co.uk/" target="_blank" rel="noopener">broker portal</a>.</p></div></details>
+            <details><summary>How do I become a BDElite partner?</summary><div class="ans"><p>Call our sales team on <a href="tel:01204567500">01204 567 500</a> or email <a href="mailto:bdelite.admin@bdelite.co.uk">bdelite.admin@bdelite.co.uk</a>. Existing partners can use the <a href="https://brokerportal.bdelite.co.uk/" target="_blank" rel="noopener">broker portal</a>.</p></div></details>
           </div>
         </section>
         <section class="faq-group" id="fleet" aria-labelledby="fleet-h">
@@ -4416,7 +4595,7 @@ html .frame .app,html[data-hero] .frame .app{box-shadow:0 -1px 0 rgba(255,255,25
           </div>
         </section>
         <div class="notice draft-note" style="margin-top:48px"><svg aria-hidden="true"><use href="#i-doc"/></svg><div><p><b>Draft wording:</b> answers are drawn from the 2026 product booklets. Please have the product team check them before go-live.</p></div></div>
-        <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"I've had a motor accident. What should I do?","acceptedAnswer":{"@type":"Answer","text":"Make sure everyone is safe, then call the motor claimsline on 01204 567 567, or start your claim online and a handler will call you back. The sooner you tell us, the sooner we can arrange a repair or replacement vehicle."}},{"@type":"Question","name":"What information do I need when I call?","acceptedAnswer":{"@type":"Answer","text":"Whatever you have to hand. It helps to have: • Your policy number, or your broker's name • Your vehicle registration • When and where it happened • The other driver's name, registration and insurer, if there was one • Any photos, dashcam footage or witness details • A crime reference number, if your vehicle was stolen or vandalised Don't worry if you don't have everything. We can start your claim and collect the rest later."}},{"@type":"Question","name":"Which number do I call?","acceptedAnswer":{"@type":"Answer","text":"• Motor claims: 01204 567 567 • Breakdown, 24/7: 01204 567 497 • Home emergency, 24/7/365: 01204 567 499 • Household claims: 01204 567 480 • Tools in transit claims (handled by Davies Group): 01204 567 528 • Personal accident claims (handled by Davies Group): 01204 567 529 or personalaccidentclaims@bdelite.co.uk • Lost keys with a BDElite tag: 01204 567 482 The right number for your cover is also printed on your certificate of insurance."}},{"@type":"Question","name":"The accident wasn't my fault. Will I have to pay my excess?","acceptedAnswer":{"@type":"Answer","text":"If you have motor legal expenses cover, we can try to recover your uninsured losses from the person at fault. That can include your policy excess, hire costs, loss of earnings and compensation for injury."}},{"@type":"Question","name":"Will I get a replacement vehicle?","acceptedAnswer":{"@type":"Answer","text":"If the accident wasn't your fault, we can often arrange a replacement vehicle while yours is repaired, from a small car right up to a 44-tonne HGV. If it was your fault, or your vehicle was stolen, set on fire or vandalised, you'll need Emergency Hire Vehicle cover. That provides a replacement for up to 14 days while your motor insurer deals with the claim, if they can't provide a courtesy car."}},{"@type":"Question","name":"What if the other driver was uninsured or drove off?","acceptedAnswer":{"@type":"Answer","text":"Motor legal expenses cover can help you claim through the Motor Insurers' Bureau when the driver at fault is uninsured or can't be traced."}},{"@type":"Question","name":"Someone called me about an accident I never reported. Is that you?","acceptedAnswer":{"@type":"Answer","text":"Only deal with BDElite through the numbers on this website or in your policy documents. If someone calls about an accident you didn't report, hang up and call us on 01204 567 567."}},{"@type":"Question","name":"Why haven't I heard of BDElite before?","acceptedAnswer":{"@type":"Answer","text":"We work through insurance brokers rather than selling to the public, so most people first see our name in their policy documents. Your broker chose us to provide the extra cover on your policy and to look after you if you need to claim."}},{"@type":"Question","name":"How do I know what I am covered for?","acceptedAnswer":{"@type":"Answer","text":"Your policy documents list the cover your broker added. If you can't find them, ask your broker, or call us on 01204 567 500 with your policy number or your broker's name and we'll check."}},{"@type":"Question","name":"Who do I contact about my policy or renewal?","acceptedAnswer":{"@type":"Answer","text":"Your broker looks after your main policy, any changes and your renewal. Contact us about the BDElite cover itself or a claim."}},{"@type":"Question","name":"What does motor legal expenses cover?","acceptedAnswer":{"@type":"Answer","text":"It pays legal costs for things like: • Recovering your uninsured losses after an accident that wasn't your fault • Defending you against a motoring prosecution • Disputes about buying, selling or repairing your vehicle • Your vehicle being cloned, or illegally clamped or towed • Unenforceable parking fines and Motor Insurance Database errors • Protecting your driving licence Exactly what's included depends on your policy, so check your documents."}},{"@type":"Question","name":"What does \"reasonable prospects of success\" mean?","acceptedAnswer":{"@type":"Answer","text":"Legal expenses policies pay for a legal case when it's more likely than not to succeed, which means a better than 50% chance. We'll assess this for you when you claim and explain the outcome."}},{"@type":"Question","name":"Does household legal expenses cover my family?","acceptedAnswer":{"@type":"Answer","text":"Household and family legal expenses covers you, your partner and any family member who lives with you permanently. It helps with things like personal injury, employment disputes, problems with goods or services you've bought, and disputes about your home."}},{"@type":"Question","name":"Where am I covered?","acceptedAnswer":{"@type":"Answer","text":"Most of our cover applies in the UK, the Channel Islands and the Isle of Man. Some policies go further: for example, motor legal expenses can recover losses after a non-fault accident in the EU. Your policy documents give the details."}},{"@type":"Question","name":"Can I cancel?","acceptedAnswer":{"@type":"Answer","text":"Many of our products have a 14-day cooling-off period with a full refund if you haven't claimed. Your policy documents confirm this, and the broker who arranged your policy can cancel it for you."}},{"@type":"Question","name":"I've broken down. What do I do?","acceptedAnswer":{"@type":"Answer","text":"Get yourself and your passengers somewhere safe, then call 01204 567 497. The line is open 24 hours a day. Have your vehicle registration and location ready."}},{"@type":"Question","name":"Which vehicles does breakdown cover?","acceptedAnswer":{"@type":"Answer","text":"Our personal breakdown cover is for cars, vans and taxis up to 3.5 tonnes. Fleet breakdown covers vehicles up to 44 tonnes, including HGVs. Vehicles need to be roadworthy, with a valid MOT and serviced to the manufacturer's recommendations."}},{"@type":"Question","name":"Can I call you out straight after buying the policy?","acceptedAnswer":{"@type":"Answer","text":"New breakdown policies don't cover call-outs in the first 24 hours, unless it's a renewal or you're moving from another provider."}},{"@type":"Question","name":"What counts as a home emergency?","acceptedAnswer":{"@type":"Answer","text":"A sudden event that needs fixing straight away to make your home safe, secure or liveable. For example, a burst pipe, a blocked drain, a loss of power, gas or water, broken locks, lost keys, a pest infestation or roof damage. Your certificate lists the sections of cover you have. Call 01204 567 499, 24 hours a day, 365 days a year."}},{"@type":"Question","name":"What is excess protection?","acceptedAnswer":{"@type":"Answer","text":"If you make a successful claim on your home or landlord buildings or contents insurance, excess protection pays back the excess you had to pay, up to the limit on your certificate. Tell us within 31 days of your claim being settled."}},{"@type":"Question","name":"What is a BDElite key tag?","acceptedAnswer":{"@type":"Answer","text":"A key fob with a unique code. If you lose your keys and someone hands them in, we contact you and post them back by Royal Mail Special Delivery. You need to register your tag first."}},{"@type":"Question","name":"How long do you keep lost keys?","acceptedAnswer":{"@type":"Answer","text":"We hold returned keys securely for 12 months. Call the Key Recovery team on 01204 567 482, Monday to Friday 8.30am to 5pm, to check whether yours have been handed in."}},{"@type":"Question","name":"Do you sell direct to the public?","acceptedAnswer":{"@type":"Answer","text":"No. Our products are only available through insurance brokers."}},{"@type":"Question","name":"Which broking platforms do you work with?","acceptedAnswer":{"@type":"Answer","text":"Our products quote and bind by EDI in Acturis, Open GI and SSP, so there's no double keying."}},{"@type":"Question","name":"Who underwrites your products?","acceptedAnswer":{"@type":"Answer","text":"Legal expenses and breakdown products are underwritten by Financial &amp; Legal Insurance Company Limited. Home emergency is underwritten by AmTrust Specialty and administered by Arc Legal Assistance. Personal accident and tools in transit cover are underwritten by Collinson Insurance, with claims handled by Davies Group. Each policy wording confirms its insurer."}},{"@type":"Question","name":"How do I become a BDElite partner?","acceptedAnswer":{"@type":"Answer","text":"Request a callback or call our sales team on 01204 567 500. Existing partners can use the broker portal."}},{"@type":"Question","name":"How do our drivers report an incident?","acceptedAnswer":{"@type":"Answer","text":"By phone, on the web or through our mobile app, 24 hours a day, 365 days a year. We handle every type of claim, including fault, non-fault, theft, vandalism, fire and windscreen."}},{"@type":"Question","name":"What sizes of vehicle can you cover?","acceptedAnswer":{"@type":"Answer","text":"From cars and vans to 44-tonne HGVs, for breakdown, repairs and replacement vehicles. Electric vehicles are covered too, with specialist EV repairers and replacement EVs available."}},{"@type":"Question","name":"How quickly are repairs and total losses handled?","acceptedAnswer":{"@type":"Answer","text":"Repairs are allocated on the first call and authorised within 24 hours, and repairs through our approved network are guaranteed for 3 years. A total loss can be decided within 24 hours from photos, with an engineer's report within 48 hours."}},{"@type":"Question","name":"How do I make a complaint?","acceptedAnswer":{"@type":"Answer","text":"We'd like the chance to put things right. Our complaints procedure explains how to complain and what happens next, including how to contact the Financial Ombudsman Service."}},{"@type":"Question","name":"I need extra help. Can you support me?","acceptedAnswer":{"@type":"Answer","text":"Yes. If something makes it harder for you to deal with us, such as a health condition, a difficult life event or finding paperwork hard, tell us and we'll adapt how we work with you. See extra support and accessibility."}},{"@type":"Question","name":"Is BDElite regulated?","acceptedAnswer":{"@type":"Answer","text":"Yes. BDElite Ltd is authorised and regulated by the Financial Conduct Authority, firm reference number 797920. See FCA authorisation."}}]}</script>
+        <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"I've had a motor accident. What should I do?","acceptedAnswer":{"@type":"Answer","text":"Make sure everyone is safe, then call the motor claimsline on 01204 567 567. The sooner you tell us, the sooner we can arrange a repair or replacement vehicle."}},{"@type":"Question","name":"What information do I need when I call?","acceptedAnswer":{"@type":"Answer","text":"Whatever you have to hand. It helps to have: • Your policy number, or your broker's name • Your vehicle registration • When and where it happened • The other driver's name, registration and insurer, if there was one • Any photos, dashcam footage or witness details • A crime reference number, if your vehicle was stolen or vandalised Don't worry if you don't have everything. We can start your claim and collect the rest later."}},{"@type":"Question","name":"Which number do I call?","acceptedAnswer":{"@type":"Answer","text":"• Motor claims: 01204 567 567 • Breakdown, 24/7: 01204 567 497 • Home emergency, 24/7/365: 01204 567 499 • Household claims: 01204 567 480 • Tools in transit claims (handled by Davies Group): 01204 567 528 • Personal accident claims (handled by Davies Group): 01204 567 529 or personalaccidentclaims@bdelite.co.uk • Lost keys with a BDElite tag: 01204 567 482 The right number for your cover is also printed on your certificate of insurance."}},{"@type":"Question","name":"The accident wasn't my fault. Will I have to pay my excess?","acceptedAnswer":{"@type":"Answer","text":"If you have motor legal expenses cover, we can try to recover your uninsured losses from the person at fault. That can include your policy excess, hire costs, loss of earnings and compensation for injury."}},{"@type":"Question","name":"Will I get a replacement vehicle?","acceptedAnswer":{"@type":"Answer","text":"If the accident wasn't your fault, we can often arrange a replacement vehicle while yours is repaired, from a small car right up to a 44-tonne HGV. If it was your fault, or your vehicle was stolen, set on fire or vandalised, you'll need Emergency Hire Vehicle cover. That provides a replacement for up to 14 days while your motor insurer deals with the claim, if they can't provide a courtesy car."}},{"@type":"Question","name":"What if the other driver was uninsured or drove off?","acceptedAnswer":{"@type":"Answer","text":"Motor legal expenses cover can help you claim through the Motor Insurers' Bureau when the driver at fault is uninsured or can't be traced."}},{"@type":"Question","name":"Someone called me about an accident I never reported. Is that you?","acceptedAnswer":{"@type":"Answer","text":"Only deal with BDElite through the numbers on this website or in your policy documents. If someone calls about an accident you didn't report, hang up and call us on 01204 567 567."}},{"@type":"Question","name":"Why haven't I heard of BDElite before?","acceptedAnswer":{"@type":"Answer","text":"We work through insurance brokers rather than selling to the public, so most people first see our name in their policy documents. Your broker chose us to provide the extra cover on your policy and to look after you if you need to claim."}},{"@type":"Question","name":"How do I know what I am covered for?","acceptedAnswer":{"@type":"Answer","text":"Your policy documents list the cover your broker added. If you can't find them, ask your broker, or call us on 01204 567 500 with your policy number or your broker's name and we'll check."}},{"@type":"Question","name":"Who do I contact about my policy or renewal?","acceptedAnswer":{"@type":"Answer","text":"Your broker looks after your main policy, any changes and your renewal. Contact us about the BDElite cover itself or a claim."}},{"@type":"Question","name":"What does motor legal expenses cover?","acceptedAnswer":{"@type":"Answer","text":"It pays legal costs for things like: • Recovering your uninsured losses after an accident that wasn't your fault • Defending you against a motoring prosecution • Disputes about buying, selling or repairing your vehicle • Your vehicle being cloned, or illegally clamped or towed • Unenforceable parking fines and Motor Insurance Database errors • Protecting your driving licence Exactly what's included depends on your policy, so check your documents."}},{"@type":"Question","name":"What does \"reasonable prospects of success\" mean?","acceptedAnswer":{"@type":"Answer","text":"Legal expenses policies pay for a legal case when it's more likely than not to succeed, which means a better than 50% chance. We'll assess this for you when you claim and explain the outcome."}},{"@type":"Question","name":"Does household legal expenses cover my family?","acceptedAnswer":{"@type":"Answer","text":"Household and family legal expenses covers you, your partner and any family member who lives with you permanently. It helps with things like personal injury, employment disputes, problems with goods or services you've bought, and disputes about your home."}},{"@type":"Question","name":"Where am I covered?","acceptedAnswer":{"@type":"Answer","text":"Most of our cover applies in the UK, the Channel Islands and the Isle of Man. Some policies go further: for example, motor legal expenses can recover losses after a non-fault accident in the EU. Your policy documents give the details."}},{"@type":"Question","name":"Can I cancel?","acceptedAnswer":{"@type":"Answer","text":"Many of our products have a 14-day cooling-off period with a full refund if you haven't claimed. Your policy documents confirm this, and the broker who arranged your policy can cancel it for you."}},{"@type":"Question","name":"I've broken down. What do I do?","acceptedAnswer":{"@type":"Answer","text":"Get yourself and your passengers somewhere safe, then call 01204 567 497. The line is open 24 hours a day. Have your vehicle registration and location ready."}},{"@type":"Question","name":"Which vehicles does breakdown cover?","acceptedAnswer":{"@type":"Answer","text":"Our personal breakdown cover is for cars, vans and taxis up to 3.5 tonnes. Fleet breakdown covers vehicles up to 44 tonnes, including HGVs. Vehicles need to be roadworthy, with a valid MOT and serviced to the manufacturer's recommendations."}},{"@type":"Question","name":"Can I call you out straight after buying the policy?","acceptedAnswer":{"@type":"Answer","text":"New breakdown policies don't cover call-outs in the first 24 hours, unless it's a renewal or you're moving from another provider."}},{"@type":"Question","name":"What counts as a home emergency?","acceptedAnswer":{"@type":"Answer","text":"A sudden event that needs fixing straight away to make your home safe, secure or liveable. For example, a burst pipe, a blocked drain, a loss of power, gas or water, broken locks, lost keys, a pest infestation or roof damage. Your certificate lists the sections of cover you have. Call 01204 567 499, 24 hours a day, 365 days a year."}},{"@type":"Question","name":"What is excess protection?","acceptedAnswer":{"@type":"Answer","text":"If you make a successful claim on your home or landlord buildings or contents insurance, excess protection pays back the excess you had to pay, up to the limit on your certificate. Tell us within 31 days of your claim being settled."}},{"@type":"Question","name":"What is a BDElite key tag?","acceptedAnswer":{"@type":"Answer","text":"A key fob with a unique code. If you lose your keys and someone hands them in, we contact you and post them back by Royal Mail Special Delivery. You need to register your tag first."}},{"@type":"Question","name":"How long do you keep lost keys?","acceptedAnswer":{"@type":"Answer","text":"We hold returned keys securely for 12 months. Call the Key Recovery team on 01204 567 482, Monday to Friday 8.30am to 5pm, to check whether yours have been handed in."}},{"@type":"Question","name":"Do you sell direct to the public?","acceptedAnswer":{"@type":"Answer","text":"No. Our products are only available through insurance brokers."}},{"@type":"Question","name":"Which broking platforms do you work with?","acceptedAnswer":{"@type":"Answer","text":"Our products quote and bind by EDI in Acturis, Open GI and SSP, so there's no double keying."}},{"@type":"Question","name":"Who underwrites your products?","acceptedAnswer":{"@type":"Answer","text":"Legal expenses and breakdown products are underwritten by Financial &amp; Legal Insurance Company Limited. Home emergency is underwritten by AmTrust Specialty and administered by Arc Legal Assistance. Personal accident and tools in transit cover are underwritten by Collinson Insurance, with claims handled by Davies Group. Each policy wording confirms its insurer."}},{"@type":"Question","name":"How do I become a BDElite partner?","acceptedAnswer":{"@type":"Answer","text":"Call our sales team on 01204 567 500 or email bdelite.admin@bdelite.co.uk. Existing partners can use the broker portal."}},{"@type":"Question","name":"How do our drivers report an incident?","acceptedAnswer":{"@type":"Answer","text":"By phone, on the web or through our mobile app, 24 hours a day, 365 days a year. We handle every type of claim, including fault, non-fault, theft, vandalism, fire and windscreen."}},{"@type":"Question","name":"What sizes of vehicle can you cover?","acceptedAnswer":{"@type":"Answer","text":"From cars and vans to 44-tonne HGVs, for breakdown, repairs and replacement vehicles. Electric vehicles are covered too, with specialist EV repairers and replacement EVs available."}},{"@type":"Question","name":"How quickly are repairs and total losses handled?","acceptedAnswer":{"@type":"Answer","text":"Repairs are allocated on the first call and authorised within 24 hours, and repairs through our approved network are guaranteed for 3 years. A total loss can be decided within 24 hours from photos, with an engineer's report within 48 hours."}},{"@type":"Question","name":"How do I make a complaint?","acceptedAnswer":{"@type":"Answer","text":"We'd like the chance to put things right. Our complaints procedure explains how to complain and what happens next, including how to contact the Financial Ombudsman Service."}},{"@type":"Question","name":"I need extra help. Can you support me?","acceptedAnswer":{"@type":"Answer","text":"Yes. If something makes it harder for you to deal with us, such as a health condition, a difficult life event or finding paperwork hard, tell us and we'll adapt how we work with you. See extra support and accessibility."}},{"@type":"Question","name":"Is BDElite regulated?","acceptedAnswer":{"@type":"Answer","text":"Yes. BDElite Ltd is authorised and regulated by the Financial Conduct Authority, firm reference number 797920. See FCA authorisation."}}]}</script>
       </div>
     </div>
   </section>
@@ -4426,8 +4605,7 @@ html .frame .app,html[data-hero] .frame .app{box-shadow:0 -1px 0 rgba(255,255,25
 <main data-view="key-recovery" hidden>
   <section class="page-hero lite text-hero">
     <div class="wrap about-hero" style="position:relative;max-width:var(--max)">
-      <p class="eyebrow">Key tag registration</p>
-      <h1 class="h-xl" style="margin-top:20px;max-width:20ch">Register your key tag.<br><em class="gold" style="font-style:normal">Get your keys back.</em></h1>
+      <h1 class="h-xl" style="max-width:20ch">Register Your Key Tag.<br><em class="gold" style="font-style:normal">Get Your Keys Back.</em></h1>
       <p class="lede" style="margin-top:22px">Your broker gave you a BDElite Key Recovery tag. Register it once with your contact details, and if your keys are lost and handed in, we'll post them back to you.</p>
     </div>
   </section>
@@ -4456,7 +4634,8 @@ html .frame .app,html[data-hero] .frame .app{box-shadow:0 -1px 0 rgba(255,255,25
         <div class="field"><label for="k-broker">Insurance broker</label><input id="k-broker" name="broker" required><span class="err">Enter the name of the broker who gave you the tag.</span></div>
       </div>
       <div class="field check-row"><input id="k-terms" name="terms" type="checkbox" required><label for="k-terms">I've read and accept the <a href="#terms">key recovery terms</a> below.</label><span class="err">Please accept the terms to register.</span></div>
-      <div class="form-actions"><span class="form-note">We only use these details to return your keys. See our <a href="privacy-statement">privacy statement</a>.</span><button class="btn btn-gold" type="submit">Register my tag</button></div>
+      <div class="form-actions"><span class="form-note">This opens your email app with your details filled in, ready to send to our Key Recovery team. We only use these details to return your keys. See our <a href="privacy-statement">privacy statement</a>.</span><button class="btn btn-gold" type="submit">Register my tag</button></div>
+      <div class="notice" id="k-sent" role="status" hidden><svg aria-hidden="true"><use href="#i-check"/></svg><div><p><b>Nearly done: press send in your email.</b> Your email app should have opened with your details filled in. If it didn’t, email <a href="mailto:keyrecovery@bdelite.co.uk">keyrecovery@bdelite.co.uk</a> or call <a href="tel:01204567482">01204 567 482</a>.</p></div></div>
     </form>
   
     <h2>Prefer to register another way?</h2>
@@ -4497,7 +4676,7 @@ html .frame .app,html[data-hero] .frame .app{box-shadow:0 -1px 0 rgba(255,255,25
   <section class="page-hero lite text-hero">
     <div class="wrap about-hero" style="position:relative;max-width:var(--max)">
       <p class="eyebrow">Extra support and accessibility</p>
-      <h1 class="h-xl" style="margin-top:20px;max-width:20ch">If you need extra help,<br><em class="gold" style="font-style:normal">just tell us.</em></h1>
+      <h1 class="h-xl" style="margin-top:20px;max-width:20ch">If You Need Extra Help,<br><em class="gold" style="font-style:normal">Just Tell Us.</em></h1>
       <p class="lede" style="margin-top:22px">Anyone can find themselves needing more support, especially after an accident or an emergency at home. Let us know and we'll adapt how we work with you.</p>
     </div>
   </section>
@@ -4562,7 +4741,7 @@ html .frame .app,html[data-hero] .frame .app{box-shadow:0 -1px 0 rgba(255,255,25
   <section class="page-hero lite text-hero">
     <div class="wrap about-hero" style="position:relative;max-width:var(--max)">
       <p class="eyebrow">Careers</p>
-      <h1 class="h-xl" style="margin-top:20px;max-width:20ch">Help us make<br><em class="gold" style="font-style:normal">claims simple.</em></h1>
+      <h1 class="h-xl" style="margin-top:20px;max-width:20ch">Help Us Make<br><em class="gold" style="font-style:normal">Claims Simple.</em></h1>
       <p class="lede" style="margin-top:22px">We believe our people are what make our service shine, so we're always on the lookout for talented individuals to join our teams in Bolton.</p>
     </div>
   </section>
@@ -4600,7 +4779,7 @@ html .frame .app,html[data-hero] .frame .app{box-shadow:0 -1px 0 rgba(255,255,25
   <section class="page-hero lite text-hero">
     <div class="wrap about-hero" style="position:relative;max-width:var(--max)">
       <p class="eyebrow">Complaints procedure</p>
-      <h1 class="h-xl" style="margin-top:20px;max-width:20ch">Not happy with our service?<br><em class="gold" style="font-style:normal">Tell us.</em></h1>
+      <h1 class="h-xl" style="margin-top:20px;max-width:20ch">Not Happy With Our Service?<br><em class="gold" style="font-style:normal">Tell Us.</em></h1>
       <p class="lede" style="margin-top:22px">We aim for excellent service, but we know things sometimes go wrong. We take every complaint seriously, treat you fairly, and use what you tell us to improve.</p>
     </div>
   </section>
@@ -4659,7 +4838,7 @@ html .frame .app,html[data-hero] .frame .app{box-shadow:0 -1px 0 rgba(255,255,25
   <section class="page-hero lite text-hero">
     <div class="wrap about-hero" style="position:relative;max-width:var(--max)">
       <p class="eyebrow">Privacy statement</p>
-      <h1 class="h-xl" style="margin-top:20px;max-width:20ch">How we use and<br><em class="gold" style="font-style:normal">protect your information.</em></h1>
+      <h1 class="h-xl" style="margin-top:20px;max-width:20ch">How We Use and<br><em class="gold" style="font-style:normal">Protect Your Information.</em></h1>
     </div>
   </section>
   <section class="band text-band">
@@ -4799,8 +4978,7 @@ html .frame .app,html[data-hero] .frame .app{box-shadow:0 -1px 0 rgba(255,255,25
 <main data-view="cookies" hidden>
   <section class="page-hero lite text-hero">
     <div class="wrap about-hero" style="position:relative;max-width:var(--max)">
-      <p class="eyebrow">Use of cookies</p>
-      <h1 class="h-xl" style="margin-top:20px;max-width:20ch">Cookies on<br><em class="gold" style="font-style:normal">this website.</em></h1>
+      <h1 class="h-xl" style="max-width:20ch">Cookies on<br><em class="gold" style="font-style:normal">This Website.</em></h1>
     </div>
   </section>
   <section class="band text-band">
@@ -4812,9 +4990,9 @@ html .frame .app,html[data-hero] .frame .app{box-shadow:0 -1px 0 rgba(255,255,25
     <p>Cookies are small text files a website can store on your device. They're used to make sites work, remember your choices, or measure how a site is used. Similar technologies, such as local storage, work in much the same way, and this page covers them too.</p>
   
     <h2>Cookies we use</h2>
-    <p>This website does not currently set any cookies, and we don't use advertising or tracking cookies.</p>
+    <p>This website doesn't set any cookies, and we don't use advertising or tracking cookies. The only thing it stores on your device is your light or dark mode choice, and only if you pick one.</p>
     <ul>
-      <li><strong>Strictly necessary:</strong> none at present. If we add any, for example to remember your cookie choices, they will be listed here.</li>
+      <li><strong>Strictly necessary:</strong> if you use the light and dark mode switch, your browser remembers your choice in local storage, so pages look the way you picked. It stays on your device and isn't sent to us. You can clear it in your browser settings.</li>
       <li><strong>Analytics:</strong> none at present. If we start measuring how the site is used, we'll only do so with your consent, and we'll list the cookies here.</li>
       <li><strong>Marketing:</strong> we don't use marketing or advertising cookies.</li>
     </ul>
@@ -4842,8 +5020,7 @@ html .frame .app,html[data-hero] .frame .app{box-shadow:0 -1px 0 rgba(255,255,25
 <main data-view="fca-authorisation" hidden>
   <section class="page-hero lite text-hero">
     <div class="wrap about-hero" style="position:relative;max-width:var(--max)">
-      <p class="eyebrow">FCA authorisation</p>
-      <h1 class="h-xl" style="margin-top:20px;max-width:20ch">Authorised and<br><em class="gold" style="font-style:normal">regulated by the FCA.</em></h1>
+      <h1 class="h-xl" style="max-width:20ch">Authorised and<br><em class="gold" style="font-style:normal">Regulated by the FCA.</em></h1>
     </div>
   </section>
   <section class="band text-band">
@@ -4867,7 +5044,6 @@ html .frame .app,html[data-hero] .frame .app{box-shadow:0 -1px 0 rgba(255,255,25
 <footer>
   <div class="wrap">
     <div class="f-main">
-      <a class="f-logo" href="./" data-go="home" aria-label="BDElite home"><svg viewBox="0 0 1495 372" aria-hidden="true"><use href="#logo"/></svg></a>
       <nav class="f-nav" aria-label="Footer">
         <a href="brokers" data-go="brokers">Brokers</a>
         <a href="customers" data-go="customers">Customers</a>
@@ -4919,7 +5095,7 @@ html .frame .app,html[data-hero] .frame .app{box-shadow:0 -1px 0 rgba(255,255,25
   <div class="dlg-body">
     <div class="opts">
       <button class="opt" type="button" data-opt="motor" aria-expanded="false"><span class="icon"><svg><use href="#i-car"/></svg></span><span><b>Motor accident</b><small>Damage, injury or a non-fault incident</small></span><svg width="20" height="20" aria-hidden="true"><use href="#i-arrow"/></svg></button>
-      <div class="opt-detail" data-detail="motor" hidden><p>Call the motor claimsline and a handler will take it from there.</p><span class="mono">01204 567 567</span><div class="cta-actions" style="justify-content:flex-start"><a class="btn btn-gold" href="tel:01204567567"><svg aria-hidden="true"><use href="#i-phone"/></svg>Call now</a><a class="btn btn-line" href="customers#claimform" data-go="customers" data-scroll="#claimform" data-close>Start online instead</a></div></div>
+      <div class="opt-detail" data-detail="motor" hidden><p>Call the motor claimsline and a handler will take it from there.</p><span class="mono">01204 567 567</span><div class="cta-actions" style="justify-content:flex-start"><a class="btn btn-gold" href="tel:01204567567"><svg aria-hidden="true"><use href="#i-phone"/></svg>Call now</a></div></div>
       <button class="opt" type="button" data-opt="breakdown" aria-expanded="false"><span class="icon"><svg><use href="#i-tow"/></svg></span><span><b>Breakdown</b><small>Roadside help, recovery or home start</small></span><svg width="20" height="20" aria-hidden="true"><use href="#i-arrow"/></svg></button>
       <div class="opt-detail" data-detail="breakdown" hidden><p>Call our breakdown line. If you're on a motorway, get to a safe place behind the barrier first.</p><span class="mono">01204 567 497</span><div class="cta-actions" style="justify-content:flex-start"><a class="btn btn-gold" href="tel:01204567497"><svg aria-hidden="true"><use href="#i-phone"/></svg>Call now</a><button class="copy" type="button" data-copy="01204 567 497" style="color:var(--fg);border-color:var(--line)"><svg width="16" height="16" aria-hidden="true"><use href="#i-copy"/></svg>Copy number</button></div></div>
       <button class="opt" type="button" data-opt="home" aria-expanded="false"><span class="icon"><svg><use href="#i-home"/></svg></span><span><b>Home emergency</b><small>Boiler, plumbing, electrics, locks</small></span><svg width="20" height="20" aria-hidden="true"><use href="#i-arrow"/></svg></button>
@@ -4940,16 +5116,12 @@ html .frame .app,html[data-hero] .frame .app{box-shadow:0 -1px 0 rgba(255,255,25
 <script>
 document.documentElement.classList.add('js');
 const HERO=(new URLSearchParams(location.search).get('hero')||'b').toLowerCase();
-if(['a','b','c'].includes(HERO)){
-  document.documentElement.dataset.hero=HERO;
-  const heroSec=document.querySelector('main[data-view="home"] > section.hero');
-  if(heroSec) heroSec.classList.remove('ink');
-}
+/* the light designs are set in the page head before anything is drawn; only the old dark options need changing here */
+if(['a','b','c'].includes(HERO)) document.documentElement.dataset.hero=HERO;
+else { const heroSec=document.querySelector('main[data-view="home"] > section.hero'); if(heroSec) heroSec.classList.add('ink'); }
 const STAGE=(new URLSearchParams(location.search).get('stage')||'c').toLowerCase();
-if(['a','b','c'].includes(STAGE)){
-  document.documentElement.dataset.stage=STAGE;
-  if(STAGE==='c'){ const jc=document.getElementById('journey'); if(jc) jc.classList.remove('ink'); }
-}
+if(['a','b','c'].includes(STAGE)) document.documentElement.dataset.stage=STAGE;
+if(STAGE!=='c'){ const jc=document.getElementById('journey'); if(jc) jc.classList.add('ink'); }
 
 /* ---------- Data ---------- */
 const REVIEWS = [
@@ -4969,7 +5141,7 @@ const PRODUCTS = [
   {i:'i-key', n:'Key Tag', cat:'property', c:'Personal', d:'A registered key tag that reunites lost keys with their owner, with replacement cover.', t:['Key return','Replacement cover']}
 ];
 const JOURNEY = [
-  {i:'i-phone', h:'Report', customer:'One call or a short online form. No chasing, no forms posted back and forth.', broker:'Your client calls us direct. You get notified, so you aren\'t first-line support.', fleet:'Drivers report by phone. The claim appears in your fleet portal straight away.'},
+  {i:'i-phone', h:'Report', customer:'One call to our claims team. No chasing, no forms posted back and forth.', broker:'Your client calls us direct. You get notified, so you aren\'t first-line support.', fleet:'Drivers report by phone. The claim appears in your fleet portal straight away.'},
   {i:'i-doc', h:'Assess', customer:'Our claims team checks your cover, liability and what you need to stay mobile.', broker:'Liability and cover checked against your wording. Clear reasons, no surprises.', fleet:'Fault and non-fault triaged early, with third parties captured to control costs.'},
   {i:'i-car', h:'Repair & mobility', customer:'Your vehicle goes to an approved repairer and, where covered, you get a replacement.', broker:'Approved repair network and replacement vehicles, without extra admin for you.', fleet:'Recovery up to 44t, approved repairers and replacement vehicles to cut downtime.'},
   {i:'i-pound', h:'Recover losses', customer:'We pursue the other side for your excess and the losses you shouldn\'t pay.', broker:'Uninsured losses recovered for your client, protecting their record at renewal.', fleet:'Excess and uninsured losses pursued on every non-fault claim, tracked in your MI.'},
@@ -5823,57 +5995,7 @@ if(document.querySelector('.reveal.pre')){
   setTimeout(()=>{ document.querySelectorAll('.reveal.pre').forEach(el=>{ el.classList.remove('pre'); }); removeEventListener('scroll',revealCheck); }, 2500);
 }
 
-/* ---------- Forms ---------- */
-function validate(scope){
-  let ok=true, first=null;
-  scope.querySelectorAll('[required]').forEach(i=>{
-    const f=i.closest('.field'); let good=i.type==='checkbox' ? i.checked : i.value.trim()!=='';
-    if(good && i.type==='email') good=/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(i.value.trim());
-    f.classList.toggle('bad',!good); if(!good){ ok=false; first=first||i; }
-  });
-  if(first) first.focus();
-  return ok;
-}
-document.querySelectorAll('.field input,.field textarea').forEach(i=>i.addEventListener('input',()=>i.closest('.field').classList.remove('bad')));
-function simpleForm(id,msg){
-  const f=document.getElementById(id); if(!f) return;
-  f.addEventListener('submit',e=>{ e.preventDefault(); if(!validate(f)) return;
-    f.innerHTML=`<div class="success"><div class="icon"><svg><use href="#i-check"/></svg></div><h3 class="h-m">${msg}</h3><p style="color:var(--muted)">Someone from the Bolton team will call you within one working day.</p><p class="form-note">Prototype: in the live site this sends to the sales team.</p></div>`; });
-}
-simpleForm('partnerForm','Thanks, we\'ll be in touch.');
-simpleForm('fleetForm','Thanks, we\'ll call you back.');
-
-/* Claim form stepper */
-const cf=document.getElementById('claimForm'); let cs=1;
-if(cf){ /* customers page only */
-const steps=[...cf.querySelectorAll('[data-step]')], bars=[...cf.querySelectorAll('.form-steps i')];
-const back=document.getElementById('c-back'), next=document.getElementById('c-next');
-function paintClaim(){
-  steps.forEach(s=>s.hidden = s.dataset.step!==String(cs));
-  bars.forEach((b,i)=>b.classList.toggle('on', i<cs || cs==='done'));
-  back.hidden = cs===1 || cs==='done';
-  next.hidden = cs==='done';
-  next.innerHTML = cs===3 ? 'Send my claim' : 'Continue <svg class="arrow" aria-hidden="true"><use href="#i-arrow"/></svg>';
-  if(cs==='done') document.getElementById('c-actions').hidden=true;
-}
-function v(id){ return (document.getElementById(id).value||'').trim(); }
-cf.addEventListener('submit',e=>{
-  e.preventDefault();
-  if(cs===3){ document.getElementById('c-ref').textContent='BDE-'+String(Math.floor(52000+Math.random()*900)); cs='done'; paintClaim(); return; }
-  if(!validate(cf.querySelector(`[data-step="${cs}"]`))) return;
-  cs++;
-  if(cs===3){
-    const type=(cf.querySelector('input[name=ctype]:checked')||{}).value;
-    const d=v('c-date') ? new Date(v('c-date')).toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'}) : '';
-    const rows=[['Name',v('c-name')],['Phone',v('c-tel')],['Policy',v('c-pol')||'Not given'],['Broker',v('c-broker')||'Not given'],['Claim type',type],['Date',d],['Registration',v('c-reg').toUpperCase()||'Not given']];
-    const esc=s=>s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-    document.getElementById('c-review').innerHTML = rows.map(r=>`<div class="row" style="grid-template-columns:120px 1fr"><span style="color:var(--muted)">${r[0]}</span><span>${esc(r[1])}</span></div>`).join('');
-  }
-  paintClaim();
-});
-back.addEventListener('click',()=>{ if(cs>1){ cs--; paintClaim(); } });
-paintClaim();
-}
+/* Forms: the claim, call-back and key tag forms are replaced by call/email panels until they are connected (restore from git history). */
 
 /* ---------- Downtime calculator ---------- */
 const gbp=n=>'£'+Math.round(n).toLocaleString('en-GB');
@@ -5910,6 +6032,7 @@ document.fonts && document.fonts.ready.then(drawFlow);
 const siteHead=document.querySelector('header.site');
 const DARK='section.ink:not(.photo-band),section.proof,footer';
 const pageFoot=document.querySelector('footer');
+const insetCards=matchMedia('(min-width:720px)');
 const calmMotion=matchMedia('(prefers-reduced-motion: reduce)').matches;
 document.documentElement.classList.add('bgsw');
 /* mark every section whose tone differs from the one before it */
@@ -5925,17 +6048,30 @@ function paintHead(){
     const main=document.querySelector('main[data-view]:not([hidden])');
     const secs=main ? [...main.children].filter(e=>e.tagName==='SECTION') : [];
     if(secs.length){
-      pageFoot.classList.toggle('sheet', !secs[secs.length-1].matches(DARK));
+      /* the footer gets its curved top whenever page background sits above it (on wider screens the dark bands are
+         inset cards with page background after them) */
+      const last=secs[secs.length-1];
+      pageFoot.classList.toggle('sheet', !last.matches(DARK) || (insetCards.matches && last.matches('main > section.ink')));
       secs.push(pageFoot);
+      /* the footer, and only the footer, widens and slides into place as it comes up the screen (the 23 Nov speed
+         pass stopped every section doing this; one element is cheap, and nothing is restyled once it has arrived) */
+      if(pageFoot.classList.contains('sheet')){
+        const top=pageFoot.getBoundingClientRect().top, vh=innerHeight;
+        const fp=(calmMotion ? 1 : Math.min(1,Math.max(0,(vh-top)/(vh*0.5)))).toFixed(3);
+        if(pageFoot.style.getPropertyValue('--p')!==fp) pageFoot.style.setProperty('--p',fp);
+      }
       /* only reads positions now: sections no longer widen, so nothing is restyled on each scroll step */
       const hb=siteHead.getBoundingClientRect().bottom; let cur=secs[0];
       for(const sc of secs){ if(sc.getBoundingClientRect().top<=hb) cur=sc; else break; }
-      siteHead.classList.toggle('on-dark', cur.matches(DARK));
+      /* on screens 720px and wider the dark bands are inset cards with page background either side, so the top bar
+         keeps its normal (dark text) look over them and only turns light-on-dark over the full-width footer */
+      siteHead.classList.toggle('on-dark', cur.matches(DARK) && !(insetCards.matches && cur.matches('main > section.ink')));
     }
     siteHead.classList.toggle('scrolled', scrollY>8);
   });
 }
 addEventListener('scroll',paintHead,{passive:true});
+insetCards.addEventListener('change',paintHead);
 addEventListener('resize',paintHead);
 
 /* ---------- Drop-downs: our own list in place of the browser's ---------- */
@@ -6039,11 +6175,161 @@ if('IntersectionObserver' in window){
   document.querySelectorAll('main > section, footer').forEach(s=>offIO.observe(s));
 }
 
-/* ---------- Key tag registration form ---------- */
+/* ---------- Dashboard pictures: keep the desktop layout, shrunk to fit whenever space is short ---------- */
+(()=>{
+  const items=[...document.querySelectorAll('.frame > .app')].map(el=>({el,w:1136}))
+    .concat([...document.querySelectorAll('.tile-gold > .tile-mock')].map(el=>({el,w:524})));
+  if(!items.length) return;
+  /* data-cap-h (set by "Every section fits the screen height") is the tallest the picture may be on this screen */
+  const fitAll=()=>items.forEach(({el,w})=>{
+    const p=el.parentElement, cs=getComputedStyle(p);
+    const inner=p.clientWidth-parseFloat(cs.paddingLeft)-parseFloat(cs.paddingRight);
+    const cap=parseFloat(el.dataset.capH)||0;
+    if(inner>=w-4 && !cap){ el.classList.remove('fz-on'); el.style.removeProperty('--fz'); return; } /* room for the real thing */
+    let z=Math.min(1,inner/w);
+    el.classList.add('fz-on'); el.style.setProperty('--fz',z.toFixed(4));
+    if(cap){ const nat=el.getBoundingClientRect().height/z; if(nat*z>cap) z=Math.max(0.3,cap/nat); }
+    z=z.toFixed(4); if(el.style.getPropertyValue('--fz')!==z) el.style.setProperty('--fz',z);
+  });
+  window.fitDashboards=fitAll;
+  fitAll();
+  if('ResizeObserver' in window){ const ro=new ResizeObserver(fitAll); items.forEach(({el})=>ro.observe(el.parentElement)); }
+  else addEventListener('resize',fitAll);
+})();
+
+/* ---------- Key tag registration form ----------
+   Not connected to a server yet, so "Register my tag" opens the visitor's email app with their details
+   filled in, addressed to the Key Recovery team. They press send to finish. */
+function validate(scope){
+  let ok=true, first=null;
+  scope.querySelectorAll('[required]').forEach(i=>{
+    const f=i.closest('.field'); let good=i.type==='checkbox' ? i.checked : i.value.trim()!=='';
+    if(good && i.type==='email') good=/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(i.value.trim());
+    f.classList.toggle('bad',!good); if(!good){ ok=false; first=first||i; }
+  });
+  if(first) first.focus();
+  return ok;
+}
 const keyForm=document.getElementById('keyForm');
-if(keyForm) keyForm.addEventListener('submit',e=>{ e.preventDefault(); if(!validate(keyForm)) return;
-  /* TODO for the live build: send to the key recovery team. */
-  keyForm.innerHTML='<div class="success"><div class="icon"><svg><use href="#i-check"/></svg></div><h3 class="h-m">Your tag is registered.</h3><p style="color:var(--muted)">If your keys are ever handed in, we\'ll contact you and post them back.</p><p class="form-note">Prototype: in the live site this sends to the key recovery team.</p></div>'; });
+if(keyForm){
+  keyForm.querySelectorAll('.field input').forEach(i=>i.addEventListener('input',()=>i.closest('.field').classList.remove('bad')));
+  keyForm.addEventListener('submit',e=>{ e.preventDefault(); if(!validate(keyForm)) return;
+    const v=id=>(document.getElementById(id).value||'').trim();
+    const address=[v('k-a1'),v('k-a2'),v('k-town'),v('k-county'),v('k-pc').toUpperCase()].filter(Boolean).join(', ');
+    const body=['Please register my BDElite key tag.','',
+      'Key recovery code: '+v('k-code'),
+      'Name: '+[v('k-first'),v('k-last')].filter(Boolean).join(' '),
+      'Address: '+address,
+      'Phone: '+v('k-tel'),
+      'Email: '+v('k-email'),
+      'Insurance broker: '+v('k-broker'),'',
+      'I have read and accept the key recovery terms.'].join('\r\n');
+    location.href='mailto:keyrecovery@bdelite.co.uk?subject='+encodeURIComponent('Key tag registration: '+v('k-code'))+'&body='+encodeURIComponent(body);
+    const done=document.getElementById('k-sent'); done.hidden=false; done.scrollIntoView({block:'nearest'});
+  });
+}
+
+/* ---------- Every section fits the screen height ----------
+   No section is taller than the window, on any screen. Big blocks (demos, card grids, long columns) are shrunk
+   with CSS zoom just enough to fit; zoom keeps each block's edges where they are, so section widths don't change.
+   - Screens 720px and wider: each section's heading and content fit one screen together. The top-of-page
+     sections are the exception: their headline and their demo each get a screen of their own.
+   - Phones and portrait tablets: only the demos are fitted; text and lists scroll as normal.
+   - The FAQ and policy pages are long documents and are left as they are.
+   Runs on load and whenever the window changes size, never while scrolling. */
+(()=>{
+  const main=document.querySelector('main[data-view]:not([hidden])');
+  const TEXT_PAGES=['faq','key-recovery','accessibility','careers','complaints-procedure','privacy-statement','cookies','fca-authorisation'];
+  if(!main || TEXT_PAGES.includes(main.dataset.view)) return;
+  const head=document.querySelector('header.site');
+  const DEMOS='.frame,.fsim-shell,.panel.claim,.pair > .tile,.split > .tile';   /* phones: only these are fitted */
+  const HEROES='.hero,.page-hero,.cust-hero';
+  const ZMIN=0.7;            /* never shrink below 70%, so text stays readable */
+  /* laptops, monitors and landscape tablets fit every section; phones and portrait tablets (which stack everything in
+     one column, like a phone) fit only the demos */
+  const wide=matchMedia('(min-width:960px),(min-width:720px) and (orientation:landscape)');
+  const px=(el,p)=>parseFloat(getComputedStyle(el)[p])||0;
+  const h=el=>el.getBoundingClientRect().height;
+  const setZ=(els,z)=>els.forEach(e=>{ e.style.zoom = z>0.999 ? '' : z.toFixed(3); });
+  /* on big screens the whole page is scaled up (html zoom, set in the page head); measurements here are in screen
+     pixels, so lengths written back are divided by it, and the 70% floor applies to the design size, not the scaled one */
+  const pageZ=()=>parseFloat(document.documentElement.style.zoom)||1;
+  /* largest zoom (floor..1) at which measure() fits in t */
+  function fitZoom(els,measure,t){
+    setZ(els,1); if(measure()<=t) return;
+    let lo=Math.min(1,ZMIN/pageZ()), hi=1;
+    setZ(els,lo); if(measure()>t) return;            /* can't fit even at the floor: stay at the floor */
+    for(let i=0;i<7;i++){ const mid=(lo+hi)/2; setZ(els,mid); if(measure()<=t) lo=mid; else hi=mid; }
+    setZ(els,lo);
+  }
+  /* the home laptop-and-phone card is drawn in percentages, so zoom can't shrink it: narrow the devices instead,
+     keeping the card itself full width */
+  function fitDevices(frame,t){
+    const devs=frame.querySelector('.devs'); if(!devs) return;
+    devs.style.maxWidth='';
+    for(let i=0;i<4;i++){
+      const H=h(frame); if(H<=t+1) break;
+      const dh=h(devs), over=H-dh; if(dh<=0) break;
+      devs.style.maxWidth=Math.max(260, devs.getBoundingClientRect().width*(t-over)/dh/pageZ())+'px';
+    }
+  }
+  /* dashboard pictures already shrink themselves to their width; tell them the tallest they may be as well */
+  const DASH='.frame > .app,.tile-gold > .tile-mock';
+  function fitDash(item,t){
+    const app=item.matches(DASH) ? item : item.querySelector(DASH); if(!app || !window.fitDashboards) return;
+    for(let i=0;i<3;i++){
+      const before=h(item); if(before<=t+1) break;
+      const appH=h(app), cap=Math.floor(appH-(before-t));
+      if(cap<appH*0.5) break;                        /* the card's height isn't set by the picture: leave it */
+      app.dataset.capH=cap; window.fitDashboards();
+      if(h(item)>=before-1){ delete app.dataset.capH; window.fitDashboards(); break; }   /* made no difference: undo */
+    }
+  }
+  function fitItem(item,t){
+    if(item.matches('.frame.hero-devs')) return fitDevices(item,t);
+    if(item.matches(DASH) || item.querySelector(DASH)) return fitDash(item,t);
+    fitZoom([item],()=>h(item),t);
+  }
+  function fitSection(sec,t){
+    const blocks=[...sec.children].filter(c=>!c.matches('.waves,.hero-bg,script') && c.getClientRects().length);
+    blocks.forEach(block=>{
+      const kids=[...block.children].filter(k=>k.getClientRects().length);
+      if(!wide.matches){ [block,...block.querySelectorAll(DEMOS)].filter(k=>k.matches(DEMOS)).forEach(k=>fitItem(k,t)); return; }
+      if(sec.matches(HEROES) || block.matches('.frame')){ (block.matches('.frame') ? [block] : kids).forEach(k=>{ if(h(k)>t*0.3) fitItem(k,t); }); return; }
+      /* everything else: the heading and content fit one screen together; only the big parts shrink */
+      /* inside a dark card everything shrinks together (heading included); elsewhere only the big parts do */
+      const big=sec.matches(".ink") ? kids : kids.filter(k=>h(k)>t*0.25);
+      big.filter(k=>k.querySelector(DASH)).forEach(k=>fitDash(k,t));
+      const zoomable=big.filter(k=>!k.querySelector(DASH));
+      if(!zoomable.length) return;
+      const measure = sec.matches('.ink') ? ()=>h(sec)
+        : ()=>h(block)-px(block,'paddingTop')-px(block,'paddingBottom');
+      fitZoom(zoomable,measure,t);
+    });
+  }
+  function reset(){
+    main.querySelectorAll('[style*="zoom"]').forEach(e=>{ if(e.closest('main > section')) e.style.zoom=''; });
+    main.querySelectorAll('.hero-devs .devs').forEach(d=>d.style.maxWidth='');
+    const caps=main.querySelectorAll('[data-cap-h]'); caps.forEach(a=>delete a.dataset.capH);
+    if(caps.length && window.fitDashboards) window.fitDashboards();
+  }
+  function fitAll(){
+    reset();
+    const avail=innerHeight-(head ? head.getBoundingClientRect().height : 0);
+    const breath=Math.min(48,Math.max(16,innerHeight*0.04));
+    const t=avail-2*breath;
+    main.querySelectorAll(':scope > section').forEach(sec=>fitSection(sec,t));
+  }
+  let raf=0, lastW=0, lastH=0;
+  const schedule=force=>{ if(!force && innerWidth===lastW && innerHeight===lastH) return; lastW=innerWidth; lastH=innerHeight;
+    cancelAnimationFrame(raf); raf=requestAnimationFrame(fitAll); };
+  let tmr=0; addEventListener('resize',()=>{ clearTimeout(tmr); tmr=setTimeout(()=>schedule(false),150); });
+  /* switching Customer / Broker / Fleet manager changes the text, so fit that section again */
+  main.querySelectorAll('[data-aud]').forEach(b=>b.addEventListener('click',()=>setTimeout(()=>schedule(true),60)));
+  lastW=innerWidth; lastH=innerHeight; fitAll();   /* straight away, before the page is first drawn, so nothing jumps */
+  (document.fonts ? document.fonts.ready : Promise.resolve()).then(()=>schedule(true));   /* again once the Poppins font has loaded */
+  addEventListener('load',()=>schedule(true));
+})();
 
 /* ---------- Boot ---------- */
 let bootTarget=null; try{ if(location.hash && document.querySelector(location.hash)) bootTarget=location.hash; }catch(err){}
