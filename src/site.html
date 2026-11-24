@@ -5479,10 +5479,11 @@ document.addEventListener('click', e=>{
   setScene(0);
   if(reduce){ still(); return; }
 
-  /* plays while on screen; pauses while the visitor hovers or is using the tabs; moves to the next example at the end of each one */
+  /* plays while on screen and keeps playing under the mouse (no pause on hover); pauses only while someone is using it
+     from the keyboard; moves to the next example at the end of each one */
   let last=0, raf=0, held=false;
-  root.addEventListener('mouseenter',()=>held=true); root.addEventListener('mouseleave',()=>held=false);
-  root.addEventListener('focusin',()=>held=true); root.addEventListener('focusout',()=>held=false);
+  root.addEventListener('focusin',e=>{ held=!!(e.target.matches && e.target.matches(':focus-visible')); });
+  root.addEventListener('focusout',()=>held=false);
   function frame(now){
     /* real time between frames, so the story takes the same number of seconds on a slow device as on a fast one
        (capped at a tenth of a second so it does not leap forward after the tab has been in the background) */
